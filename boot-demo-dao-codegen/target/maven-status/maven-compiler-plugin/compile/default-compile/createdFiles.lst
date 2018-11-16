@@ -1,0 +1,16 @@
+com\demo\boot\dao\codegen\plugins\DemoMapperExtGeneratorPlugin.class
+com\demo\boot\dao\codegen\generator\DemoXmlMapperGenerator.class
+com\demo\boot\dao\codegen\DemoMybatisGenerator.class
+com\demo\boot\dao\codegen\generator\DemoCommentGenerator.class
+com\demo\boot\dao\codegen\generator\xml\UpdateElementGenerator.class
+com\demo\boot\dao\codegen\generator\xml\InsertElementCustomGenerator.class
+com\demo\boot\dao\codegen\generator\xml\InsertListElementGenerator.class
+com\demo\boot\dao\codegen\generator\xml\SelectListElementGenerator.class
+com\demo\boot\dao\codegen\generator\xml\SelectByIdElementGenerator.class
+com\demo\boot\dao\codegen\contants\MybatisGeneratorConstants.class
+com\demo\boot\dao\codegen\generator\xml\SelectOneElementGenerator.class
+com\demo\boot\dao\codegen\plugins\DemoJavaClientWrapperPlugin.class
+com\demo\boot\dao\codegen\generator\xml\DeleteByIdElementGenerator.class
+com\demo\boot\dao\codegen\generator\xml\ResultMapWithoutBLOBsElementCustomGenerator.class
+com\demo\boot\dao\codegen\generator\xml\SelectAllElementGenerator.class
+com\demo\boot\dao\codegen\DemoIntrospectedTableMyBatis3Impl.class
