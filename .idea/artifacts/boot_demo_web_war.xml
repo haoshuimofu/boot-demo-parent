@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="boot-demo-web:war">
-    <output-path>$PROJECT_DIR$/boot-demo-web/target</output-path>
-    <root id="archive" name="boot-demo-web.war">
-      <element id="artifact" artifact-name="boot-demo-web:war exploded" />
-    </root>
-  </artifact>
-</component>
