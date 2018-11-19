@@ -1,8 +1,0 @@
-com\demo\boot\dao\configuration\BusinessDaoConfiguration.class
-com\demo\boot\model\User.class
-com\demo\boot\dao\UserDao.class
-com\demo\boot\user\model\User.class
-com\demo\boot\business\dao\BusinessDao.class
-com\demo\boot\business\model\Business.class
-com\demo\boot\dao\configuration\UserDaoConfiguration.class
-com\demo\boot\user\dao\UserDao.class
