@@ -1,6 +1,6 @@
-# IDEA:
+# IDEA
 .idea/
-out/
 *.iml
-### Maven template
+out/
+# Maven
 target/
