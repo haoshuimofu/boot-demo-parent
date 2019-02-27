@@ -56,7 +56,7 @@ public class BusinessDaoConfiguration {
     }
 
     @Bean("businessTransactionManager")
-    @Primary
+//    @Primary
     public DataSourceTransactionManager transactionManager(@Qualifier("businessDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }

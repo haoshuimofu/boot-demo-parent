@@ -73,11 +73,11 @@
             <artifactId>mybatis-spring</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.0.29-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid-spring-boot-starter</artifactId>-->
+            <!--<version>1.0.29-SNAPSHOT</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

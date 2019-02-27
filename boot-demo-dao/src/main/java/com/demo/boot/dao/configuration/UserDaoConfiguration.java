@@ -27,7 +27,7 @@ public class UserDaoConfiguration {
 
 
     @Bean(name = "userDataSource")
-    @Primary //必须加此注解，不然报错，下一个类则不需要添加
+//    @Primary //必须加此注解，不然报错，下一个类则不需要添加
     @ConfigurationProperties(prefix = "user.datasource") // prefix值必须是application.properteis中对应属性的前缀
     public DataSource userDataSource() {
         // return DataSourceBuilder.create().build();
