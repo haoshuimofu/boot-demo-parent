@@ -24,9 +24,7 @@ public class CommonExceptionHandler {
      */
 
     @ExceptionHandler(Exception.class)
-
     @ResponseBody
-
     public Map<String, Object> exceptionHandler(Exception e) {
         e.printStackTrace();
 
