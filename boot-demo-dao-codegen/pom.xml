@@ -8,8 +8,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>boot-demo-dao-codegen</artifactId>
-    <name>boot-demo-dao-codegen</name>
+    <artifactId>boot-demo-core-codegen</artifactId>
+    <name>boot-demo-core-codegen</name>
     <packaging>jar</packaging>
 
 
@@ -45,6 +45,6 @@
     </dependencies>
 
     <build>
-        <finalName>boot-demo-dao-codegen</finalName>
+        <finalName>boot-demo-core-codegen</finalName>
     </build>
 </project>

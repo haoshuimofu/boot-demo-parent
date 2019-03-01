@@ -16,7 +16,7 @@
 
         <dependency>
             <groupId>com.demo.boot</groupId>
-            <artifactId>boot-demo-dao</artifactId>
+            <artifactId>boot-demo-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

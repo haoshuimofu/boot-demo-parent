@@ -20,8 +20,8 @@
 
     <modules>
         <module>boot-demo-base</module>
-        <module>boot-demo-dao</module>
-        <module>boot-demo-dao-codegen</module>
+        <module>boot-demo-core</module>
+        <module>boot-demo-core-codegen</module>
         <module>boot-demo-resources</module>
         <module>boot-demo-service</module>
         <module>boot-demo-web</module>
