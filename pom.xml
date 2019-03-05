@@ -25,6 +25,7 @@
         <module>boot-demo-resources</module>
         <module>boot-demo-service</module>
         <module>boot-demo-web</module>
+        <module>boot-demo-test</module>
     </modules>
 
     <properties>
