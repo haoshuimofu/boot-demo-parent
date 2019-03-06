@@ -1,5 +1,6 @@
 package com.demo.boot.web.ctrl;
 
+import com.demo.boot.base.JsonResult;
 import com.demo.boot.web.command.ValidatorTestCommand;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class ValidatorTestController {
 
     @RequestMapping("test")
     public Object test(@RequestBody @Valid ValidatorTestCommand command) {
-        return "success";
+        return JsonResult.success();
     }
 
 }
