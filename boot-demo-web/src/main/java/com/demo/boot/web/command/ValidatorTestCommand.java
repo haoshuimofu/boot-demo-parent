@@ -1,5 +1,6 @@
 package com.demo.boot.web.command;
 
+import com.demo.boot.base.validator.IsMobile;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Min;
@@ -16,6 +17,10 @@ import java.util.List;
  */
 public class ValidatorTestCommand {
     @NotEmpty(message = "不能为空")
+    @IsMobile
+    private String mobile;
+
+    @NotEmpty(message = "不能为空")
     private String name;
     @NotNull(message = "不能为空")
     @Min(value = 1, message = "最小值%s")
@@ -23,6 +28,14 @@ public class ValidatorTestCommand {
 //    @NotEmpty(message = "不能为空")
     @Size(min = 1, max = 4, message = "list长度错误")
     private List<String> images;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getName() {
         return name;
