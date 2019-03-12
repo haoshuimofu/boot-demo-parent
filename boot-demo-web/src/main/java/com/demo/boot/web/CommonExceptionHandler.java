@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 /**
@@ -31,7 +33,9 @@ public class CommonExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public JsonResult exceptionHandler(MethodArgumentNotValidException e) {
+    public JsonResult exceptionHandler(HttpServletRequest request, HttpServletResponse response,MethodArgumentNotValidException e) {
+        response.setStatus(500);
+        System.out.println(response.getStatus());
         logger.error("参数异常", e);
         List<String> errorMsgList = new ArrayList<>();
         StringBuilder msgBuilder = new StringBuilder();
