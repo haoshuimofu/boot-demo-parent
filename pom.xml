@@ -100,6 +100,13 @@
                 <version>3.8.1</version>
             </dependency>
 
+            <!--junit-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <scope>test</scope>
+                <version>4.12</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -145,10 +152,10 @@
             <name>aliyun maven</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
             <releases>
-                <enabled> true</enabled>
+                <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled> false</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
@@ -158,10 +165,10 @@
             <name>aliyun maven</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
             <releases>
-                <enabled> true</enabled>
+                <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled> false</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
