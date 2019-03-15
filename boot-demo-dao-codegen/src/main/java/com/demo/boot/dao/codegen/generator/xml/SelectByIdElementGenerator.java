@@ -24,22 +24,21 @@ public class SelectByIdElementGenerator extends AbstractXmlElementGenerator {
 
     @Override
     public void addElements(XmlElement parentElement) {
-        // 因为selectById方法实际查询依据就是主键, 所以没有主键的表就无需生成相应的sql了
-        List<IntrospectedColumn> introspectedColumns = introspectedTable.getPrimaryKeyColumns();
-        if (introspectedColumns == null || introspectedColumns.size() < 1) {
+        // 无主键不用实现selectById方法
+        List<IntrospectedColumn> primaryKeyColumns = introspectedTable.getPrimaryKeyColumns();
+        if (primaryKeyColumns == null || primaryKeyColumns.size() == 0) {
             return;
         }
 
         String tableName = introspectedTable.getFullyQualifiedTableNameAtRuntime();
 
-        XmlElement answer = new XmlElement("select"); //$NON-NLS-1$
+        XmlElement answer = new XmlElement("select");
 
-        answer.addAttribute(new Attribute("id", "selectById")); //$NON-NLS-1$
+        answer.addAttribute(new Attribute("id", "selectById"));
 
-        if (introspectedColumns.size() == 1) {
+        if (primaryKeyColumns.size() == 1) {
             // 唯一主键列
-            IntrospectedColumn primaryKeyColumn = introspectedTable.getPrimaryKeyColumns().get(0);
-            answer.addAttribute(new Attribute("parameterType", primaryKeyColumn.getFullyQualifiedJavaType().getFullyQualifiedName()));
+            answer.addAttribute(new Attribute("parameterType", primaryKeyColumns.get(0).getFullyQualifiedJavaType().getFullyQualifiedName()));
         } else {
             answer.addAttribute(new Attribute("parameterType", introspectedTable.getPrimaryKeyType()));
         }
@@ -54,15 +53,16 @@ public class SelectByIdElementGenerator extends AbstractXmlElementGenerator {
         sb.append("SELECT ").append(MybatisGeneratorConstants.XML_ELEMENT_BASE_COLUMN_LIST).append(" FROM ");
 
         sb.append(tableName);
-        // 追加where id=xxx条件
+
         sb.append(" WHERE ");
-        for (int i = 0; i < introspectedColumns.size(); i++) {
+        for (int i = 0; i < primaryKeyColumns.size(); i++) {
             if (i != 0) {
                 sb.append(" AND ");
             }
-            sb.append(introspectedColumns.get(i).getActualColumnName());
+            IntrospectedColumn primaryKeyColumn = primaryKeyColumns.get(i);
+            sb.append(primaryKeyColumn.getActualColumnName());
             sb.append(" = ");
-            sb.append(MyBatis3FormattingUtilities.getParameterClause(introspectedColumns.get(i), ""));
+            sb.append(MyBatis3FormattingUtilities.getParameterClause(primaryKeyColumn, ""));
         }
         answer.addElement(new TextElement(sb.toString()));
 

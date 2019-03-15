@@ -20,21 +20,21 @@ public class DeleteByIdElementGenerator extends AbstractXmlElementGenerator {
 
     @Override
     public void addElements(XmlElement parentElement) {
-        // 如果Table没有主键列则不生成此方法
+        // 无主键不用实现deleteById方法
         List<IntrospectedColumn> primaryKeyColumns = introspectedTable.getPrimaryKeyColumns();
         if (primaryKeyColumns == null || primaryKeyColumns.size() == 0) {
             return;
         }
         XmlElement answer = new XmlElement("delete");
         answer.addAttribute(new Attribute("id", "deleteById"));
-        // 参数类型
-        if (introspectedTable.getPrimaryKeyColumns().size() > 1) {
+        // 主键参数类型：单列和多列
+        if (primaryKeyColumns.size() > 1) {
             FullyQualifiedJavaType parameterType = new FullyQualifiedJavaType(this.introspectedTable.getPrimaryKeyType());
             answer.addAttribute(new Attribute("parameterType", parameterType.getFullyQualifiedName()));
         } else {
             answer.addAttribute(new Attribute("parameterType", primaryKeyColumns.get(0).getFullyQualifiedJavaType().getFullyQualifiedName()));
         }
-        // 标签内第一行生成mbg.generated注解
+        // 标签内添加mbg.generated
         context.getCommentGenerator().addComment(answer);
 
         StringBuilder deleteClause = new StringBuilder();
