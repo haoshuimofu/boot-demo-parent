@@ -19,15 +19,20 @@ public class QiOuTest {
             public void run() {
                 lock.lock();
                 try {
-                    while (count.get() < 100) {
+                    while (true) {
 
                         while (count.get() % 2 != 0) {
                             condition.await();
                         }
-                        if (count.get() < 100) {
-                            System.out.println(Thread.currentThread().getName() + "; " + count.getAndIncrement());
+                        if (count.getAndIncrement() < 100) {
+                            System.out.println(Thread.currentThread().getName() + "; " + (count.get() - 1));
                             condition.signalAll();
+                        } else {
+                            System.out.println("-----------------------------" + Thread.currentThread().getName());
+                            condition.signalAll();
+                            break;
                         }
+//                        if (count.get() >= 100) break;
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -41,15 +46,20 @@ public class QiOuTest {
             public void run() {
                 lock.lock();
                 try {
-                    while (count.get() < 100) {
+                    while (true) {
 
                         while (count.get() % 2 != 1) {
                             condition.await();
                         }
-                        if (count.get() < 100) {
-                            System.out.println(Thread.currentThread().getName() + "; " + count.getAndIncrement());
+                        if (count.getAndIncrement() < 100) {
+                            System.out.println(Thread.currentThread().getName() + "; " + (count.get() - 1));
                             condition.signalAll();
+                        } else {
+                            System.out.println("-----------------------------" + Thread.currentThread().getName());
+                            condition.signalAll();
+                            break;
                         }
+//                        if (count.get() >= 100) break;
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

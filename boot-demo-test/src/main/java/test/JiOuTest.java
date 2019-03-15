@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class JiOuTest {
     public static void main(String[] args) {
-        Demo demo = new Demo();
+        Demo1 demo = new Demo1();
         Thread a = new Thread(demo, "A");
         Thread b = new Thread(demo, "B");
         a.start();
