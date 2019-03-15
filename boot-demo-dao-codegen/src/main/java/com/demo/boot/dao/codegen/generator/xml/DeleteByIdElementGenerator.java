@@ -1,6 +1,7 @@
 package com.demo.boot.dao.codegen.generator.xml;
 
 import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.api.dom.OutputUtilities;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
@@ -43,15 +44,20 @@ public class DeleteByIdElementGenerator extends AbstractXmlElementGenerator {
         deleteClause.append(" WHERE ");
 
         for (int i = 0; i < primaryKeyColumns.size(); i++) {
+            if (i != 0) {
+                deleteClause.setLength(0);
+                OutputUtilities.xmlIndent(deleteClause, 1);
+                deleteClause.append(" AND ");
+            }
             IntrospectedColumn primaryKeyColumn = primaryKeyColumns.get(i);
             deleteClause.append(primaryKeyColumn.getActualColumnName());
             deleteClause.append(" = ");
             deleteClause.append(MyBatis3FormattingUtilities.getParameterClause(primaryKeyColumn, ""));
-            if (i != primaryKeyColumns.size() - 1) {
-                deleteClause.append(" AND ");
+            if (primaryKeyColumns.size() > 1 && i != primaryKeyColumns.size() - 1) {
+                deleteClause.append(", ");
             }
+            answer.addElement(new TextElement(deleteClause.toString()));
         }
-        answer.addElement(new TextElement(deleteClause.toString()));
         parentElement.addElement(answer);
     }
 }

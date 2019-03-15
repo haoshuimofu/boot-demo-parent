@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.boot.kanban.dao.ProductDao">
+  <resultMap id="BaseResultMap" type="com.demo.boot.kanban.model.Product">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="unit_name" jdbcType="VARCHAR" property="unitName" />
+    <result column="bar_code" jdbcType="VARCHAR" property="barCode" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="type_id" jdbcType="SMALLINT" property="typeId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="arithmetic_type" jdbcType="TINYINT" property="arithmeticType" />
+    <result column="is_material" jdbcType="TINYINT" property="isMaterial" />
+    <result column="unit_size" jdbcType="VARCHAR" property="unitSize" />
+    <result column="sku_id" jdbcType="VARCHAR" property="skuId" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="is_scan" jdbcType="TINYINT" property="isScan" />
+    <result column="is_sale" jdbcType="TINYINT" property="isSale" />
+    <result column="is_inventory_scan" jdbcType="TINYINT" property="isInventoryScan" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="category_path" jdbcType="VARCHAR" property="categoryPath" />
+    <result column="sizes" jdbcType="VARCHAR" property="sizes" />
+    <result column="weight_unit" jdbcType="VARCHAR" property="weightUnit" />
+    <result column="propertys" jdbcType="VARCHAR" property="propertys" />
+    <result column="storage_value_id" jdbcType="VARCHAR" property="storageValueId" />
+    <result column="purchase_on" jdbcType="TINYINT" property="purchaseOn" />
+    <result column="is_batch" jdbcType="TINYINT" property="isBatch" />
+    <result column="is_batch_time" jdbcType="TIMESTAMP" property="isBatchTime" />
+    <result column="transfer_type" jdbcType="TINYINT" property="transferType" />
+    <result column="purchase_strategy" jdbcType="TINYINT" property="purchaseStrategy" />
+    <result column="box_size" jdbcType="VARCHAR" property="boxSize" />
+    <result column="labor_cost" jdbcType="VARCHAR" property="laborCost" />
+    <result column="in_tax" jdbcType="DECIMAL" property="inTax" />
+    <result column="out_tax" jdbcType="DECIMAL" property="outTax" />
+    <result column="only_general_store" jdbcType="TINYINT" property="onlyGeneralStore" />
+    <result column="is_auto" jdbcType="TINYINT" property="isAuto" />
+    <result column="transfer_advance_day" jdbcType="SMALLINT" property="transferAdvanceDay" />
+    <result column="purchase_to_address" jdbcType="TINYINT" property="purchaseToAddress" />
+    <result column="store_inventory" jdbcType="TINYINT" property="storeInventory" />
+    <result column="store_list" jdbcType="VARCHAR" property="storeList" />
+    <result column="auto_batch" jdbcType="TINYINT" property="autoBatch" />
+    <result column="weight_limit" jdbcType="VARCHAR" property="weightLimit" />
+    <result column="producer" jdbcType="TINYINT" property="producer" />
+    <result column="quality_period" jdbcType="INTEGER" property="qualityPeriod" />
+    <result column="sale_period" jdbcType="INTEGER" property="salePeriod" />
+    <result column="batch_type" jdbcType="TINYINT" property="batchType" />
+    <result column="distribute_cost" jdbcType="VARCHAR" property="distributeCost" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    product_id, weight, product_name, unit_name, bar_code, remark, create_time, update_time, 
+    type_id, status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, 
+    is_scan, is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, 
+    propertys, storage_value_id, purchase_on, is_batch, is_batch_time, transfer_type, 
+    purchase_strategy, box_size, labor_cost, in_tax, out_tax, only_general_store, is_auto, 
+    transfer_advance_day, purchase_to_address, store_inventory, store_list, auto_batch, 
+    weight_limit, producer, quality_period, sale_period, batch_type, distribute_cost
+  </sql>
+  <insert id="insert" parameterType="com.demo.boot.kanban.model.Product">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    INSERT INTO product (
+      weight, product_name, unit_name, bar_code, remark, create_time, update_time, type_id, 
+    status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, is_scan, 
+    is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, propertys, 
+    storage_value_id, purchase_on, is_batch, is_batch_time, transfer_type, purchase_strategy, 
+    box_size, labor_cost, in_tax, out_tax, only_general_store, is_auto, transfer_advance_day, 
+    purchase_to_address, store_inventory, store_list, auto_batch, weight_limit, producer, 
+    quality_period, sale_period, batch_type, distribute_cost, basket_num
+    ) VALUES (#{weight,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{unitName,jdbcType=VARCHAR}, 
+      #{barCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{typeId,jdbcType=SMALLINT}, #{status,jdbcType=TINYINT}, 
+      #{image,jdbcType=VARCHAR}, #{arithmeticType,jdbcType=TINYINT}, #{isMaterial,jdbcType=TINYINT}, 
+      #{unitSize,jdbcType=VARCHAR}, #{skuId,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
+      #{isScan,jdbcType=TINYINT}, #{isSale,jdbcType=TINYINT}, #{isInventoryScan,jdbcType=TINYINT}, 
+      #{category,jdbcType=VARCHAR}, #{categoryPath,jdbcType=VARCHAR}, #{sizes,jdbcType=VARCHAR}, 
+      #{weightUnit,jdbcType=VARCHAR}, #{propertys,jdbcType=VARCHAR}, #{storageValueId,jdbcType=VARCHAR}, 
+      #{purchaseOn,jdbcType=TINYINT}, #{isBatch,jdbcType=TINYINT}, #{isBatchTime,jdbcType=TIMESTAMP}, 
+      #{transferType,jdbcType=TINYINT}, #{purchaseStrategy,jdbcType=TINYINT}, #{boxSize,jdbcType=VARCHAR}, 
+      #{laborCost,jdbcType=VARCHAR}, #{inTax,jdbcType=DECIMAL}, #{outTax,jdbcType=DECIMAL}, 
+      #{onlyGeneralStore,jdbcType=TINYINT}, #{isAuto,jdbcType=TINYINT}, #{transferAdvanceDay,jdbcType=SMALLINT}, 
+      #{purchaseToAddress,jdbcType=TINYINT}, #{storeInventory,jdbcType=TINYINT}, #{storeList,jdbcType=VARCHAR}, 
+      #{autoBatch,jdbcType=TINYINT}, #{weightLimit,jdbcType=VARCHAR}, #{producer,jdbcType=TINYINT}, 
+      #{qualityPeriod,jdbcType=INTEGER}, #{salePeriod,jdbcType=INTEGER}, #{batchType,jdbcType=TINYINT}, 
+      #{distributeCost,jdbcType=VARCHAR}, #{basketNum,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    INSERT INTO product (
+      weight, product_name, unit_name, bar_code, remark, create_time, update_time, type_id, 
+    status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, is_scan, 
+    is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, propertys, 
+    storage_value_id, purchase_on, is_batch, is_batch_time, transfer_type, purchase_strategy, 
+    box_size, labor_cost, in_tax, out_tax, only_general_store, is_auto, transfer_advance_day, 
+    purchase_to_address, store_inventory, store_list, auto_batch, weight_limit, producer, 
+    quality_period, sale_period, batch_type, distribute_cost, basket_num
+    ) VALUES 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+      #{item.weight,jdbcType=INTEGER}, #{item.product_name,jdbcType=VARCHAR}, #{item.unit_name,jdbcType=VARCHAR}, 
+      #{item.bar_code,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.create_time,jdbcType=TIMESTAMP}, 
+      #{item.update_time,jdbcType=TIMESTAMP}, #{item.type_id,jdbcType=SMALLINT}, #{item.status,jdbcType=TINYINT}, 
+      #{item.image,jdbcType=VARCHAR}, #{item.arithmetic_type,jdbcType=TINYINT}, #{item.is_material,jdbcType=TINYINT}, 
+      #{item.unit_size,jdbcType=VARCHAR}, #{item.sku_id,jdbcType=VARCHAR}, #{item.update_user,jdbcType=VARCHAR}, 
+      #{item.is_scan,jdbcType=TINYINT}, #{item.is_sale,jdbcType=TINYINT}, #{item.is_inventory_scan,jdbcType=TINYINT}, 
+      #{item.category,jdbcType=VARCHAR}, #{item.category_path,jdbcType=VARCHAR}, #{item.sizes,jdbcType=VARCHAR}, 
+      #{item.weight_unit,jdbcType=VARCHAR}, #{item.propertys,jdbcType=VARCHAR}, #{item.storage_value_id,jdbcType=VARCHAR}, 
+      #{item.purchase_on,jdbcType=TINYINT}, #{item.is_batch,jdbcType=TINYINT}, #{item.is_batch_time,jdbcType=TIMESTAMP}, 
+      #{item.transfer_type,jdbcType=TINYINT}, #{item.purchase_strategy,jdbcType=TINYINT}, 
+      #{item.box_size,jdbcType=VARCHAR}, #{item.labor_cost,jdbcType=VARCHAR}, #{item.in_tax,jdbcType=DECIMAL}, 
+      #{item.out_tax,jdbcType=DECIMAL}, #{item.only_general_store,jdbcType=TINYINT}, #{item.is_auto,jdbcType=TINYINT}, 
+      #{item.transfer_advance_day,jdbcType=SMALLINT}, #{item.purchase_to_address,jdbcType=TINYINT}, 
+      #{item.store_inventory,jdbcType=TINYINT}, #{item.store_list,jdbcType=VARCHAR}, #{item.auto_batch,jdbcType=TINYINT}, 
+      #{item.weight_limit,jdbcType=VARCHAR}, #{item.producer,jdbcType=TINYINT}, #{item.quality_period,jdbcType=INTEGER}, 
+      #{item.sale_period,jdbcType=INTEGER}, #{item.batch_type,jdbcType=TINYINT}, #{item.distribute_cost,jdbcType=VARCHAR}, 
+      #{item.basket_num,jdbcType=LONGVARCHAR}
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    SELECT <include refid="Base_Column_List"/> FROM product WHERE product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.demo.boot.kanban.model.Product" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    SELECT <include refid="Base_Column_List"/> FROM product
+    <where>
+      <if test="weight != null">
+        AND weight = #{weight,jdbcType=INTEGER}
+      </if>
+      <if test="productName != null">
+        AND product_name = #{productName,jdbcType=VARCHAR}
+      </if>
+      <if test="unitName != null">
+        AND unit_name = #{unitName,jdbcType=VARCHAR}
+      </if>
+      <if test="barCode != null">
+        AND bar_code = #{barCode,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="typeId != null">
+        AND type_id = #{typeId,jdbcType=SMALLINT}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+      <if test="image != null">
+        AND image = #{image,jdbcType=VARCHAR}
+      </if>
+      <if test="arithmeticType != null">
+        AND arithmetic_type = #{arithmeticType,jdbcType=TINYINT}
+      </if>
+      <if test="isMaterial != null">
+        AND is_material = #{isMaterial,jdbcType=TINYINT}
+      </if>
+      <if test="unitSize != null">
+        AND unit_size = #{unitSize,jdbcType=VARCHAR}
+      </if>
+      <if test="skuId != null">
+        AND sku_id = #{skuId,jdbcType=VARCHAR}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="isScan != null">
+        AND is_scan = #{isScan,jdbcType=TINYINT}
+      </if>
+      <if test="isSale != null">
+        AND is_sale = #{isSale,jdbcType=TINYINT}
+      </if>
+      <if test="isInventoryScan != null">
+        AND is_inventory_scan = #{isInventoryScan,jdbcType=TINYINT}
+      </if>
+      <if test="category != null">
+        AND category = #{category,jdbcType=VARCHAR}
+      </if>
+      <if test="categoryPath != null">
+        AND category_path = #{categoryPath,jdbcType=VARCHAR}
+      </if>
+      <if test="sizes != null">
+        AND sizes = #{sizes,jdbcType=VARCHAR}
+      </if>
+      <if test="weightUnit != null">
+        AND weight_unit = #{weightUnit,jdbcType=VARCHAR}
+      </if>
+      <if test="propertys != null">
+        AND propertys = #{propertys,jdbcType=VARCHAR}
+      </if>
+      <if test="storageValueId != null">
+        AND storage_value_id = #{storageValueId,jdbcType=VARCHAR}
+      </if>
+      <if test="purchaseOn != null">
+        AND purchase_on = #{purchaseOn,jdbcType=TINYINT}
+      </if>
+      <if test="isBatch != null">
+        AND is_batch = #{isBatch,jdbcType=TINYINT}
+      </if>
+      <if test="isBatchTime != null">
+        AND is_batch_time = #{isBatchTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="transferType != null">
+        AND transfer_type = #{transferType,jdbcType=TINYINT}
+      </if>
+      <if test="purchaseStrategy != null">
+        AND purchase_strategy = #{purchaseStrategy,jdbcType=TINYINT}
+      </if>
+      <if test="boxSize != null">
+        AND box_size = #{boxSize,jdbcType=VARCHAR}
+      </if>
+      <if test="laborCost != null">
+        AND labor_cost = #{laborCost,jdbcType=VARCHAR}
+      </if>
+      <if test="inTax != null">
+        AND in_tax = #{inTax,jdbcType=DECIMAL}
+      </if>
+      <if test="outTax != null">
+        AND out_tax = #{outTax,jdbcType=DECIMAL}
+      </if>
+      <if test="onlyGeneralStore != null">
+        AND only_general_store = #{onlyGeneralStore,jdbcType=TINYINT}
+      </if>
+      <if test="isAuto != null">
+        AND is_auto = #{isAuto,jdbcType=TINYINT}
+      </if>
+      <if test="transferAdvanceDay != null">
+        AND transfer_advance_day = #{transferAdvanceDay,jdbcType=SMALLINT}
+      </if>
+      <if test="purchaseToAddress != null">
+        AND purchase_to_address = #{purchaseToAddress,jdbcType=TINYINT}
+      </if>
+      <if test="storeInventory != null">
+        AND store_inventory = #{storeInventory,jdbcType=TINYINT}
+      </if>
+      <if test="storeList != null">
+        AND store_list = #{storeList,jdbcType=VARCHAR}
+      </if>
+      <if test="autoBatch != null">
+        AND auto_batch = #{autoBatch,jdbcType=TINYINT}
+      </if>
+      <if test="weightLimit != null">
+        AND weight_limit = #{weightLimit,jdbcType=VARCHAR}
+      </if>
+      <if test="producer != null">
+        AND producer = #{producer,jdbcType=TINYINT}
+      </if>
+      <if test="qualityPeriod != null">
+        AND quality_period = #{qualityPeriod,jdbcType=INTEGER}
+      </if>
+      <if test="salePeriod != null">
+        AND sale_period = #{salePeriod,jdbcType=INTEGER}
+      </if>
+      <if test="batchType != null">
+        AND batch_type = #{batchType,jdbcType=TINYINT}
+      </if>
+      <if test="distributeCost != null">
+        AND distribute_cost = #{distributeCost,jdbcType=VARCHAR}
+      </if>
+      <if test="basketNum != null">
+        AND basket_num = #{basketNum,jdbcType=LONGVARCHAR}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.demo.boot.kanban.model.Product" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    SELECT <include refid="Base_Column_List"/> FROM product
+    <where>
+      <if test="weight != null">
+        AND weight = #{weight,jdbcType=INTEGER}
+      </if>
+      <if test="productName != null">
+        AND product_name = #{productName,jdbcType=VARCHAR}
+      </if>
+      <if test="unitName != null">
+        AND unit_name = #{unitName,jdbcType=VARCHAR}
+      </if>
+      <if test="barCode != null">
+        AND bar_code = #{barCode,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="typeId != null">
+        AND type_id = #{typeId,jdbcType=SMALLINT}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+      <if test="image != null">
+        AND image = #{image,jdbcType=VARCHAR}
+      </if>
+      <if test="arithmeticType != null">
+        AND arithmetic_type = #{arithmeticType,jdbcType=TINYINT}
+      </if>
+      <if test="isMaterial != null">
+        AND is_material = #{isMaterial,jdbcType=TINYINT}
+      </if>
+      <if test="unitSize != null">
+        AND unit_size = #{unitSize,jdbcType=VARCHAR}
+      </if>
+      <if test="skuId != null">
+        AND sku_id = #{skuId,jdbcType=VARCHAR}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="isScan != null">
+        AND is_scan = #{isScan,jdbcType=TINYINT}
+      </if>
+      <if test="isSale != null">
+        AND is_sale = #{isSale,jdbcType=TINYINT}
+      </if>
+      <if test="isInventoryScan != null">
+        AND is_inventory_scan = #{isInventoryScan,jdbcType=TINYINT}
+      </if>
+      <if test="category != null">
+        AND category = #{category,jdbcType=VARCHAR}
+      </if>
+      <if test="categoryPath != null">
+        AND category_path = #{categoryPath,jdbcType=VARCHAR}
+      </if>
+      <if test="sizes != null">
+        AND sizes = #{sizes,jdbcType=VARCHAR}
+      </if>
+      <if test="weightUnit != null">
+        AND weight_unit = #{weightUnit,jdbcType=VARCHAR}
+      </if>
+      <if test="propertys != null">
+        AND propertys = #{propertys,jdbcType=VARCHAR}
+      </if>
+      <if test="storageValueId != null">
+        AND storage_value_id = #{storageValueId,jdbcType=VARCHAR}
+      </if>
+      <if test="purchaseOn != null">
+        AND purchase_on = #{purchaseOn,jdbcType=TINYINT}
+      </if>
+      <if test="isBatch != null">
+        AND is_batch = #{isBatch,jdbcType=TINYINT}
+      </if>
+      <if test="isBatchTime != null">
+        AND is_batch_time = #{isBatchTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="transferType != null">
+        AND transfer_type = #{transferType,jdbcType=TINYINT}
+      </if>
+      <if test="purchaseStrategy != null">
+        AND purchase_strategy = #{purchaseStrategy,jdbcType=TINYINT}
+      </if>
+      <if test="boxSize != null">
+        AND box_size = #{boxSize,jdbcType=VARCHAR}
+      </if>
+      <if test="laborCost != null">
+        AND labor_cost = #{laborCost,jdbcType=VARCHAR}
+      </if>
+      <if test="inTax != null">
+        AND in_tax = #{inTax,jdbcType=DECIMAL}
+      </if>
+      <if test="outTax != null">
+        AND out_tax = #{outTax,jdbcType=DECIMAL}
+      </if>
+      <if test="onlyGeneralStore != null">
+        AND only_general_store = #{onlyGeneralStore,jdbcType=TINYINT}
+      </if>
+      <if test="isAuto != null">
+        AND is_auto = #{isAuto,jdbcType=TINYINT}
+      </if>
+      <if test="transferAdvanceDay != null">
+        AND transfer_advance_day = #{transferAdvanceDay,jdbcType=SMALLINT}
+      </if>
+      <if test="purchaseToAddress != null">
+        AND purchase_to_address = #{purchaseToAddress,jdbcType=TINYINT}
+      </if>
+      <if test="storeInventory != null">
+        AND store_inventory = #{storeInventory,jdbcType=TINYINT}
+      </if>
+      <if test="storeList != null">
+        AND store_list = #{storeList,jdbcType=VARCHAR}
+      </if>
+      <if test="autoBatch != null">
+        AND auto_batch = #{autoBatch,jdbcType=TINYINT}
+      </if>
+      <if test="weightLimit != null">
+        AND weight_limit = #{weightLimit,jdbcType=VARCHAR}
+      </if>
+      <if test="producer != null">
+        AND producer = #{producer,jdbcType=TINYINT}
+      </if>
+      <if test="qualityPeriod != null">
+        AND quality_period = #{qualityPeriod,jdbcType=INTEGER}
+      </if>
+      <if test="salePeriod != null">
+        AND sale_period = #{salePeriod,jdbcType=INTEGER}
+      </if>
+      <if test="batchType != null">
+        AND batch_type = #{batchType,jdbcType=TINYINT}
+      </if>
+      <if test="distributeCost != null">
+        AND distribute_cost = #{distributeCost,jdbcType=VARCHAR}
+      </if>
+      <if test="basketNum != null">
+        AND basket_num = #{basketNum,jdbcType=LONGVARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    SELECT <include refid="Base_Column_List"/> FROM product
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    DELETE FROM product WHERE product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.demo.boot.kanban.model.Product">
+    <!--@mbg.generated 2019-03-15 19:53:23-->
+    UPDATE product
+    <set>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitName != null">
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="barCode != null">
+        bar_code = #{barCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="arithmeticType != null">
+        arithmetic_type = #{arithmeticType,jdbcType=TINYINT},
+      </if>
+      <if test="isMaterial != null">
+        is_material = #{isMaterial,jdbcType=TINYINT},
+      </if>
+      <if test="unitSize != null">
+        unit_size = #{unitSize,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="isScan != null">
+        is_scan = #{isScan,jdbcType=TINYINT},
+      </if>
+      <if test="isSale != null">
+        is_sale = #{isSale,jdbcType=TINYINT},
+      </if>
+      <if test="isInventoryScan != null">
+        is_inventory_scan = #{isInventoryScan,jdbcType=TINYINT},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryPath != null">
+        category_path = #{categoryPath,jdbcType=VARCHAR},
+      </if>
+      <if test="sizes != null">
+        sizes = #{sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="weightUnit != null">
+        weight_unit = #{weightUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="propertys != null">
+        propertys = #{propertys,jdbcType=VARCHAR},
+      </if>
+      <if test="storageValueId != null">
+        storage_value_id = #{storageValueId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOn != null">
+        purchase_on = #{purchaseOn,jdbcType=TINYINT},
+      </if>
+      <if test="isBatch != null">
+        is_batch = #{isBatch,jdbcType=TINYINT},
+      </if>
+      <if test="isBatchTime != null">
+        is_batch_time = #{isBatchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transferType != null">
+        transfer_type = #{transferType,jdbcType=TINYINT},
+      </if>
+      <if test="purchaseStrategy != null">
+        purchase_strategy = #{purchaseStrategy,jdbcType=TINYINT},
+      </if>
+      <if test="boxSize != null">
+        box_size = #{boxSize,jdbcType=VARCHAR},
+      </if>
+      <if test="laborCost != null">
+        labor_cost = #{laborCost,jdbcType=VARCHAR},
+      </if>
+      <if test="inTax != null">
+        in_tax = #{inTax,jdbcType=DECIMAL},
+      </if>
+      <if test="outTax != null">
+        out_tax = #{outTax,jdbcType=DECIMAL},
+      </if>
+      <if test="onlyGeneralStore != null">
+        only_general_store = #{onlyGeneralStore,jdbcType=TINYINT},
+      </if>
+      <if test="isAuto != null">
+        is_auto = #{isAuto,jdbcType=TINYINT},
+      </if>
+      <if test="transferAdvanceDay != null">
+        transfer_advance_day = #{transferAdvanceDay,jdbcType=SMALLINT},
+      </if>
+      <if test="purchaseToAddress != null">
+        purchase_to_address = #{purchaseToAddress,jdbcType=TINYINT},
+      </if>
+      <if test="storeInventory != null">
+        store_inventory = #{storeInventory,jdbcType=TINYINT},
+      </if>
+      <if test="storeList != null">
+        store_list = #{storeList,jdbcType=VARCHAR},
+      </if>
+      <if test="autoBatch != null">
+        auto_batch = #{autoBatch,jdbcType=TINYINT},
+      </if>
+      <if test="weightLimit != null">
+        weight_limit = #{weightLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="producer != null">
+        producer = #{producer,jdbcType=TINYINT},
+      </if>
+      <if test="qualityPeriod != null">
+        quality_period = #{qualityPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="salePeriod != null">
+        sale_period = #{salePeriod,jdbcType=INTEGER},
+      </if>
+      <if test="batchType != null">
+        batch_type = #{batchType,jdbcType=TINYINT},
+      </if>
+      <if test="distributeCost != null">
+        distribute_cost = #{distributeCost,jdbcType=VARCHAR},
+      </if>
+      <if test="basketNum != null">
+        basket_num = #{basketNum,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+     WHERE product_id = #{productId,jdbcType=INTEGER}
+  </update>
+</mapper>
