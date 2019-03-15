@@ -65,7 +65,11 @@ public class DemoCommentGenerator implements CommentGenerator {
         if (!suppressAllComments) {
             StringBuilder sb = new StringBuilder();
             field.addJavaDocLine("/**");
-            field.addJavaDocLine(" * " + introspectedColumn.getRemarks() + ": " + introspectedColumn.getActualColumnName());
+            if (introspectedColumn.getRemarks() == null || "".equals(introspectedColumn.getRemarks().trim())) {
+                field.addJavaDocLine(" * " + introspectedColumn.getActualColumnName());
+            } else {
+                field.addJavaDocLine(" * " + introspectedColumn.getRemarks() + ": " + introspectedColumn.getActualColumnName());
+            }
             field.addJavaDocLine(" * ");
             field.addJavaDocLine(" * " + mbgGenerated + " " + currentDateStr);
             field.addJavaDocLine("  */");
