@@ -63,6 +63,7 @@ public class SelectOneElementGenerator extends AbstractXmlElementGenerator {
             whereElement.addElement(ifElement);
 
         }
+        whereElement.addElement(new TextElement("LIMIT 1"));
         answer.addElement(whereElement);
         parentElement.addElement(answer);
     }
