@@ -71,11 +71,13 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
 
         StringBuilder valuesClause = new StringBuilder();
         for (int i = 0; i < columnSize; i++) {
-            valuesClause.append("#{item.");
-            valuesClause.append(MyBatis3FormattingUtilities.getEscapedColumnName(columns.get(i)));
-            valuesClause.append(",jdbcType=");
-            valuesClause.append(columns.get(i).getJdbcTypeName());
-            valuesClause.append("}");
+//            valuesClause.append("#{item.");
+//            System.out.println(MyBatis3FormattingUtilities.getParameterClause(columns.get(i)));
+//            valuesClause.append(MyBatis3FormattingUtilities.getEscapedColumnName(columns.get(i)));
+//            valuesClause.append(",jdbcType=");
+//            valuesClause.append(columns.get(i).getJdbcTypeName());
+//            valuesClause.append("}");
+            valuesClause.append(MyBatis3FormattingUtilities.getParameterClause(columns.get(i)).replace("#{", "#{item."));
             if (i != columnSize - 1) {
                 valuesClause.append(", ");
             }
