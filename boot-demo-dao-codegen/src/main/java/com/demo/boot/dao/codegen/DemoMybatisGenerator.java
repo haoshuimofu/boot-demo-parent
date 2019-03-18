@@ -28,13 +28,14 @@ public class DemoMybatisGenerator {
     private static final String USER_MODULE_CONFIG = "classpath:user/generatorConfig.xml";
     private static final String BUSINESS_MODULE_CONFIG = "classpath:business/generatorConfig.xml";
     private static final String KANBAN_MODULE_CONFIG = "classpath:kanban/generatorConfig.xml";
+    private static final String SCM_MODULE_CONFIG = "classpath:scm/generatorConfig.xml";
 
     public static void main(String[] args) throws FileNotFoundException {
 
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
 //        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("user.generatorConfig.xml");
-        File configFile = ResourceUtils.getFile(KANBAN_MODULE_CONFIG);
+        File configFile = ResourceUtils.getFile(SCM_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;
         try {
