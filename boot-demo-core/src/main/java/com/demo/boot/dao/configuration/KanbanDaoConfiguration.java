@@ -21,26 +21,26 @@ import javax.sql.DataSource;
  * @create 2018-09-30 13:05
  */
 @Configuration
-@MapperScan(basePackages = {"com.demo.boot.kanban.dao"}, sqlSessionTemplateRef = "kanbanSqlSessionTemplate")
-public class BusinessDaoConfiguration {
+@MapperScan(basePackages = {"com.demo.boot.business.dao"}, sqlSessionTemplateRef = "businessSqlSessionTemplate")
+public class KanbanDaoConfiguration {
 
 
-    @Bean(name = "kanbanDataSource")
+    @Bean(name = "businessDataSource")
     //@Primary //必须加此注解，不然报错，下一个类则不需要添加
-    @ConfigurationProperties(prefix = "kanban.datasource") // prefix值必须是application.properteis中对应属性的前缀
+    @ConfigurationProperties(prefix = "business.datasource") // prefix值必须是application.properteis中对应属性的前缀
     public DataSource userDataSource() {
 //        return DataSourceBuilder.create().build();
         return new DruidDataSource();
     }
 
-    @Bean(name = "kanbanSqlSessionFactory")
-    public SqlSessionFactory userSqlSessionFactory(@Qualifier("kanbanDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "businessSqlSessionFactory")
+    public SqlSessionFactory userSqlSessionFactory(@Qualifier("businessDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
-            bean.setMapperLocations(resolver.getResources("classpath*:com/demo/boot/kanban/*.xml"));
+            bean.setMapperLocations(resolver.getResources("classpath*:com/demo/boot/business/*.xml"));
             return bean.getObject();
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,14 +49,14 @@ public class BusinessDaoConfiguration {
     }
 
     @Bean
-    public SqlSessionTemplate businessSqlSessionTemplate(@Qualifier("kanbanSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate businessSqlSessionTemplate(@Qualifier("businessSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         SqlSessionTemplate template = new SqlSessionTemplate(sqlSessionFactory); // 使用上面配置的Factory
         return template;
     }
 
-    @Bean("kanbanTransactionManager")
+    @Bean("businessTransactionManager")
 //    @Primary
-    public DataSourceTransactionManager transactionManager(@Qualifier("kanbanDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager transactionManager(@Qualifier("businessDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
