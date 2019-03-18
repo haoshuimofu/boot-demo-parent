@@ -89,35 +89,40 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
 
         StringBuilder valuesClause = new StringBuilder();
         valuesClause.append(") VALUES (");
+        OutputUtilities.xmlIndent(valuesClause, 1);
+        answer.addElement(new TextElement(valuesClause.toString()));
+        valuesClause.setLength(0);
+
         List<String> valuesClauses = new ArrayList();
 
         for (int i = 0; i < columnSize; ++i) {
+            if (i == 0) {
+                OutputUtilities.xmlIndent(valuesClause, 1);
+            }
             IntrospectedColumn introspectedColumn = (IntrospectedColumn) columns.get(i);
             valuesClause.append(MyBatis3FormattingUtilities.getParameterClause(introspectedColumn));
-            if (i + 1 < columns.size()) {
+            if (i !=  columnSize - 1) {
                 valuesClause.append(", ");
             }
-
             if (valuesClause.length() > 80) {
                 valuesClauses.add(valuesClause.toString());
                 valuesClause.setLength(0);
+                if (i != columnSize - 1)
                 OutputUtilities.xmlIndent(valuesClause, 1);
             }
         }
 
-        valuesClause.append(')');
-        valuesClauses.add(valuesClause.toString());
-        Iterator var12 = valuesClauses.iterator();
-
-        while (var12.hasNext()) {
-            String clause = (String) var12.next();
+        for (String clause : valuesClauses) {
             answer.addElement(new TextElement(clause));
         }
+
+        Iterator var12 = valuesClauses.iterator();
+        valuesClause.setLength(0);
+        valuesClause.append(")");
+        answer.addElement(new TextElement(valuesClause.toString()));
 
         if (this.context.getPlugins().sqlMapInsertElementGenerated(answer, this.introspectedTable)) {
             xmlElement.addElement(answer);
         }
-
-
     }
 }
