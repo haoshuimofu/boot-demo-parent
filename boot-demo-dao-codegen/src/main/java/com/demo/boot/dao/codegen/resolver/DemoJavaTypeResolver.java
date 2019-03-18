@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
+ * Java类型解析修改：smallint,tinyint直接对应java.lang.Integer
+ *
  * @Author ddmc
  * @Create 2019-03-15 10:23
  */

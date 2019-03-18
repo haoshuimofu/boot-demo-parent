@@ -6,6 +6,7 @@ import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.ListUtilities;
+import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElementGenerator;
 
 import java.util.List;
@@ -71,7 +72,7 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
         StringBuilder valuesClause = new StringBuilder();
         for (int i = 0; i < columnSize; i++) {
             valuesClause.append("#{item.");
-            valuesClause.append(columns.get(i).getActualColumnName());
+            valuesClause.append(MyBatis3FormattingUtilities.getEscapedColumnName(columns.get(i)));
             valuesClause.append(",jdbcType=");
             valuesClause.append(columns.get(i).getJdbcTypeName());
             valuesClause.append("}");
