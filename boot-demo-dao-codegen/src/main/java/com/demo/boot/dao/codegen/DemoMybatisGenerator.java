@@ -35,7 +35,7 @@ public class DemoMybatisGenerator {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
 //        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("user.generatorConfig.xml");
-        File configFile = ResourceUtils.getFile(KANBAN_MODULE_CONFIG);
+        File configFile = ResourceUtils.getFile(SCM_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;
         try {
