@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.boot.kanban.dao.StoreProductBatchTempDao">
   <resultMap id="BaseResultMap" type="com.demo.boot.kanban.model.StoreProductBatchTemp">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
+    <!--@mbg.generated 2019-03-19 09:27:47-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
     <result column="product_id" jdbcType="INTEGER" property="productId" />
@@ -14,22 +14,23 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
+    <!--@mbg.generated 2019-03-19 09:27:47-->
     id, store_id, product_id, batch_id, amount, quality_period, sale_period, create_time, 
     update_time
   </sql>
   <insert id="insert" parameterType="com.demo.boot.kanban.model.StoreProductBatchTemp">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
+    <!--@mbg.generated 2019-03-19 09:27:47-->
     INSERT INTO store_product_batch_temp (
       id, store_id, product_id, batch_id, amount, quality_period, sale_period, create_time, 
     update_time
-    ) VALUES (#{id,jdbcType=BIGINT}, #{storeId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+    ) VALUES (  
+      #{id,jdbcType=BIGINT}, #{storeId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
       #{batchId,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{qualityPeriod,jdbcType=INTEGER}, 
       #{salePeriod,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
+    <!--@mbg.generated 2019-03-19 09:27:47-->
     INSERT INTO store_product_batch_temp (
       id, store_id, product_id, batch_id, amount, quality_period, sale_period, create_time, 
     update_time
@@ -41,12 +42,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_temp WHERE id = #{id,jdbcType=BIGINT}
+    <!--@mbg.generated 2019-03-19 09:27:47-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_temp WHERE id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectOne" parameterType="com.demo.boot.kanban.model.StoreProductBatchTemp" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_temp
+    <!--@mbg.generated 2019-03-19 09:27:47-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_temp
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -76,8 +77,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.demo.boot.kanban.model.StoreProductBatchTemp" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_temp
+    <!--@mbg.generated 2019-03-19 09:27:47-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_temp
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -106,15 +107,15 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_temp
+    <!--@mbg.generated 2019-03-19 09:27:47-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_temp
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
+    <!--@mbg.generated 2019-03-19 09:27:47-->
     DELETE FROM store_product_batch_temp WHERE id = #{id,jdbcType=BIGINT}
   </delete>
   <update id="update" parameterType="com.demo.boot.kanban.model.StoreProductBatchTemp">
-    <!--@mbg.generated 2019-03-18 19:55:54-->
+    <!--@mbg.generated 2019-03-19 09:27:47-->
     UPDATE store_product_batch_temp
     <set>
       <if test="storeId != null">

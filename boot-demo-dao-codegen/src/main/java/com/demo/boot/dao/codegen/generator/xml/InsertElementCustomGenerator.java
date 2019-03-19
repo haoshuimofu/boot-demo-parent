@@ -93,7 +93,7 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
         answer.addElement(new TextElement(valuesClause.toString()));
         valuesClause.setLength(0);
 
-        List<String> valuesClauses = new ArrayList();
+        List<String> valuesClauses = new ArrayList<>();
 
         for (int i = 0; i < columnSize; ++i) {
             if (i == 0) {
@@ -101,14 +101,15 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
             }
             IntrospectedColumn introspectedColumn = (IntrospectedColumn) columns.get(i);
             valuesClause.append(MyBatis3FormattingUtilities.getParameterClause(introspectedColumn));
-            if (i !=  columnSize - 1) {
+            if (i != columnSize - 1) {
                 valuesClause.append(", ");
             }
             if (valuesClause.length() > 80) {
                 valuesClauses.add(valuesClause.toString());
                 valuesClause.setLength(0);
-                if (i != columnSize - 1)
-                OutputUtilities.xmlIndent(valuesClause, 1);
+                if (i != columnSize - 1) {
+                    OutputUtilities.xmlIndent(valuesClause, 1);
+                }
             }
         }
 
