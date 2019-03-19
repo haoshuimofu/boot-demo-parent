@@ -51,6 +51,9 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
             if (insertClause.length() > 80) {
                 answer.addElement(new TextElement(insertClause.toString()));
                 insertClause.setLength(0);
+                if (i != 0) {
+                    OutputUtilities.xmlIndent(insertClause, 1);
+                }
             }
         }
         if (insertClause.length() > 0) {
@@ -65,11 +68,11 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
         valuesElement.addAttribute(new Attribute("collection", "list"));
         valuesElement.addAttribute(new Attribute("item", "item"));
         valuesElement.addAttribute(new Attribute("index", "index"));
-        valuesElement.addAttribute(new Attribute("open", "("));
         valuesElement.addAttribute(new Attribute("separator", ","));
-        valuesElement.addAttribute(new Attribute("close", ")"));
+        valuesElement.addElement(new TextElement("("));
 
         StringBuilder valuesClause = new StringBuilder();
+        OutputUtilities.xmlIndent(valuesClause, 1);
         for (int i = 0; i < columnSize; i++) {
             valuesClause.append(MyBatis3FormattingUtilities.getParameterClause(columns.get(i)).replace("#{", "#{item."));
             if (i != columnSize - 1) {
@@ -79,11 +82,15 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
             if (valuesClause.length() > 80) {
                 valuesElement.addElement(new TextElement(valuesClause.toString()));
                 valuesClause.setLength(0);
+                if (i != 0) {
+                    OutputUtilities.xmlIndent(valuesClause, 1);
+                }
             }
         }
         if (valuesClause.length() > 0) {
             valuesElement.addElement(new TextElement(valuesClause.toString()));
         }
+        valuesElement.addElement(new TextElement(")"));
         answer.addElement(valuesElement);
 
         xmlElement.addElement(answer);

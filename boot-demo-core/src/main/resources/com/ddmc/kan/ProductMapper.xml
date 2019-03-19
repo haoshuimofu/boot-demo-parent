@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.ProductDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.Product">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
+    <!--@mbg.generated 2019-03-19 13:29:33-->
     <id column="product_id" jdbcType="INTEGER" property="productId" />
     <result column="weight" jdbcType="INTEGER" property="weight" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
@@ -52,7 +52,7 @@
     <result column="distribute_cost" jdbcType="VARCHAR" property="distributeCost" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
+    <!--@mbg.generated 2019-03-19 13:29:33-->
     product_id, weight, product_name, unit_name, bar_code, remark, create_time, update_time, 
     type_id, status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, 
     is_scan, is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, 
@@ -62,15 +62,15 @@
     weight_limit, producer, quality_period, sale_period, batch_type, distribute_cost
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.Product">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
+    <!--@mbg.generated 2019-03-19 13:29:33-->
     INSERT INTO product (
       weight, product_name, unit_name, bar_code, remark, create_time, update_time, type_id, 
-    status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, is_scan, 
-    is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, propertys, 
-    storage_value_id, purchase_on, is_batch, is_batch_time, transfer_type, purchase_strategy, 
-    box_size, labor_cost, in_tax, out_tax, only_general_store, is_auto, transfer_advance_day, 
-    purchase_to_address, store_inventory, store_list, auto_batch, weight_limit, producer, 
-    quality_period, sale_period, batch_type, distribute_cost, basket_num
+      status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, is_scan, 
+      is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, propertys, 
+      storage_value_id, purchase_on, is_batch, is_batch_time, transfer_type, purchase_strategy, 
+      box_size, labor_cost, in_tax, out_tax, only_general_store, is_auto, transfer_advance_day, 
+      purchase_to_address, store_inventory, store_list, auto_batch, weight_limit, producer, 
+      quality_period, sale_period, batch_type, distribute_cost, basket_num
     ) VALUES (  
       #{weight,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{unitName,jdbcType=VARCHAR}, 
       #{barCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
@@ -90,43 +90,45 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
+    <!--@mbg.generated 2019-03-19 13:29:33-->
     INSERT INTO product (
       weight, product_name, unit_name, bar_code, remark, create_time, update_time, type_id, 
-    status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, is_scan, 
-    is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, propertys, 
-    storage_value_id, purchase_on, is_batch, is_batch_time, transfer_type, purchase_strategy, 
-    box_size, labor_cost, in_tax, out_tax, only_general_store, is_auto, transfer_advance_day, 
-    purchase_to_address, store_inventory, store_list, auto_batch, weight_limit, producer, 
-    quality_period, sale_period, batch_type, distribute_cost, basket_num
+      status, image, arithmetic_type, is_material, unit_size, sku_id, update_user, is_scan, 
+      is_sale, is_inventory_scan, category, category_path, sizes, weight_unit, propertys, 
+      storage_value_id, purchase_on, is_batch, is_batch_time, transfer_type, purchase_strategy, 
+      box_size, labor_cost, in_tax, out_tax, only_general_store, is_auto, transfer_advance_day, 
+      purchase_to_address, store_inventory, store_list, auto_batch, weight_limit, producer, 
+      quality_period, sale_period, batch_type, distribute_cost, basket_num
     ) VALUES 
-    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
-      #{item.weight,jdbcType=INTEGER}, #{item.productName,jdbcType=VARCHAR}, #{item.unitName,jdbcType=VARCHAR}, 
-      #{item.barCode,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
-      #{item.updateTime,jdbcType=TIMESTAMP}, #{item.typeId,jdbcType=SMALLINT}, #{item.status,jdbcType=TINYINT}, 
-      #{item.image,jdbcType=VARCHAR}, #{item.arithmeticType,jdbcType=TINYINT}, #{item.isMaterial,jdbcType=TINYINT}, 
-      #{item.unitSize,jdbcType=VARCHAR}, #{item.skuId,jdbcType=VARCHAR}, #{item.updateUser,jdbcType=VARCHAR}, 
-      #{item.isScan,jdbcType=TINYINT}, #{item.isSale,jdbcType=TINYINT}, #{item.isInventoryScan,jdbcType=TINYINT}, 
-      #{item.category,jdbcType=VARCHAR}, #{item.categoryPath,jdbcType=VARCHAR}, #{item.sizes,jdbcType=VARCHAR}, 
-      #{item.weightUnit,jdbcType=VARCHAR}, #{item.propertys,jdbcType=VARCHAR}, #{item.storageValueId,jdbcType=VARCHAR}, 
-      #{item.purchaseOn,jdbcType=TINYINT}, #{item.isBatch,jdbcType=TINYINT}, #{item.isBatchTime,jdbcType=TIMESTAMP}, 
-      #{item.transferType,jdbcType=TINYINT}, #{item.purchaseStrategy,jdbcType=TINYINT}, 
-      #{item.boxSize,jdbcType=VARCHAR}, #{item.laborCost,jdbcType=VARCHAR}, #{item.inTax,jdbcType=DECIMAL}, 
-      #{item.outTax,jdbcType=DECIMAL}, #{item.onlyGeneralStore,jdbcType=TINYINT}, #{item.isAuto,jdbcType=TINYINT}, 
-      #{item.transferAdvanceDay,jdbcType=SMALLINT}, #{item.purchaseToAddress,jdbcType=TINYINT}, 
-      #{item.storeInventory,jdbcType=TINYINT}, #{item.storeList,jdbcType=VARCHAR}, #{item.autoBatch,jdbcType=TINYINT}, 
-      #{item.weightLimit,jdbcType=VARCHAR}, #{item.producer,jdbcType=TINYINT}, #{item.qualityPeriod,jdbcType=INTEGER}, 
-      #{item.salePeriod,jdbcType=INTEGER}, #{item.batchType,jdbcType=TINYINT}, #{item.distributeCost,jdbcType=VARCHAR}, 
-      #{item.basketNum,jdbcType=LONGVARCHAR}
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.weight,jdbcType=INTEGER}, #{item.productName,jdbcType=VARCHAR}, #{item.unitName,jdbcType=VARCHAR}, 
+        #{item.barCode,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.typeId,jdbcType=SMALLINT}, #{item.status,jdbcType=TINYINT}, 
+        #{item.image,jdbcType=VARCHAR}, #{item.arithmeticType,jdbcType=TINYINT}, #{item.isMaterial,jdbcType=TINYINT}, 
+        #{item.unitSize,jdbcType=VARCHAR}, #{item.skuId,jdbcType=VARCHAR}, #{item.updateUser,jdbcType=VARCHAR}, 
+        #{item.isScan,jdbcType=TINYINT}, #{item.isSale,jdbcType=TINYINT}, #{item.isInventoryScan,jdbcType=TINYINT}, 
+        #{item.category,jdbcType=VARCHAR}, #{item.categoryPath,jdbcType=VARCHAR}, #{item.sizes,jdbcType=VARCHAR}, 
+        #{item.weightUnit,jdbcType=VARCHAR}, #{item.propertys,jdbcType=VARCHAR}, #{item.storageValueId,jdbcType=VARCHAR}, 
+        #{item.purchaseOn,jdbcType=TINYINT}, #{item.isBatch,jdbcType=TINYINT}, #{item.isBatchTime,jdbcType=TIMESTAMP}, 
+        #{item.transferType,jdbcType=TINYINT}, #{item.purchaseStrategy,jdbcType=TINYINT}, 
+        #{item.boxSize,jdbcType=VARCHAR}, #{item.laborCost,jdbcType=VARCHAR}, #{item.inTax,jdbcType=DECIMAL}, 
+        #{item.outTax,jdbcType=DECIMAL}, #{item.onlyGeneralStore,jdbcType=TINYINT}, #{item.isAuto,jdbcType=TINYINT}, 
+        #{item.transferAdvanceDay,jdbcType=SMALLINT}, #{item.purchaseToAddress,jdbcType=TINYINT}, 
+        #{item.storeInventory,jdbcType=TINYINT}, #{item.storeList,jdbcType=VARCHAR}, #{item.autoBatch,jdbcType=TINYINT}, 
+        #{item.weightLimit,jdbcType=VARCHAR}, #{item.producer,jdbcType=TINYINT}, #{item.qualityPeriod,jdbcType=INTEGER}, 
+        #{item.salePeriod,jdbcType=INTEGER}, #{item.batchType,jdbcType=TINYINT}, #{item.distributeCost,jdbcType=VARCHAR}, 
+        #{item.basketNum,jdbcType=LONGVARCHAR}
+      )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
-    SELECT <include refid="Base_Column_List"/> FROM product WHERE product_id = #{productId,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-03-19 13:29:33-->
+    SELECT <include refid="Base_Column_List" /> FROM product WHERE product_id = #{productId,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.Product" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
-    SELECT <include refid="Base_Column_List"/> FROM product
+    <!--@mbg.generated 2019-03-19 13:29:33-->
+    SELECT <include refid="Base_Column_List" /> FROM product
     <where>
       <if test="weight != null">
         AND weight = #{weight,jdbcType=INTEGER}
@@ -273,8 +275,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.Product" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
-    SELECT <include refid="Base_Column_List"/> FROM product
+    <!--@mbg.generated 2019-03-19 13:29:33-->
+    SELECT <include refid="Base_Column_List" /> FROM product
     <where>
       <if test="weight != null">
         AND weight = #{weight,jdbcType=INTEGER}
@@ -420,15 +422,15 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
-    SELECT <include refid="Base_Column_List"/> FROM product
+    <!--@mbg.generated 2019-03-19 13:29:33-->
+    SELECT <include refid="Base_Column_List" /> FROM product
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
+    <!--@mbg.generated 2019-03-19 13:29:33-->
     DELETE FROM product WHERE product_id = #{productId,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.Product">
-    <!--@mbg.generated 2019-03-19 13:02:19-->
+    <!--@mbg.generated 2019-03-19 13:29:33-->
     UPDATE product
     <set>
       <if test="weight != null">

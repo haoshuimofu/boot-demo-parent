@@ -80,6 +80,9 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
             if (insertClause.length() > 80) {
                 answer.addElement(new TextElement(insertClause.toString()));
                 insertClause.setLength(0);
+                if (i != 0) {
+                    OutputUtilities.xmlIndent(insertClause, 1);
+                }
             }
         }
         if (insertClause.length() > 0) {
