@@ -23,47 +23,41 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
     @Override
     public void addElements(XmlElement xmlElement) {
 
-        XmlElement answer = new XmlElement("insert"); //$NON-NLS-1$
-
-        answer.addAttribute(new Attribute("id", "insertList")); //$NON-NLS-1$
-
-        answer.addAttribute(new Attribute("parameterType", List.class.getName()));
+        XmlElement answer = new XmlElement("insert");
+        answer.addAttribute(new Attribute("id", "insertList"));
+        answer.addAttribute(new Attribute("parameterType", List.class.getCanonicalName()));
 
         context.getCommentGenerator().addComment(answer);
 
         StringBuilder insertClause = new StringBuilder();
 
-        // 拼接insertList语句
         insertClause.append("INSERT INTO ");
         insertClause.append(introspectedTable.getFullyQualifiedTableNameAtRuntime());
         insertClause.append(" (");
         answer.addElement(new TextElement(insertClause.toString()));
+
         insertClause.setLength(0);
         OutputUtilities.xmlIndent(insertClause, 1);
 
         List<IntrospectedColumn> columns = ListUtilities.removeGeneratedAlwaysColumns(this.introspectedTable.getAllColumns());
-        int columnSize = columns.size();
-        for (int i = 0; i < columnSize; i++) {
-            insertClause.append(columns.get(i).getActualColumnName());
-            if (i != columnSize - 1) {
+        for (int i = 0; i < columns.size(); i++) {
+            IntrospectedColumn column = columns.get(i);
+            insertClause.append(column.getActualColumnName());
+            if (i != columns.size() - 1) {
                 insertClause.append(", ");
             }
             if (insertClause.length() > 80) {
                 answer.addElement(new TextElement(insertClause.toString()));
                 insertClause.setLength(0);
-                if (i != 0) {
-                    OutputUtilities.xmlIndent(insertClause, 1);
-                }
+                OutputUtilities.xmlIndent(insertClause, 1);
             }
         }
         if (insertClause.length() > 0) {
             answer.addElement(new TextElement(insertClause.toString()));
-            insertClause.setLength(0);
         }
-        insertClause.append(") VALUES ");
-        answer.addElement(new TextElement(insertClause.toString()));
+        answer.addElement(new TextElement(") VALUES "));
 
-        // 生成的foreach标签内Attribute乱序
+        // 生成的foreach标签内Attribute
         XmlElement valuesElement = new XmlElement("foreach");
         valuesElement.addAttribute(new Attribute("collection", "list"));
         valuesElement.addAttribute(new Attribute("item", "item"));
@@ -73,16 +67,15 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
 
         StringBuilder valuesClause = new StringBuilder();
         OutputUtilities.xmlIndent(valuesClause, 1);
-        for (int i = 0; i < columnSize; i++) {
+        for (int i = 0; i < columns.size(); i++) {
             valuesClause.append(MyBatis3FormattingUtilities.getParameterClause(columns.get(i)).replace("#{", "#{item."));
-            if (i != columnSize - 1) {
+            if (i != columns.size() - 1) {
                 valuesClause.append(", ");
             }
-
             if (valuesClause.length() > 80) {
                 valuesElement.addElement(new TextElement(valuesClause.toString()));
                 valuesClause.setLength(0);
-                if (i != 0) {
+                if (i != columns.size() - 1) {
                     OutputUtilities.xmlIndent(valuesClause, 1);
                 }
             }
@@ -94,6 +87,5 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
         answer.addElement(valuesElement);
 
         xmlElement.addElement(answer);
-
     }
 }

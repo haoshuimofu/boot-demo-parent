@@ -64,6 +64,8 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         addSelectListElement(answer);
         // 添加selectAll方法
         addSelectAllElement(answer);
+        // 添加count方法
+        addCountElement(answer);
         // 添加deleteById方法
         addDeleteById(answer);
         // 添加update方法
@@ -101,6 +103,11 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
 
     private void addSelectAllElement(XmlElement answer) {
         AbstractXmlElementGenerator elementGenerator = new SelectAllElementGenerator();
+        initializeAndExecuteGenerator(elementGenerator, answer);
+    }
+
+    private void addCountElement(XmlElement answer) {
+        AbstractXmlElementGenerator elementGenerator = new CountElementGenerator(true);
         initializeAndExecuteGenerator(elementGenerator, answer);
     }
 
