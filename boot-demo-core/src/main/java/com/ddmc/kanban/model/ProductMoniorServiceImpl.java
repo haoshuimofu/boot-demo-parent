@@ -91,85 +91,89 @@ public class ProductMoniorServiceImpl implements ProductMonitorService {
             conditionChanged = false;
             int skip = page * DEFAULT_PAGE_SIZE;
             List<StoreProductBatch> storeProductBatchList = storeProductBatchDao.selectWithPage(storeId, productId, batchId, skipDate, skip, DEFAULT_PAGE_SIZE);
-            logger.info("分页查询store_product_batch记录: storeId={}, productId: {}, batchId: {}, page: {}, recored: {}", storeId, productId, batchId, page + 1, storeProductBatchList.size());
             List<StoreProductBatchTemp> storeProductBatchTempList = new ArrayList<>();
-            Set<Integer> productIdSet = new HashSet<>();
-            StoreProductBatch lastOne = storeProductBatchList.get(storeProductBatchList.size() - 1);
-            storeId = lastOne.getStoreId();
-            productId = lastOne.getProductId();
-            batchId = lastOne.getBatchId();
-
-            int index = 0;
-            for (int i = 0; i < storeProductBatchList.size(); i++) {
-                StoreProductBatch storeProductBatch = storeProductBatchList.get(i);
-                if (!batchId.equals(storeProductBatch.getBatchId()) || !productId.equals(storeProductBatch.getProductId()) || !storeId.equals(storeProductBatch.getStoreId())) {
-                    index = i;
-                    conditionChanged = true;
-                    break;
-                }
-            }
-//            if (!conditionChanged && storeProductBatchList.) {}
-
-            for (int j = 0; j < storeProductBatchList.size(); j++) {
-                StoreProductBatch storeProductBatch = storeProductBatchList.get(j);
-                // store_id,product_id,batch_id有一个参数发生变化，则按新条件重新进入下一轮查询
-                if (!batchId.equals(storeProductBatch.getBatchId()) || !productId.equals(storeProductBatch.getProductId()) || !storeId.equals(storeProductBatch.getStoreId())) {
+            if (storeProductBatchList.size() < DEFAULT_PAGE_SIZE) {
+                storeProductBatchTempList = storeProductBatchList.stream().map(e -> {
                     StoreProductBatchTemp storeProductBatchTemp = new StoreProductBatchTemp();
-                    BeanUtils.copyProperties(storeProductBatchList.get(j), storeProductBatchTemp);
-                    storeProductBatchTempList.add(storeProductBatchTemp);
-                    productIdSet.add(storeProductBatch.getProductId());
-                    conditionChanged = true;
-                } else {
-                    logger.info("条件变化进入下一轮: storeId: {}, productId: {}, batchId: {}", storeId, productId, batchId);
-                    break;
-                }
-            }
-            if (!conditionChanged) {
-                if (storeProductBatchList.size() < DEFAULT_PAGE_SIZE) {
-                    logger.info("本轮终止: storeId: {}, productId:{}, batchId:{}, page:{}, size: {}", storeId, productId, batchId, page, storeProductBatchList.size());
-                    break;
-                }
-                page++;
+                    BeanUtils.copyProperties(e, storeProductBatchTemp);
+                    return new StoreProductBatchTemp();
+                }).collect(Collectors.toList());
+                doSomething(storeProductBatchTempList);
+                break;
             } else {
-                page = 0;
-            }
-            if (!storeProductBatchTempList.isEmpty()) {
-                List<StoreProductBatchTemp> storeProductBatchTemps = new ArrayList<>();
-                List<StoreProductBatchHistory> storeProductBatchHistories = new ArrayList<>();
-                // 根据productIds查询商品信息，同时对商品进行过滤（不满足条件的商品排除掉）
-                Map<Integer, ProductQualityAndSalePreiod> productQualityAndSalePreiodMap = productDao.selectPeriodsByProductIds(productIdSet).stream()
-                        .collect(Collectors.toMap(ProductQualityAndSalePreiod::getProductId, Function.identity()));
-                for (StoreProductBatchTemp storeProductBatchTemp : storeProductBatchTempList) {
-                    // 当前记录满足移到history表, 而且之前统计过，那么需要到temp将可能存在的记录删除
-                    // 考虑到商品信息可能发生变更，导致没有筛选到，所以在这里暴力删除一下，用到了索引，性能应该还可以接受
-                    if (lastCountTime != null) {
-                        storeProductBatchTempDao.deleteStoreProductBatch(storeProductBatchTemp.getStoreId(), storeProductBatchTemp.getProductId(), storeProductBatchTemp.getBatchId());
-                    }
-                    ProductQualityAndSalePreiod productQualityAndSalePreiod = productQualityAndSalePreiodMap.get(storeProductBatchTemp.getProductId());
-                    // == null视为被过滤掉了
-                    if (productQualityAndSalePreiod != null) {
-                        storeProductBatchTemp.setQualityPeriod(productQualityAndSalePreiod.getQualityPeriod());
-                        storeProductBatchTemp.setSalePeriod(productQualityAndSalePreiod.getSalePeriod());
-                        // 商品过期达到20天并且库存为0，移到history表
-                        if (ProductUtil.getExpiredDay(storeProductBatchTemp.getBatchId(), storeProductBatchTemp.getQualityPeriod(), now) >= DEFAULT_DAY_OF_EXPIRED && storeProductBatchTemp.getAmount().doubleValue() <= 0d) {
-                            StoreProductBatchHistory storeProductBatchHistory = new StoreProductBatchHistory();
-                            BeanUtils.copyProperties(storeProductBatchTemp, storeProductBatchHistory);
-                            storeProductBatchHistories.add(storeProductBatchHistory);
-                        } else {
-                            storeProductBatchTemps.add(storeProductBatchTemp);
-                        }
+                StoreProductBatch lastOne = storeProductBatchList.get(storeProductBatchList.size() - 1);
+                storeId = lastOne.getStoreId();
+                productId = lastOne.getProductId();
+                batchId = lastOne.getBatchId();
+                int index = -1;
+                for (int i = storeProductBatchList.size() - 2; i >= 0; i--) {
+                    StoreProductBatch storeProductBatch = storeProductBatchList.get(i);
+                    // store_id,product_id,batch_id有一个参数发生变化，则按新条件重新进入下一轮查询
+                    if (!batchId.equals(storeProductBatch.getBatchId()) || !productId.equals(storeProductBatch.getProductId()) || !storeId.equals(storeProductBatch.getStoreId())) {
+                        index = i;
+                        break;
                     }
                 }
-                if (!storeProductBatchTemps.isEmpty()) {
-                    storeProductBatchTempDao.insertList(storeProductBatchTemps);
-                }
-                if (!storeProductBatchHistories.isEmpty()) {
-                    storeProductBatchHistoryDao.insertList(storeProductBatchHistories);
+                if (index < 0) {
+                    page++;
+                    storeProductBatchTempList = storeProductBatchList.stream().map(e -> {
+                        StoreProductBatchTemp storeProductBatchTemp = new StoreProductBatchTemp();
+                        BeanUtils.copyProperties(e, storeProductBatchTemp);
+                        return new StoreProductBatchTemp();
+                    }).collect(Collectors.toList());
+                    doSomething(storeProductBatchTempList);
+                    continue;
+                } else {
+                    for (int i = 0; i <= index; i++) {
+                        StoreProductBatchTemp storeProductBatchTemp = new StoreProductBatchTemp();
+                        BeanUtils.copyProperties(storeProductBatchTemp, storeProductBatchTemp);
+                        storeProductBatchTempList.add(storeProductBatchTemp);
+                    }
+                    doSomething(storeProductBatchTempList);
+                    page = 0;
+                    continue;
                 }
             }
         }
         // TODO
 
+    }
+
+    private void doSomething (List<StoreProductBatchTemp> storeProductBatchTempList) {
+        if (!storeProductBatchTempList.isEmpty()) {
+            List<StoreProductBatchTemp> storeProductBatchTemps = new ArrayList<>();
+            List<StoreProductBatchHistory> storeProductBatchHistories = new ArrayList<>();
+            // 根据productIds查询商品信息，同时对商品进行过滤（不满足条件的商品排除掉）
+            Map<Integer, ProductQualityAndSalePreiod> productQualityAndSalePreiodMap = productDao.selectPeriodsByProductIds(productIdSet).stream()
+                    .collect(Collectors.toMap(ProductQualityAndSalePreiod::getProductId, Function.identity()));
+            for (StoreProductBatchTemp storeProductBatchTemp : storeProductBatchTempList) {
+                // 当前记录满足移到history表, 而且之前统计过，那么需要到temp将可能存在的记录删除
+                // 考虑到商品信息可能发生变更，导致没有筛选到，所以在这里暴力删除一下，用到了索引，性能应该还可以接受
+                if (lastCountTime != null) {
+                    storeProductBatchTempDao.deleteStoreProductBatch(storeProductBatchTemp.getStoreId(), storeProductBatchTemp.getProductId(), storeProductBatchTemp.getBatchId());
+                }
+                ProductQualityAndSalePreiod productQualityAndSalePreiod = productQualityAndSalePreiodMap.get(storeProductBatchTemp.getProductId());
+                // == null视为被过滤掉了
+                if (productQualityAndSalePreiod != null) {
+                    storeProductBatchTemp.setQualityPeriod(productQualityAndSalePreiod.getQualityPeriod());
+                    storeProductBatchTemp.setSalePeriod(productQualityAndSalePreiod.getSalePeriod());
+                    // 商品过期达到20天并且库存为0，移到history表
+                    if (ProductUtil.getExpiredDay(storeProductBatchTemp.getBatchId(), storeProductBatchTemp.getQualityPeriod(), now) >= DEFAULT_DAY_OF_EXPIRED && storeProductBatchTemp.getAmount().doubleValue() <= 0d) {
+                        StoreProductBatchHistory storeProductBatchHistory = new StoreProductBatchHistory();
+                        BeanUtils.copyProperties(storeProductBatchTemp, storeProductBatchHistory);
+                        storeProductBatchHistories.add(storeProductBatchHistory);
+                    } else {
+                        storeProductBatchTemps.add(storeProductBatchTemp);
+                    }
+                }
+            }
+            if (!storeProductBatchTemps.isEmpty()) {
+                storeProductBatchTempDao.insertList(storeProductBatchTemps);
+            }
+            if (!storeProductBatchHistories.isEmpty()) {
+                storeProductBatchHistoryDao.insertList(storeProductBatchHistories);
+            }
+        }
     }
 
     /**
