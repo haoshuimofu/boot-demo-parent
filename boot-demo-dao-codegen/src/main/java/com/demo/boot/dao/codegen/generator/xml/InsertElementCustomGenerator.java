@@ -114,7 +114,7 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
                 }
             }
         }
-        if (valuesClause.toString().trim().length() > 0) {
+        if (valuesClause.length() > 0) {
             valuesClauses.add(valuesClause.toString());
         }
 

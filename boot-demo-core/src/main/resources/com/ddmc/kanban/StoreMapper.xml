@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.StoreDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.Store">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     <id column="store_id" jdbcType="INTEGER" property="storeId" />
     <result column="store_name" jdbcType="VARCHAR" property="storeName" />
     <result column="city_id" jdbcType="VARCHAR" property="cityId" />
@@ -24,13 +24,13 @@
     <result column="is_chive_notice" jdbcType="BIT" property="isChiveNotice" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     store_id, store_name, city_id, address, phone, create_time, update_time, status, 
     is_purchase, is_general, update_user, station_id, sort, is_test, is_prestore, is_sale, 
     is_scan, type, is_chive_notice
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.Store">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     INSERT INTO store (
       store_name, city_id, address, phone, create_time, update_time, status, is_purchase, 
       is_general, update_user, station_id, sort, is_test, is_prestore, is_sale, is_scan, 
@@ -46,7 +46,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     INSERT INTO store (
       store_name, city_id, address, phone, create_time, update_time, status, is_purchase, 
       is_general, update_user, station_id, sort, is_test, is_prestore, is_sale, is_scan, 
@@ -65,11 +65,11 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     SELECT <include refid="Base_Column_List" /> FROM store WHERE store_id = #{storeId,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.Store" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     SELECT <include refid="Base_Column_List" /> FROM store
     <where>
       <if test="storeName != null">
@@ -133,7 +133,7 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.Store" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     SELECT <include refid="Base_Column_List" /> FROM store
     <where>
       <if test="storeName != null">
@@ -196,11 +196,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     SELECT <include refid="Base_Column_List" /> FROM store
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.Store" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     SELECT count(1) FROM store
     <where>
       <if test="storeId != null">
@@ -266,11 +266,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     DELETE FROM store WHERE store_id = #{storeId,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.Store">
-    <!--@mbg.generated 2019-03-22 13:50:15-->
+    <!--@mbg.generated 2019-03-22 14:20:27-->
     UPDATE store
     <set>
       <if test="storeName != null">
