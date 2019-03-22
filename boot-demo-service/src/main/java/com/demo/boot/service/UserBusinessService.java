@@ -28,12 +28,12 @@ public class UserBusinessService {
     public List<Long> mulitDB() {
         User user = new User();
         long time = System.currentTimeMillis();
-        user.setUsername(time + "");
-        user.setPassword("123456");
+//        user.setUsername(time + "");
+//        user.setPassword("123456");
 //        userDao.insert(user);
 
         Business business = new Business();
-        business.setbNo(user.getUsername());
+//        business.setbNo(user.getUsername());
         businessDao.insert(business);
 
         System.out.println(1 / 0);

@@ -76,38 +76,38 @@
             <columnOverride column="propertys" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <columnOverride column="basketNum" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </table>
-        <table tableName="store_product_batch" domainObjectName="StoreProductBatch" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="store_product_batch" domainObjectName="StoreProductBatch" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
 
-        <table tableName="product_monitor" domainObjectName="ProductMonitor" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="store_product_batch_history" domainObjectName="StoreProductBatchHistory"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="product_monitor" domainObjectName="ProductMonitor" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+        <!--<table tableName="store_product_batch_history" domainObjectName="StoreProductBatchHistory"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
         <table tableName="store_product_batch_monitor" domainObjectName="StoreProductBatchMonitor"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
-        <table tableName="store_product_batch_temp" domainObjectName="StoreProductBatchTemp"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="store_product_monitor" domainObjectName="StoreProductMonitor" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="store_product_batch_temp" domainObjectName="StoreProductBatchTemp"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+        <!--<table tableName="store_product_monitor" domainObjectName="StoreProductMonitor" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
 
-        <table tableName="store" domainObjectName="Store" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="store" domainObjectName="Store" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
     </context>
 </generatorConfiguration>

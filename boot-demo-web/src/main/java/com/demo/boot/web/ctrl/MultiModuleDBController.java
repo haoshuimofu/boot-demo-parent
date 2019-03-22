@@ -33,7 +33,7 @@ public class MultiModuleDBController {
         List<String> datas = new ArrayList<>();
         User user = userDao.selectById(1L);
         if (user != null) {
-            datas.add(user.getUsername());
+//            datas.add(user.getUsername());
         }
         Business business = businessDao.selectById(1L);
         if (business != null) {
