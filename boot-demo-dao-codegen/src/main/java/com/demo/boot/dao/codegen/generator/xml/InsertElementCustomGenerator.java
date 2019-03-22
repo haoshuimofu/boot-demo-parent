@@ -12,7 +12,6 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.InsertElementGe
 import org.mybatis.generator.config.GeneratedKey;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -115,12 +114,14 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
                 }
             }
         }
+        if (valuesClause.toString().trim().length() > 0) {
+            valuesClauses.add(valuesClause.toString());
+        }
 
         for (String clause : valuesClauses) {
             answer.addElement(new TextElement(clause));
         }
 
-        Iterator var12 = valuesClauses.iterator();
         valuesClause.setLength(0);
         valuesClause.append(")");
         answer.addElement(new TextElement(valuesClause.toString()));

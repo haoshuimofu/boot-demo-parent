@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.StoreProductBatchMonitorDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.StoreProductBatchMonitor">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="SMALLINT" property="type" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
@@ -14,37 +14,42 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     id, type, store_id, product_id, batch_id, batch_update_time, total, create_time, 
     update_time
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.StoreProductBatchMonitor">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     INSERT INTO store_product_batch_monitor (
       type, store_id, product_id, batch_id, batch_update_time, total, create_time, update_time
+      
     ) VALUES (  
       #{type,jdbcType=SMALLINT}, #{storeId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
       #{batchId,jdbcType=VARCHAR}, #{batchUpdateTime,jdbcType=TIMESTAMP}, #{total,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     INSERT INTO store_product_batch_monitor (
       type, store_id, product_id, batch_id, batch_update_time, total, create_time, update_time
+      
     ) VALUES 
-    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
-      #{item.type,jdbcType=SMALLINT}, #{item.storeId,jdbcType=INTEGER}, #{item.productId,jdbcType=INTEGER}, 
-      #{item.batchId,jdbcType=VARCHAR}, #{item.batchUpdateTime,jdbcType=TIMESTAMP}, #{item.total,jdbcType=INTEGER}, 
-      #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.type,jdbcType=SMALLINT}, #{item.storeId,jdbcType=INTEGER}, #{item.productId,jdbcType=INTEGER}, 
+        #{item.batchId,jdbcType=VARCHAR}, #{item.batchUpdateTime,jdbcType=TIMESTAMP}, #{item.total,jdbcType=INTEGER}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+      )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_monitor WHERE id = #{id,jdbcType=BIGINT}
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_monitor WHERE id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.StoreProductBatchMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_monitor
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_monitor
     <where>
       <if test="type != null">
         AND type = #{type,jdbcType=SMALLINT}
@@ -74,8 +79,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.StoreProductBatchMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_monitor
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_monitor
     <where>
       <if test="type != null">
         AND type = #{type,jdbcType=SMALLINT}
@@ -104,15 +109,48 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM store_product_batch_monitor
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM store_product_batch_monitor
+  </select>
+  <select id="count" parameterType="com.ddmc.kanban.model.StoreProductBatchMonitor" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT count(1) FROM store_product_batch_monitor
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="type != null">
+        AND type=#{type,jdbcType=SMALLINT}
+      </if>
+      <if test="storeId != null">
+        AND store_id=#{storeId,jdbcType=INTEGER}
+      </if>
+      <if test="productId != null">
+        AND product_id=#{productId,jdbcType=INTEGER}
+      </if>
+      <if test="batchId != null">
+        AND batch_id=#{batchId,jdbcType=VARCHAR}
+      </if>
+      <if test="batchUpdateTime != null">
+        AND batch_update_time=#{batchUpdateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="total != null">
+        AND total=#{total,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     DELETE FROM store_product_batch_monitor WHERE id = #{id,jdbcType=BIGINT}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.StoreProductBatchMonitor">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     UPDATE store_product_batch_monitor
     <set>
       <if test="type != null">

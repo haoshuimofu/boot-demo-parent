@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.ProductMonitorDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.ProductMonitor">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="SMALLINT" property="type" />
     <result column="sku_sum" jdbcType="INTEGER" property="skuSum" />
@@ -14,37 +14,42 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     id, type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, 
     update_time
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.ProductMonitor">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     INSERT INTO product_monitor (
       type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, update_time
+      
     ) VALUES (  
       #{type,jdbcType=SMALLINT}, #{skuSum,jdbcType=INTEGER}, #{total,jdbcType=INTEGER}, 
       #{exeStartTime,jdbcType=TIMESTAMP}, #{exeEndTime,jdbcType=TIMESTAMP}, #{countTime,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     INSERT INTO product_monitor (
       type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, update_time
+      
     ) VALUES 
-    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
-      #{item.type,jdbcType=SMALLINT}, #{item.skuSum,jdbcType=INTEGER}, #{item.total,jdbcType=INTEGER}, 
-      #{item.exeStartTime,jdbcType=TIMESTAMP}, #{item.exeEndTime,jdbcType=TIMESTAMP}, #{item.countTime,jdbcType=INTEGER}, 
-      #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.type,jdbcType=SMALLINT}, #{item.skuSum,jdbcType=INTEGER}, #{item.total,jdbcType=INTEGER}, 
+        #{item.exeStartTime,jdbcType=TIMESTAMP}, #{item.exeEndTime,jdbcType=TIMESTAMP}, 
+        #{item.countTime,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+      )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM product_monitor WHERE id = #{id,jdbcType=BIGINT}
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM product_monitor WHERE id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.ProductMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM product_monitor
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM product_monitor
     <where>
       <if test="type != null">
         AND type = #{type,jdbcType=SMALLINT}
@@ -74,8 +79,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.ProductMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM product_monitor
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM product_monitor
     <where>
       <if test="type != null">
         AND type = #{type,jdbcType=SMALLINT}
@@ -104,15 +109,48 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
-    SELECT <include refid="Base_Column_List"/> FROM product_monitor
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT <include refid="Base_Column_List" /> FROM product_monitor
+  </select>
+  <select id="count" parameterType="com.ddmc.kanban.model.ProductMonitor" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-03-22 13:50:15-->
+    SELECT count(1) FROM product_monitor
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="type != null">
+        AND type=#{type,jdbcType=SMALLINT}
+      </if>
+      <if test="skuSum != null">
+        AND sku_sum=#{skuSum,jdbcType=INTEGER}
+      </if>
+      <if test="total != null">
+        AND total=#{total,jdbcType=INTEGER}
+      </if>
+      <if test="exeStartTime != null">
+        AND exe_start_time=#{exeStartTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="exeEndTime != null">
+        AND exe_end_time=#{exeEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="countTime != null">
+        AND count_time=#{countTime,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     DELETE FROM product_monitor WHERE id = #{id,jdbcType=BIGINT}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.ProductMonitor">
-    <!--@mbg.generated 2019-03-19 13:01:56-->
+    <!--@mbg.generated 2019-03-22 13:50:15-->
     UPDATE product_monitor
     <set>
       <if test="type != null">
