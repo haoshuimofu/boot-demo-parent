@@ -4,8 +4,11 @@ import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
+import org.mybatis.generator.codegen.mybatis3.ListUtilities;
 import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElementGenerator;
+
+import java.util.List;
 
 /**
  * update方法sql语句生成器
@@ -21,7 +24,6 @@ public class UpdateElementGenerator extends AbstractXmlElementGenerator {
 
     @Override
     public void addElements(XmlElement xmlElement) {
-        // 因为update方法实际操作就是: 根据主键列更新非主键列, 如果无主键列或者无非主键列则不生产sql
         if (introspectedTable.getPrimaryKeyColumns().size() == 0 || introspectedTable.getNonPrimaryKeyColumns().size() == 0) {
             return;
         }
@@ -37,30 +39,31 @@ public class UpdateElementGenerator extends AbstractXmlElementGenerator {
         updateClause.append(this.introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime());
         answer.addElement(new TextElement(updateClause.toString()));
 
+        List<IntrospectedColumn> columns = ListUtilities.removeIdentityAndGeneratedAlwaysColumns(this.introspectedTable.getAllColumns());
         XmlElement setElement = new XmlElement("set");
         answer.addElement(setElement);
-        for (IntrospectedColumn column : introspectedTable.getNonPrimaryKeyColumns()) {
-            XmlElement isNotNullElement = new XmlElement("if");
+        for (IntrospectedColumn column : columns) {
+            XmlElement ifElement = new XmlElement("if");
             updateClause.setLength(0);
             updateClause.append(column.getJavaProperty());
             updateClause.append(" != null");
-            isNotNullElement.addAttribute(new Attribute("test", updateClause.toString()));
+            ifElement.addAttribute(new Attribute("test", updateClause.toString()));
             updateClause.setLength(0);
             updateClause.append(MyBatis3FormattingUtilities.getAliasedEscapedColumnName(column));
             updateClause.append(" = ");
             updateClause.append(MyBatis3FormattingUtilities.getParameterClause(column, ""));
             updateClause.append(',');
-            isNotNullElement.addElement(new TextElement(updateClause.toString()));
-            setElement.addElement(isNotNullElement);
+            ifElement.addElement(new TextElement(updateClause.toString()));
+            setElement.addElement(ifElement);
         }
 
-        IntrospectedColumn idColumn = introspectedTable.getPrimaryKeyColumns().get(0);
         updateClause.setLength(0);
         updateClause.append(" WHERE ");
         for (int i = 0; i < introspectedTable.getPrimaryKeyColumns().size(); i++) {
-            updateClause.append(introspectedTable.getPrimaryKeyColumns().get(i).getActualColumnName())
+            IntrospectedColumn column = introspectedTable.getPrimaryKeyColumns().get(i);
+            updateClause.append(column.getActualColumnName())
                     .append(" = ")
-                    .append(MyBatis3FormattingUtilities.getParameterClause(idColumn, ""));
+                    .append(MyBatis3FormattingUtilities.getParameterClause(column, ""));
             if (i != introspectedTable.getPrimaryKeyColumns().size() - 1) {
                 updateClause.append(" AND ");
             }

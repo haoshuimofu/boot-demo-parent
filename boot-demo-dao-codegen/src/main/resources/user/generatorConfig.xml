@@ -70,5 +70,8 @@
         <table tableName="t_users" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
+        <table tableName="t_test" domainObjectName="Test" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>
