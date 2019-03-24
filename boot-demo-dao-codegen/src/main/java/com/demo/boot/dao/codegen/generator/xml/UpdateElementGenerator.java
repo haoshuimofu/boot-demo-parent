@@ -1,6 +1,7 @@
 package com.demo.boot.dao.codegen.generator.xml;
 
 import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.api.dom.OutputUtilities;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
@@ -26,7 +27,8 @@ public class UpdateElementGenerator extends AbstractXmlElementGenerator {
 
     @Override
     public void addElements(XmlElement xmlElement) {
-        if (introspectedTable.getPrimaryKeyColumns().size() == 0 || introspectedTable.getNonPrimaryKeyColumns().size() == 0) {
+        List<IntrospectedColumn> primaryKeyColumns = introspectedTable.getPrimaryKeyColumns();
+        if (primaryKeyColumns == null || primaryKeyColumns.size() == 0) {
             return;
         }
         XmlElement answer = new XmlElement("update");
@@ -63,16 +65,21 @@ public class UpdateElementGenerator extends AbstractXmlElementGenerator {
 
         updateClause.setLength(0);
         updateClause.append(" WHERE ");
-        for (int i = 0; i < introspectedTable.getPrimaryKeyColumns().size(); i++) {
-            IntrospectedColumn column = introspectedTable.getPrimaryKeyColumns().get(i);
-            updateClause.append(column.getActualColumnName())
-                    .append(" = ")
-                    .append(MyBatis3FormattingUtilities.getParameterClause(column, ""));
-            if (i != introspectedTable.getPrimaryKeyColumns().size() - 1) {
+        for (int i = 0; i < primaryKeyColumns.size(); i++) {
+            if (i != 0) {
+                updateClause.setLength(0);
+                OutputUtilities.xmlIndent(updateClause, 1);
                 updateClause.append(" AND ");
             }
+            IntrospectedColumn primaryKeyColumn = primaryKeyColumns.get(i);
+            updateClause.append(primaryKeyColumn.getActualColumnName())
+                    .append(" = ")
+                    .append(MyBatis3FormattingUtilities.getParameterClause(primaryKeyColumn, ""));
+            if (i != primaryKeyColumns.size() - 1) {
+                updateClause.append(", ");
+            }
+            answer.addElement(new TextElement(updateClause.toString()));
         }
-        answer.addElement(new TextElement(updateClause.toString()));
         xmlElement.addElement(answer);
     }
 }
