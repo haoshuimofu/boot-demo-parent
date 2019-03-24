@@ -61,8 +61,8 @@ public class SelectByIdElementGenerator extends AbstractXmlElementGenerator {
             selectCaluse.append(" = ");
             selectCaluse.append(MyBatis3FormattingUtilities.getParameterClause(column, ""));
             answer.addElement(new TextElement(selectCaluse.toString()));
+            selectCaluse.setLength(0);
         }
-//        answer.addElement(new TextElement(selectCaluse.toString()));
         parentElement.addElement(answer);
     }
 }
