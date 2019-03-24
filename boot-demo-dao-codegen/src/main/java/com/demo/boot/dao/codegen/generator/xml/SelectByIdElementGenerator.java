@@ -11,7 +11,8 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElem
 import java.util.List;
 
 /**
- * selectById方法sql生成器
+ * <p>selectById方法sqlMap生成器</p>
+ * <p>因为where条件就是主键列，所以数据库表假如没有主键列就不实现sqlMap了<p/>
  *
  * @Author wude
  * @Create 2017-06-14 13:23
@@ -24,49 +25,43 @@ public class SelectByIdElementGenerator extends AbstractXmlElementGenerator {
 
     @Override
     public void addElements(XmlElement parentElement) {
-        // 无主键不用实现selectById方法
         List<IntrospectedColumn> primaryKeyColumns = introspectedTable.getPrimaryKeyColumns();
         if (primaryKeyColumns == null || primaryKeyColumns.size() == 0) {
             return;
         }
 
-        String tableName = introspectedTable.getFullyQualifiedTableNameAtRuntime();
-
         XmlElement answer = new XmlElement("select");
-
         answer.addAttribute(new Attribute("id", "selectById"));
-
+        // parameterType设置需要看数据库表主键列列数
         if (primaryKeyColumns.size() == 1) {
-            // 唯一主键列
             answer.addAttribute(new Attribute("parameterType", primaryKeyColumns.get(0).getFullyQualifiedJavaType().getFullyQualifiedName()));
         } else {
+            // 主键列有多列，那么parameterType是ModelKey类
             answer.addAttribute(new Attribute("parameterType", introspectedTable.getPrimaryKeyType()));
         }
 
-        // 添加BaseResultMap
+        // resultMap=BaseResultMap
         answer.addAttribute(new Attribute("resultMap", "BaseResultMap"));
-
+        // @mbg.generated
         context.getCommentGenerator().addComment(answer);
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder selectCaluse = new StringBuilder();
+        selectCaluse.append("SELECT ")
+                .append(MybatisGeneratorConstants.XML_ELEMENT_BASE_COLUMN_LIST)
+                .append(" FROM ")
+                .append(introspectedTable.getFullyQualifiedTableNameAtRuntime());
 
-        sb.append("SELECT ").append(MybatisGeneratorConstants.XML_ELEMENT_BASE_COLUMN_LIST).append(" FROM ");
-
-        sb.append(tableName);
-
-        sb.append(" WHERE ");
+        selectCaluse.append(" WHERE ");
         for (int i = 0; i < primaryKeyColumns.size(); i++) {
             if (i != 0) {
-                sb.append(" AND ");
+                selectCaluse.append(" AND ");
             }
-            IntrospectedColumn primaryKeyColumn = primaryKeyColumns.get(i);
-            sb.append(primaryKeyColumn.getActualColumnName());
-            sb.append(" = ");
-            sb.append(MyBatis3FormattingUtilities.getParameterClause(primaryKeyColumn, ""));
+            IntrospectedColumn column = primaryKeyColumns.get(i);
+            selectCaluse.append(column.getActualColumnName());
+            selectCaluse.append(" = ");
+            selectCaluse.append(MyBatis3FormattingUtilities.getParameterClause(column, ""));
         }
-        answer.addElement(new TextElement(sb.toString()));
-
+        answer.addElement(new TextElement(selectCaluse.toString()));
         parentElement.addElement(answer);
-
     }
 }
