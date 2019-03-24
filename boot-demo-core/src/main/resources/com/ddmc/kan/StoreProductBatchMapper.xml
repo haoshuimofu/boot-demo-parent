@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.StoreProductBatchDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.StoreProductBatch">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     <id column="store_id" jdbcType="INTEGER" property="storeId" />
     <id column="product_id" jdbcType="INTEGER" property="productId" />
     <id column="batch_id" jdbcType="VARCHAR" property="batchId" />
@@ -11,11 +11,11 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     store_id, product_id, batch_id, amount, create_time, update_time
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.StoreProductBatch">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     INSERT INTO store_product_batch (
       store_id, product_id, batch_id, amount, create_time, update_time
     ) VALUES (  
@@ -24,7 +24,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     INSERT INTO store_product_batch (
       store_id, product_id, batch_id, amount, create_time, update_time
     ) VALUES 
@@ -36,13 +36,13 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="com.ddmc.kanban.model.StoreProductBatchKey" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_batch WHERE store_id = #{storeId,jdbcType=INTEGER}
      AND product_id = #{productId,jdbcType=INTEGER}
      AND batch_id = #{batchId,jdbcType=VARCHAR}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.StoreProductBatch" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_batch
     <where>
       <if test="storeId != null">
@@ -67,7 +67,7 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.StoreProductBatch" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_batch
     <where>
       <if test="storeId != null">
@@ -91,11 +91,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_batch
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.StoreProductBatch" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     SELECT count(1) FROM store_product_batch
     <where>
       <if test="storeId != null">
@@ -119,13 +119,13 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="com.ddmc.kanban.model.StoreProductBatchKey">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     DELETE FROM store_product_batch WHERE store_id = #{storeId,jdbcType=INTEGER}, 
        AND product_id = #{productId,jdbcType=INTEGER}, 
        AND batch_id = #{batchId,jdbcType=VARCHAR}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.StoreProductBatch">
-    <!--@mbg.generated 2019-03-24 16:44:53-->
+    <!--@mbg.generated 2019-03-24 16:52:57-->
     UPDATE store_product_batch
     <set>
       <if test="amount != null">
