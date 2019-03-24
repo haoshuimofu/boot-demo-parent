@@ -60,8 +60,6 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
 
     @Override
     public boolean modelPrimaryKeyClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-//        System.out.println(introspectedTable.getBaseRecordType()
-//                + " ---------- " + introspectedTable.getPrimaryKeyType());
         File modelFile = new File(modelTargetProject + "/" +
                 modelTargetPackage.replaceAll("\\.", "\\/") + "/" + introspectedTable.getPrimaryKeyType() + ".java");
         System.out.println(modelFile.getAbsolutePath() + " --------> " + modelFile.exists());
@@ -73,15 +71,17 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
 
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-//        System.out.println(introspectedTable.getBaseRecordType()
-//                + " ************* " + introspectedTable.getPrimaryKeyType());
-//        File modelKeyFile = new File(javaClientTargetProject + "/" +
-//                javaClientTargetPackage.replaceAll("\\.", "\\/") + "/" + interfaze.getType().getShortName() + ".java");
-//        // Dao源文件已存在, 跳过修改
-//        if (modelKeyFile.exists()) {
-//            return false;
-//        }
-        if (introspectedTable.getNonPrimaryKeyColumns().size() < 1) return true;
+        /*System.out.println(introspectedTable.getBaseRecordType()
+                + " ************* " + introspectedTable.getPrimaryKeyType());
+        File modelKeyFile = new File(javaClientTargetProject + "/" +
+                javaClientTargetPackage.replaceAll("\\.", "\\/") + "/" + interfaze.getType().getShortName() + ".java");
+        // Dao源文件已存在, 跳过修改
+        if (modelKeyFile.exists()) {
+            return false;
+        }*/
+        if (introspectedTable.getNonPrimaryKeyColumns().size() < 1) {
+            return true;
+        }
         return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
     }
 

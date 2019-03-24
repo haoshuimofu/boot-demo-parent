@@ -15,13 +15,12 @@ import org.mybatis.generator.internal.util.StringUtility;
 import java.util.List;
 
 /**
- * 自定义Mybatis3实现
+ * 修改Mybatis3 IntrospectedTable实现
  *
  * @Author wude
  * @Create 2017-06-14 10:29
  */
 public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Impl {
-
 
     @Override
     public void addColumn(IntrospectedColumn introspectedColumn) {
@@ -47,7 +46,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         }
 
         // 如果表只有复合主键, 除了生成主键类意外, 还要生成空的Model类
-//        if (this.getRules().generateBaseRecordClass()) {
+        // if (this.getRules().generateBaseRecordClass()) {
         if (true) {
             AbstractJavaGenerator javaGenerator = new BaseRecordGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
@@ -124,41 +123,6 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
             this.setMyBatis3SqlProviderType(sb.toString());
         }
     }
-
-//    /**
-//     * 计算sqlMap xml文件的package, 目的使其package和DAO接口的package保持一致
-//     *
-//     * @return
-//     */
-//    @Override
-//    protected String calculateSqlMapPackage() {
-//        // super.calculateSqlMapPackage();
-//        StringBuilder sb = new StringBuilder();
-//        SqlMapGeneratorConfiguration config = this.context.getSqlMapGeneratorConfiguration();
-//        if (config != null) {
-//            /*sb.append(config.getTargetPackage());
-//            sb.append(this.fullyQualifiedTable.getSubPackageForClientOrSqlMap(this.isSubPackagesEnabled(config)));
-//            if (StringUtility.stringHasValue(this.tableConfiguration.getMapperName())) {
-//                String mapperName = this.tableConfiguration.getMapperName();
-//                int ind = mapperName.lastIndexOf(46);
-//                if (ind != -1) {
-//                    sb.append('.').append(mapperName.substring(0, ind));
-//                }
-//            } else if (StringUtility.stringHasValue(this.fullyQualifiedTable.getDomainObjectSubPackage())) {
-//                sb.append('.').append(this.fullyQualifiedTable.getDomainObjectSubPackage());
-//            }*/
-//
-//            // sqlMap所在目录的package和Dao接口的package保持一致
-//            if (StringUtility.stringHasValue(this.getDAOInterfaceType())) {
-//                int ind = this.getDAOInterfaceType().lastIndexOf(46);
-//                if (ind != -1) {
-//                    sb.append('.').append(this.getDAOInterfaceType().substring(0, ind));
-//                }
-//            }
-//        }
-//        return sb.toString();
-//    }
-
 }
 
 

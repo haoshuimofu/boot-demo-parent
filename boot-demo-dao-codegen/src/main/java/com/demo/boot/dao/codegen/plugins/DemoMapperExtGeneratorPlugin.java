@@ -15,10 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * XxMapperExt.xml文件生成插件, 用于自定义Sql
+ * XxMapperExt.xml文件生成插件, 用于生成Dao对应的扩展xml文件
  *
  * @author wude
- * @version 1.0.0
  * @create 2018-04-19 17:10
  */
 public class DemoMapperExtGeneratorPlugin extends PluginAdapter {
