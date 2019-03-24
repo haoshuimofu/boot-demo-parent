@@ -12,9 +12,8 @@ import java.util.List;
 
 /**
  * <p>update方法sqlMap生成器</p>
- * <p>入参就是Model类，where条件就是主键列，如果数据库表<em>没有主键列</em>就不生成sqlMap了</p>
- * <p>Model类对应数据库表主键有多列，where后面条件会有多个，用and拼接</p>
- * <p>因为update sql语句主要set的是非主键列，所以数据库表<em>没有非主键列</em>也不生成sqlMap了</p>
+ * <p>sqlMap中set更新的列只有非主键列，where后的查询条件就是主键列</p>
+ * <p>数据库表假如没有主键列，又或者没有非主键列，那就不实现update方法sqlMap了</p>
  *
  * @Author wude
  * @Create 2017-06-15 13:26
@@ -42,7 +41,7 @@ public class UpdateElementGenerator extends AbstractXmlElementGenerator {
         updateClause.append(this.introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime());
         answer.addElement(new TextElement(updateClause.toString()));
 
-        List<IntrospectedColumn> columns = ListUtilities.removeIdentityAndGeneratedAlwaysColumns(this.introspectedTable.getAllColumns());
+        List<IntrospectedColumn> columns = ListUtilities.removeIdentityAndGeneratedAlwaysColumns(this.introspectedTable.getNonPrimaryKeyColumns());
         XmlElement setElement = new XmlElement("set");
         answer.addElement(setElement);
         for (IntrospectedColumn column : columns) {
