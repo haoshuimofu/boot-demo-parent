@@ -1,6 +1,5 @@
 package com.demo.boot.dao.codegen.generator.xml;
 
-import com.demo.boot.dao.codegen.contants.MybatisGeneratorConstants;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.xml.Attribute;
@@ -12,7 +11,7 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElem
 import java.util.List;
 
 /**
- * selectById方法sql生成器
+ * <p>count方法sqlMap生成器</p>
  *
  * @Author wude
  * @Create 2017-06-14 13:23
@@ -43,20 +42,21 @@ public class CountElementGenerator extends AbstractXmlElementGenerator {
 
         context.getCommentGenerator().addComment(answer);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("SELECT count(1) FROM ");
-        sb.append(introspectedTable.getFullyQualifiedTableNameAtRuntime());
-        answer.addElement(new TextElement(sb.toString()));
+        StringBuilder selectClause = new StringBuilder();
+        selectClause.append("SELECT count(1) FROM ")
+                .append(introspectedTable.getFullyQualifiedTableNameAtRuntime());
+        answer.addElement(new TextElement(selectClause.toString()));
 
-        XmlElement where = new XmlElement("where");
-        for (int i = 0; i < introspectedTable.getAllColumns().size(); i++) {
-            IntrospectedColumn column = introspectedTable.getAllColumns().get(i);
+        List<IntrospectedColumn> columns = introspectedTable.getAllColumns();
+        XmlElement whereElement = new XmlElement("where");
+        for (int i = 0; i < columns.size(); i++) {
+            IntrospectedColumn column = columns.get(i);
             XmlElement ifElement = new XmlElement("if");
             ifElement.addAttribute(new Attribute("test", column.getJavaProperty() + " != null"));
             ifElement.addElement(new TextElement("AND " + MyBatis3FormattingUtilities.getEscapedColumnName(column) + "=" + MyBatis3FormattingUtilities.getParameterClause(column, "")));
-            where.addElement(ifElement);
+            whereElement.addElement(ifElement);
         }
-        answer.addElement(where);
+        answer.addElement(whereElement);
         parentElement.addElement(answer);
     }
 }
