@@ -64,7 +64,7 @@ public class UpdateElementGenerator extends AbstractXmlElementGenerator {
         }
 
         updateClause.setLength(0);
-        updateClause.append(" WHERE ");
+        updateClause.append("WHERE ");
         for (int i = 0; i < primaryKeyColumns.size(); i++) {
             if (i != 0) {
                 updateClause.setLength(0);
