@@ -12,7 +12,7 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElem
 import java.util.List;
 
 /**
- * insertList方法sql语句生成器
+ * <p>insertList方法sqlMap生成器</p>
  *
  * @author wude
  * @create 2018-03-14 18:01
@@ -26,14 +26,13 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
         XmlElement answer = new XmlElement("insert");
         answer.addAttribute(new Attribute("id", "insertList"));
         answer.addAttribute(new Attribute("parameterType", List.class.getCanonicalName()));
-
+        // @mbg.generated
         context.getCommentGenerator().addComment(answer);
 
         StringBuilder insertClause = new StringBuilder();
-
-        insertClause.append("INSERT INTO ");
-        insertClause.append(introspectedTable.getFullyQualifiedTableNameAtRuntime());
-        insertClause.append(" (");
+        insertClause.append("INSERT INTO ")
+                .append(introspectedTable.getFullyQualifiedTableNameAtRuntime())
+                .append(" (");
         answer.addElement(new TextElement(insertClause.toString()));
 
         insertClause.setLength(0);

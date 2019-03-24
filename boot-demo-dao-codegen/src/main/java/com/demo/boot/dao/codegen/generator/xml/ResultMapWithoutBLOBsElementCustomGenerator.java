@@ -14,8 +14,7 @@ import java.util.List;
 /**
  * BaseColumnListElementGenerator
  *
- * @author dell
- * @version 1.0.0
+ * @author wude
  * @create 2018-05-11 13:08
  */
 public class ResultMapWithoutBLOBsElementCustomGenerator extends ResultMapWithoutBLOBsElementGenerator {
