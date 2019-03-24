@@ -31,7 +31,7 @@ public class UserServiceImpl implements IUserService {
     @Transactional(rollbackFor = Exception.class)
     public Long createUser() {
         User user = new User();
-        user.setUsername("rex.wu");
+        user.setUsername("wude");
         user.setPassword("123456");
         userDao.insert(user);
         return user.getId();

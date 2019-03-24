@@ -20,7 +20,7 @@ import static org.mybatis.generator.internal.util.StringUtility.isTrue;
 /**
  * MBG 自定义注释生成器
  *
- * @Author rex.wu
+ * @Author wude
  * @Create 2017-05-11 13:33
  */
 public class DemoCommentGenerator implements CommentGenerator {
