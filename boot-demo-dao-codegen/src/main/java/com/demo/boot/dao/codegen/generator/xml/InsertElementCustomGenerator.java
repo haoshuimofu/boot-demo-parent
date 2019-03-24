@@ -11,14 +11,12 @@ import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.InsertElementGenerator;
 import org.mybatis.generator.config.GeneratedKey;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * insert方法sql语句生成器
+ * <p>insert方法sqlMap生成器</p>
  *
  * @author wude
- * @version 1.0.0
  * @create 2018-05-11 10:26
  */
 public class InsertElementCustomGenerator extends InsertElementGenerator {
@@ -41,8 +39,8 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
         } else {
             parameterType = this.introspectedTable.getRules().calculateAllFieldsClass();
         }
-
         answer.addAttribute(new Attribute("parameterType", parameterType.getFullyQualifiedName()));
+        // @mbg.generated
         this.context.getCommentGenerator().addComment(answer);
         GeneratedKey gk = this.introspectedTable.getGeneratedKey();
         if (gk != null) {
@@ -59,23 +57,20 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
         }
 
         StringBuilder insertClause = new StringBuilder();
-        insertClause.append("INSERT INTO ");
-        insertClause.append(this.introspectedTable.getFullyQualifiedTableNameAtRuntime());
-        insertClause.append(" (");
+        insertClause.append("INSERT INTO ")
+                .append(this.introspectedTable.getFullyQualifiedTableNameAtRuntime())
+                .append(" (");
         answer.addElement(new TextElement(insertClause.toString()));
+
         insertClause.setLength(0);
         OutputUtilities.xmlIndent(insertClause, 1);
 
         List<IntrospectedColumn> columns = ListUtilities.removeIdentityAndGeneratedAlwaysColumns(this.introspectedTable.getAllColumns());
-        int columnSize = columns.size();
-        for (int i = 0; i < columnSize; i++) {
-            IntrospectedColumn introspectedColumn = (IntrospectedColumn) columns.get(i);
-            insertClause.append(MyBatis3FormattingUtilities.getEscapedColumnName(introspectedColumn));
-
-            if (i != columnSize - 1) {
+        for (int i = 0; i < columns.size(); i++) {
+            insertClause.append(MyBatis3FormattingUtilities.getEscapedColumnName(columns.get(i)));
+            if (i != columns.size() - 1) {
                 insertClause.append(", ");
             }
-
             if (insertClause.length() > 80) {
                 answer.addElement(new TextElement(insertClause.toString()));
                 insertClause.setLength(0);
@@ -95,31 +90,24 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
         answer.addElement(new TextElement(valuesClause.toString()));
         valuesClause.setLength(0);
 
-        List<String> valuesClauses = new ArrayList<>();
-
-        for (int i = 0; i < columnSize; ++i) {
+        for (int i = 0; i < columns.size(); ++i) {
             if (i == 0) {
                 OutputUtilities.xmlIndent(valuesClause, 1);
             }
-            IntrospectedColumn introspectedColumn = (IntrospectedColumn) columns.get(i);
-            valuesClause.append(MyBatis3FormattingUtilities.getParameterClause(introspectedColumn));
-            if (i != columnSize - 1) {
+            valuesClause.append(MyBatis3FormattingUtilities.getParameterClause(columns.get(i)));
+            if (i != columns.size() - 1) {
                 valuesClause.append(", ");
             }
             if (valuesClause.length() > 80) {
-                valuesClauses.add(valuesClause.toString());
+                answer.addElement(new TextElement(valuesClause.toString()));
                 valuesClause.setLength(0);
-                if (i != columnSize - 1) {
+                if (i != columns.size() - 1) {
                     OutputUtilities.xmlIndent(valuesClause, 1);
                 }
             }
         }
         if (valuesClause.length() > 0) {
-            valuesClauses.add(valuesClause.toString());
-        }
-
-        for (String clause : valuesClauses) {
-            answer.addElement(new TextElement(clause));
+            answer.addElement(new TextElement(valuesClause.toString()));
         }
 
         valuesClause.setLength(0);
