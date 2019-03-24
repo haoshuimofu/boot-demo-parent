@@ -48,7 +48,9 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
             if (insertClause.length() > 80) {
                 answer.addElement(new TextElement(insertClause.toString()));
                 insertClause.setLength(0);
-                OutputUtilities.xmlIndent(insertClause, 1);
+                if (i != columns.size() - 1) {
+                    OutputUtilities.xmlIndent(insertClause, 1);
+                }
             }
         }
         if (insertClause.length() > 0) {
@@ -56,7 +58,7 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
         }
         answer.addElement(new TextElement(") VALUES "));
 
-        // 生成的foreach标签内Attribute
+        // foreach标签
         XmlElement valuesElement = new XmlElement("foreach");
         valuesElement.addAttribute(new Attribute("collection", "list"));
         valuesElement.addAttribute(new Attribute("item", "item"));
@@ -84,7 +86,6 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
         }
         valuesElement.addElement(new TextElement(")"));
         answer.addElement(valuesElement);
-
         xmlElement.addElement(answer);
     }
 }
