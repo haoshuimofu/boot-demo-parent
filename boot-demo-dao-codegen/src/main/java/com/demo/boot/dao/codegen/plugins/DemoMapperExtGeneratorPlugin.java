@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * XxMapperExt.xml文件生成插件, 用于生成Dao对应的扩展xml文件
+ * ModelMapperExt.xml生成器插件, 用于生成Dao对应的扩展xml文件
  *
  * @author wude
  * @create 2018-04-19 17:10
@@ -37,7 +37,7 @@ public class DemoMapperExtGeneratorPlugin extends PluginAdapter {
     @Override
     public List<GeneratedXmlFile> contextGenerateAdditionalXmlFiles(IntrospectedTable introspectedTable) {
 
-        List<GeneratedXmlFile> generatedXmlFiles = new ArrayList<GeneratedXmlFile>();
+        List<GeneratedXmlFile> generatedXmlFiles = new ArrayList<>();
         for (GeneratedXmlFile generatedXmlFile : introspectedTable.getGeneratedXmlFiles()) {
             String targetProject = generatedXmlFile.getTargetProject();
             String targetPackage = generatedXmlFile.getTargetPackage();
@@ -57,11 +57,10 @@ public class DemoMapperExtGeneratorPlugin extends PluginAdapter {
             TextElement blankElement = new TextElement("");
             document.getRootElement().addElement(blankElement);
 
-            GeneratedXmlFile generatedExtXmlFile = new GeneratedXmlFile(document, mapperExtFileName.toString(), targetPackage, targetProject, true, context.getXmlFormatter());
+            GeneratedXmlFile generatedExtXmlFile = new GeneratedXmlFile(document, mapperExtFileName, targetPackage, targetProject, true, context.getXmlFormatter());
             generatedXmlFiles.add(generatedExtXmlFile);
         }
         return generatedXmlFiles;
     }
-
 
 }
