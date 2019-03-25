@@ -63,7 +63,6 @@ public class DemoCommentGenerator implements CommentGenerator {
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
         if (!suppressAllComments) {
-            StringBuilder sb = new StringBuilder();
             field.addJavaDocLine("/**");
             if (introspectedColumn.getRemarks() == null || "".equals(introspectedColumn.getRemarks().trim())) {
                 field.addJavaDocLine(" * " + introspectedColumn.getActualColumnName());
