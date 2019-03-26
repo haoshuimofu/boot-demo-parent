@@ -71,17 +71,10 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
 
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        /*System.out.println(introspectedTable.getBaseRecordType()
-                + " ************* " + introspectedTable.getPrimaryKeyType());
-        File modelKeyFile = new File(javaClientTargetProject + "/" +
-                javaClientTargetPackage.replaceAll("\\.", "\\/") + "/" + interfaze.getType().getShortName() + ".java");
-        // Dao源文件已存在, 跳过修改
-        if (modelKeyFile.exists()) {
-            return false;
-        }*/
-        if (introspectedTable.getNonPrimaryKeyColumns().size() < 1) {
-            return true;
-        }
+        // 没有非主键列不生成Model类，只有Model类不合适，还是直接调用super类此方法直接返回true吧
+        // if (introspectedTable.getNonPrimaryKeyColumns().size() < 1) return false;
+        // super.modelBaseRecordClassGenerated()方法直接返回true，所以假如表只有主键列而没有非主键列也会生成对应的Model类
+        // 只不过这个Model类是空的，继承自ModelKey类
         return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
     }
 
