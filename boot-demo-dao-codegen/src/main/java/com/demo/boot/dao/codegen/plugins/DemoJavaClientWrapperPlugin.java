@@ -17,10 +17,11 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * 对生成的XxDao.java进行包装, 主要Dao主键 && BaseDao及其泛型 设置
+ * <p>对生成的Dao接口进行修改包装</p>
+ * <p>继承自BaseDao<T, ID>，自动判别T和ID对应的java数据类型</p>
+ * <p>为Dao接口自动添加@Repository注解</p>
  *
  * @author wude
- * @version 1.0.0
  * @create 2018-04-19 17:10
  */
 public class DemoJavaClientWrapperPlugin extends PluginAdapter {
