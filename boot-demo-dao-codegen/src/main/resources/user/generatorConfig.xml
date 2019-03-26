@@ -70,10 +70,10 @@
         <table tableName="t_users" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
-        <table tableName="t_roles" domainObjectName="Test" enableCountByExample="false" enableDeleteByExample="false"
+        <table tableName="t_roles" domainObjectName="Role" enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
-        <table tableName="t_user_role" domainObjectName="Test" enableCountByExample="false"
+        <table tableName="t_user_role" domainObjectName="UserRole" enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
