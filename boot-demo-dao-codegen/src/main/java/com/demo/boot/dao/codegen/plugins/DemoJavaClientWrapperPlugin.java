@@ -83,7 +83,7 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
 
         File javaClientFile = new File(javaClientTargetProject + "/" +
                 javaClientTargetPackage.replaceAll("\\.", "\\/") + "/" + interfaze.getType().getShortName() + ".java");
-        // Dao源文件已存在, 跳过修改
+        // 如果Dao对应的.java源文件已经存在则跳过，因为可能Dao里面已经有一些自定义接口了，当然接口的sqlMap在ModelExtMapper.xml文件里
         if (javaClientFile.exists()) {
             return false;
         }
