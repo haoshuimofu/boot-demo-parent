@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.StoreProductMonitorDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.StoreProductMonitor">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="SMALLINT" property="type" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
@@ -10,38 +10,41 @@
     <result column="total" jdbcType="INTEGER" property="total" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
-    id, type, store_id, product_id, total, create_time, update_time
+    <!--@mbg.generated 2019-03-31 14:05:58-->
+    id, type, store_id, product_id, total, create_time, update_time, version
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.StoreProductMonitor">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     INSERT INTO store_product_monitor (
-      type, store_id, product_id, total, create_time, update_time
+      type, store_id, product_id, total, create_time, update_time, version
     ) VALUES (  
       #{type,jdbcType=SMALLINT}, #{storeId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
-      #{total,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      #{total,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=INTEGER}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     INSERT INTO store_product_monitor (
-      type, store_id, product_id, total, create_time, update_time
+      type, store_id, product_id, total, create_time, update_time, version
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
       (
         #{item.type,jdbcType=SMALLINT}, #{item.storeId,jdbcType=INTEGER}, #{item.productId,jdbcType=INTEGER}, 
-        #{item.total,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+        #{item.total,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, 
+        #{item.version,jdbcType=INTEGER}
       )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_monitor WHERE id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.StoreProductMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_monitor
     <where>
       <if test="type != null">
@@ -61,12 +64,15 @@
       </if>
       <if test="updateTime != null">
         AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="version != null">
+        AND version = #{version,jdbcType=INTEGER}
       </if>
       LIMIT 1
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.StoreProductMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_monitor
     <where>
       <if test="type != null">
@@ -87,14 +93,17 @@
       <if test="updateTime != null">
         AND update_time = #{updateTime,jdbcType=TIMESTAMP}
       </if>
+      <if test="version != null">
+        AND version = #{version,jdbcType=INTEGER}
+      </if>
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     SELECT <include refid="Base_Column_List" /> FROM store_product_monitor
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.StoreProductMonitor" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     SELECT count(1) FROM store_product_monitor
     <where>
       <if test="id != null">
@@ -118,14 +127,17 @@
       <if test="updateTime != null">
         AND update_time=#{updateTime,jdbcType=TIMESTAMP}
       </if>
+      <if test="version != null">
+        AND version=#{version,jdbcType=INTEGER}
+      </if>
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     DELETE FROM store_product_monitor WHERE id = #{id,jdbcType=BIGINT}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.StoreProductMonitor">
-    <!--@mbg.generated 2019-03-22 14:20:27-->
+    <!--@mbg.generated 2019-03-31 14:05:58-->
     UPDATE store_product_monitor
     <set>
       <if test="type != null">
@@ -146,7 +158,10 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
     </set>
-     WHERE id = #{id,jdbcType=BIGINT}
+    WHERE id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
