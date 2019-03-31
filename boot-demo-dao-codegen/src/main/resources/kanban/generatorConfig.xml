@@ -95,11 +95,11 @@
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
-        <table tableName="store_product_batch_temp" domainObjectName="StoreProductBatchTemp"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="store_product_batch_temp" domainObjectName="StoreProductBatchTemp"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
         <!--<table tableName="store_product_monitor" domainObjectName="StoreProductMonitor" enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
@@ -109,5 +109,11 @@
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
+
+        <table tableName="version" domainObjectName="Version"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>
