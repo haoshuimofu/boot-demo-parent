@@ -81,10 +81,10 @@
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
 
-        <!--<table tableName="product_monitor" domainObjectName="ProductMonitor" enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <table tableName="product_monitor" domainObjectName="ProductMonitor" enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
         <!--<table tableName="store_product_batch_history" domainObjectName="StoreProductBatchHistory"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
@@ -100,10 +100,10 @@
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
-        <table tableName="store_product_monitor" domainObjectName="StoreProductMonitor" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="store_product_monitor" domainObjectName="StoreProductMonitor" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
 
         <!--<table tableName="store" domainObjectName="Store" enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
