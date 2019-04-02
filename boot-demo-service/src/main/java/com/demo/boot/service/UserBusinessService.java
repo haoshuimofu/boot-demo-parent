@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -36,7 +35,8 @@ public class UserBusinessService {
 //        business.setbNo(user.getUsername());
         businessDao.insert(business);
 
-        System.out.println(1 / 0);
-        return Arrays.asList(user.getId(), business.getId());
+//        System.out.println(1 / 0);
+//        return Arrays.asList(user.getId(), business.getId());
+        return null;
     }
 }

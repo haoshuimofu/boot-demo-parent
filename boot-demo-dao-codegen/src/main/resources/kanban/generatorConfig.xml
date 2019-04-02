@@ -81,10 +81,10 @@
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
 
-        <table tableName="product_monitor" domainObjectName="ProductMonitor" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="product_monitor" domainObjectName="ProductMonitor" enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
         <!--<table tableName="store_product_batch_history" domainObjectName="StoreProductBatchHistory"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
@@ -110,10 +110,10 @@
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
 
-        <!--<table tableName="version" domainObjectName="Version"-->
-        <!--enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <table tableName="batch_version" domainObjectName="BatchVersion"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>

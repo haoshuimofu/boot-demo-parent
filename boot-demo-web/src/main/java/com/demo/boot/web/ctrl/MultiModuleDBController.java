@@ -31,7 +31,7 @@ public class MultiModuleDBController {
     @GetMapping(value = "/test")
     public List test() {
         List<String> datas = new ArrayList<>();
-        User user = userDao.selectById(1L);
+        User user = userDao.selectById(1);
         if (user != null) {
 //            datas.add(user.getUsername());
         }

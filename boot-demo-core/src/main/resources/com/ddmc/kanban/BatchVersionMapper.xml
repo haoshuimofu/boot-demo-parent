@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ddmc.kanban.dao.VersionDao">
-  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.Version">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
+<mapper namespace="com.ddmc.kanban.dao.BatchVersionDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.BatchVersion">
+    <!--@mbg.generated 2019-04-02 09:45:34-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="task_name" jdbcType="VARCHAR" property="taskName" />
     <result column="version" jdbcType="INTEGER" property="version" />
@@ -10,12 +10,12 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
+    <!--@mbg.generated 2019-04-02 09:45:34-->
     id, task_name, version, create_time, update_time
   </sql>
-  <insert id="insert" parameterType="com.ddmc.kanban.model.Version">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    INSERT INTO version (
+  <insert id="insert" parameterType="com.ddmc.kanban.model.BatchVersion">
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    INSERT INTO batch_version (
       task_name, version, create_time, update_time
     ) VALUES (  
       #{taskName,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
@@ -23,8 +23,8 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    INSERT INTO version (
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    INSERT INTO batch_version (
       task_name, version, create_time, update_time
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
@@ -35,12 +35,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    SELECT <include refid="Base_Column_List"/> FROM version WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    SELECT <include refid="Base_Column_List"/> FROM batch_version WHERE id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectOne" parameterType="com.ddmc.kanban.model.Version" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    SELECT <include refid="Base_Column_List"/> FROM version
+  <select id="selectOne" parameterType="com.ddmc.kanban.model.BatchVersion" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    SELECT <include refid="Base_Column_List"/> FROM batch_version
     <where>
       <if test="taskName != null">
         AND task_name = #{taskName,jdbcType=VARCHAR}
@@ -57,9 +57,9 @@
       LIMIT 1
     </where>
   </select>
-  <select id="selectList" parameterType="com.ddmc.kanban.model.Version" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    SELECT <include refid="Base_Column_List"/> FROM version
+  <select id="selectList" parameterType="com.ddmc.kanban.model.BatchVersion" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    SELECT <include refid="Base_Column_List"/> FROM batch_version
     <where>
       <if test="taskName != null">
         AND task_name = #{taskName,jdbcType=VARCHAR}
@@ -76,12 +76,12 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    SELECT <include refid="Base_Column_List"/> FROM version
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    SELECT <include refid="Base_Column_List"/> FROM batch_version
   </select>
-  <select id="count" parameterType="com.ddmc.kanban.model.Version" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    SELECT count(1) FROM version
+  <select id="count" parameterType="com.ddmc.kanban.model.BatchVersion" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    SELECT count(1) FROM batch_version
     <where>
       <if test="id != null">
         AND id=#{id,jdbcType=INTEGER}
@@ -101,12 +101,12 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    DELETE FROM version WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    DELETE FROM batch_version WHERE id = #{id,jdbcType=INTEGER}
   </delete>
-  <update id="update" parameterType="com.ddmc.kanban.model.Version">
-    <!--@mbg.generated 2019-03-31 13:29:42-->
-    UPDATE version
+  <update id="update" parameterType="com.ddmc.kanban.model.BatchVersion">
+    <!--@mbg.generated 2019-04-02 09:45:34-->
+    UPDATE batch_version
     <set>
       <if test="taskName != null">
         task_name = #{taskName,jdbcType=VARCHAR},
