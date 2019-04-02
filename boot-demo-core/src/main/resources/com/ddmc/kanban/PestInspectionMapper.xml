@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.kanban.dao.PestInspectionDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.PestInspection">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="store_id" jdbcType="INTEGER" property="storeId" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="mosquito" jdbcType="BIT" property="mosquito" />
+    <result column="treatment" jdbcType="VARCHAR" property="treatment" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    id, store_id, start_date, end_date, mosquito, treatment, operator, create_time, update_time
+  </sql>
+  <insert id="insert" parameterType="com.ddmc.kanban.model.PestInspection">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    INSERT INTO pest_inspection (
+      id, store_id, start_date, end_date, mosquito, treatment, operator, create_time, 
+      update_time
+    ) VALUES (  
+      #{id,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{startDate,jdbcType=DATE}, 
+      #{endDate,jdbcType=DATE}, #{mosquito,jdbcType=BIT}, #{treatment,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    INSERT INTO pest_inspection (
+      id, store_id, start_date, end_date, mosquito, treatment, operator, create_time, 
+      update_time
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.id,jdbcType=INTEGER}, #{item.storeId,jdbcType=INTEGER}, #{item.startDate,jdbcType=DATE}, 
+        #{item.endDate,jdbcType=DATE}, #{item.mosquito,jdbcType=BIT}, #{item.treatment,jdbcType=VARCHAR}, 
+        #{item.operator,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.kanban.model.PestInspection" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection
+    <where>
+      <if test="storeId != null">
+        AND store_id = #{storeId,jdbcType=INTEGER}
+      </if>
+      <if test="startDate != null">
+        AND start_date = #{startDate,jdbcType=DATE}
+      </if>
+      <if test="endDate != null">
+        AND end_date = #{endDate,jdbcType=DATE}
+      </if>
+      <if test="mosquito != null">
+        AND mosquito = #{mosquito,jdbcType=BIT}
+      </if>
+      <if test="treatment != null">
+        AND treatment = #{treatment,jdbcType=VARCHAR}
+      </if>
+      <if test="operator != null">
+        AND operator = #{operator,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.kanban.model.PestInspection" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection
+    <where>
+      <if test="storeId != null">
+        AND store_id = #{storeId,jdbcType=INTEGER}
+      </if>
+      <if test="startDate != null">
+        AND start_date = #{startDate,jdbcType=DATE}
+      </if>
+      <if test="endDate != null">
+        AND end_date = #{endDate,jdbcType=DATE}
+      </if>
+      <if test="mosquito != null">
+        AND mosquito = #{mosquito,jdbcType=BIT}
+      </if>
+      <if test="treatment != null">
+        AND treatment = #{treatment,jdbcType=VARCHAR}
+      </if>
+      <if test="operator != null">
+        AND operator = #{operator,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection
+  </select>
+  <select id="count" parameterType="com.ddmc.kanban.model.PestInspection" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    SELECT count(1) FROM pest_inspection
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="storeId != null">
+        AND store_id=#{storeId,jdbcType=INTEGER}
+      </if>
+      <if test="startDate != null">
+        AND start_date=#{startDate,jdbcType=DATE}
+      </if>
+      <if test="endDate != null">
+        AND end_date=#{endDate,jdbcType=DATE}
+      </if>
+      <if test="mosquito != null">
+        AND mosquito=#{mosquito,jdbcType=BIT}
+      </if>
+      <if test="treatment != null">
+        AND treatment=#{treatment,jdbcType=VARCHAR}
+      </if>
+      <if test="operator != null">
+        AND operator=#{operator,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    DELETE FROM pest_inspection WHERE id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.ddmc.kanban.model.PestInspection">
+    <!--@mbg.generated 2019-04-02 19:33:35-->
+    UPDATE pest_inspection
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="mosquito != null">
+        mosquito = #{mosquito,jdbcType=BIT},
+      </if>
+      <if test="treatment != null">
+        treatment = #{treatment,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

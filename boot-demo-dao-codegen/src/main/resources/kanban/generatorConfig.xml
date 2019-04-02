@@ -123,32 +123,69 @@
         <!--enableUpdateByExample="false"/>-->
 
 
-        <table tableName="refri_house_dev_monitor" domainObjectName="RefriHouseDevMonitor"
+        <!--<table tableName="refri_house_dev_monitor" domainObjectName="RefriHouseDevMonitor"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+
+        <!--<table tableName="refri_house_except" domainObjectName="RefriHouseExcept"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+
+
+        <!--<table tableName="refri_house_summary_log" domainObjectName="RefriHouseSummaryLog"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+
+        <!--<table tableName="refrigeration_house" domainObjectName="RefrigerationHouse"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+
+        <!--<table tableName="refrigeration_house_device" domainObjectName="RefrigerationHouseDevice"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+
+
+        <table tableName="store_inspection"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
-
-        <table tableName="refri_house_except" domainObjectName="RefriHouseExcept"
+        <table tableName="store_inspection_rectify"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
-
-
-        <table tableName="refri_house_summary_log" domainObjectName="RefriHouseSummaryLog"
+        <table tableName="recycle_area_inspection"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
-
-        <table tableName="refrigeration_house" domainObjectName="RefrigerationHouse"
+        <table tableName="tool_disinfection"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false"/>
-
-        <table tableName="refrigeration_house_device" domainObjectName="RefrigerationHouseDevice"
+        <table tableName="tool_disinfection_item"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+        <table tableName="pest_inspection"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+        <table tableName="pest_inspection_mouse"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
