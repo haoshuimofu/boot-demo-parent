@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.kanban.dao.RefriHouseSummaryLogDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.RefriHouseSummaryLog">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="out_house_id" jdbcType="VARCHAR" property="outHouseId" />
+    <result column="terminal_id" jdbcType="VARCHAR" property="terminalId" />
+    <result column="except_start_time" jdbcType="BIGINT" property="exceptStartTime" />
+    <result column="current_collect_time" jdbcType="BIGINT" property="currentCollectTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    id, out_house_id, terminal_id, except_start_time, current_collect_time, create_time, 
+    update_time
+  </sql>
+  <insert id="insert" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    INSERT INTO refri_house_summary_log (
+      out_house_id, terminal_id, except_start_time, current_collect_time, create_time, 
+      update_time
+    ) VALUES (  
+      #{outHouseId,jdbcType=VARCHAR}, #{terminalId,jdbcType=VARCHAR}, #{exceptStartTime,jdbcType=BIGINT}, 
+      #{currentCollectTime,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    INSERT INTO refri_house_summary_log (
+      out_house_id, terminal_id, except_start_time, current_collect_time, create_time, 
+      update_time
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.outHouseId,jdbcType=VARCHAR}, #{item.terminalId,jdbcType=VARCHAR}, #{item.exceptStartTime,jdbcType=BIGINT}, 
+        #{item.currentCollectTime,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log
+    <where>
+      <if test="outHouseId != null">
+        AND out_house_id = #{outHouseId,jdbcType=VARCHAR}
+      </if>
+      <if test="terminalId != null">
+        AND terminal_id = #{terminalId,jdbcType=VARCHAR}
+      </if>
+      <if test="exceptStartTime != null">
+        AND except_start_time = #{exceptStartTime,jdbcType=BIGINT}
+      </if>
+      <if test="currentCollectTime != null">
+        AND current_collect_time = #{currentCollectTime,jdbcType=BIGINT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log
+    <where>
+      <if test="outHouseId != null">
+        AND out_house_id = #{outHouseId,jdbcType=VARCHAR}
+      </if>
+      <if test="terminalId != null">
+        AND terminal_id = #{terminalId,jdbcType=VARCHAR}
+      </if>
+      <if test="exceptStartTime != null">
+        AND except_start_time = #{exceptStartTime,jdbcType=BIGINT}
+      </if>
+      <if test="currentCollectTime != null">
+        AND current_collect_time = #{currentCollectTime,jdbcType=BIGINT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log
+  </select>
+  <select id="count" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    SELECT count(1) FROM refri_house_summary_log
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="outHouseId != null">
+        AND out_house_id=#{outHouseId,jdbcType=VARCHAR}
+      </if>
+      <if test="terminalId != null">
+        AND terminal_id=#{terminalId,jdbcType=VARCHAR}
+      </if>
+      <if test="exceptStartTime != null">
+        AND except_start_time=#{exceptStartTime,jdbcType=BIGINT}
+      </if>
+      <if test="currentCollectTime != null">
+        AND current_collect_time=#{currentCollectTime,jdbcType=BIGINT}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    DELETE FROM refri_house_summary_log WHERE id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog">
+    <!--@mbg.generated 2019-04-02 14:17:38-->
+    UPDATE refri_house_summary_log
+    <set>
+      <if test="outHouseId != null">
+        out_house_id = #{outHouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalId != null">
+        terminal_id = #{terminalId,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptStartTime != null">
+        except_start_time = #{exceptStartTime,jdbcType=BIGINT},
+      </if>
+      <if test="currentCollectTime != null">
+        current_collect_time = #{currentCollectTime,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
