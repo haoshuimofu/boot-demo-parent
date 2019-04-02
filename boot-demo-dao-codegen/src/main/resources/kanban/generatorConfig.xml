@@ -110,7 +110,45 @@
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
 
-        <table tableName="batch_version" domainObjectName="BatchVersion"
+        <!--<table tableName="batch_version" domainObjectName="BatchVersion"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+
+        <!--<table tableName="car" domainObjectName="Car"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
+
+
+        <table tableName="refri_house_dev_monitor" domainObjectName="RefriHouseDevMonitor"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+
+        <table tableName="refri_house_except" domainObjectName="RefriHouseExcept"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+
+
+        <table tableName="refri_house_summary_log" domainObjectName="RefriHouseSummaryLog"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+
+        <table tableName="refrigeration_house" domainObjectName="RefrigerationHouse"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
+
+        <table tableName="refrigeration_house_device" domainObjectName="RefrigerationHouseDevice"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
