@@ -30,7 +30,7 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         context.getCommentGenerator().addRootComment(answer);
 
         addResultMapWithBLOBsElementToXml(answer);
-        addResultMapWithBLOBsElement(answer);
+//        addResultMapWithBLOBsElement(answer);
         /*addResultMapWithBLOBsElement(answer);
         addExampleWhereClauseElement(answer);
         addMyBatis3UpdateByExampleWhereClauseElement(answer);

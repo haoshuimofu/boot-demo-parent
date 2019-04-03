@@ -64,7 +64,7 @@ public class ResultMapWithBLOBsElementCustomGenerator extends ResultMapWithoutBL
         if (this.isSimple) {
             columns = this.introspectedTable.getNonPrimaryKeyColumns();
         } else {
-            columns = this.introspectedTable.getBaseColumns();
+            columns = this.introspectedTable.getNonPrimaryKeyColumns(); // 加入BLOBs列
         }
 
         resultElement = null;
