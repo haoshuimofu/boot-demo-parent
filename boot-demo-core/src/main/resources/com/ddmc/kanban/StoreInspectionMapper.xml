@@ -2,50 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.StoreInspectionDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.StoreInspection">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
     <result column="date" jdbcType="INTEGER" property="date" />
     <result column="score" jdbcType="INTEGER" property="score" />
-    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
     <result column="inspector" jdbcType="VARCHAR" property="inspector" />
     <result column="create_itme" jdbcType="TIMESTAMP" property="createItme" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    id, store_id, date, score, file_name, inspector, create_itme, update_time
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    id, store_id, date, score, file_path, inspector, create_itme, update_time
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.StoreInspection">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     INSERT INTO store_inspection (
-      store_id, date, score, file_name, inspector, create_itme, update_time
+      store_id, date, score, file_path, inspector, create_itme, update_time
     ) VALUES (  
       #{storeId,jdbcType=INTEGER}, #{date,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
-      #{fileName,jdbcType=VARCHAR}, #{inspector,jdbcType=VARCHAR}, #{createItme,jdbcType=TIMESTAMP}, 
+      #{filePath,jdbcType=VARCHAR}, #{inspector,jdbcType=VARCHAR}, #{createItme,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     INSERT INTO store_inspection (
-      store_id, date, score, file_name, inspector, create_itme, update_time
+      store_id, date, score, file_path, inspector, create_itme, update_time
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
       (
         #{item.storeId,jdbcType=INTEGER}, #{item.date,jdbcType=INTEGER}, #{item.score,jdbcType=INTEGER}, 
-        #{item.fileName,jdbcType=VARCHAR}, #{item.inspector,jdbcType=VARCHAR}, #{item.createItme,jdbcType=TIMESTAMP}, 
+        #{item.filePath,jdbcType=VARCHAR}, #{item.inspector,jdbcType=VARCHAR}, #{item.createItme,jdbcType=TIMESTAMP}, 
         #{item.updateTime,jdbcType=TIMESTAMP}
       )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.StoreInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -56,8 +56,8 @@
       <if test="score != null">
         AND score = #{score,jdbcType=INTEGER}
       </if>
-      <if test="fileName != null">
-        AND file_name = #{fileName,jdbcType=VARCHAR}
+      <if test="filePath != null">
+        AND file_path = #{filePath,jdbcType=VARCHAR}
       </if>
       <if test="inspector != null">
         AND inspector = #{inspector,jdbcType=VARCHAR}
@@ -72,8 +72,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.StoreInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -84,8 +84,8 @@
       <if test="score != null">
         AND score = #{score,jdbcType=INTEGER}
       </if>
-      <if test="fileName != null">
-        AND file_name = #{fileName,jdbcType=VARCHAR}
+      <if test="filePath != null">
+        AND file_path = #{filePath,jdbcType=VARCHAR}
       </if>
       <if test="inspector != null">
         AND inspector = #{inspector,jdbcType=VARCHAR}
@@ -99,11 +99,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.StoreInspection" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     SELECT count(1) FROM store_inspection
     <where>
       <if test="id != null">
@@ -118,8 +118,8 @@
       <if test="score != null">
         AND score=#{score,jdbcType=INTEGER}
       </if>
-      <if test="fileName != null">
-        AND file_name=#{fileName,jdbcType=VARCHAR}
+      <if test="filePath != null">
+        AND file_path=#{filePath,jdbcType=VARCHAR}
       </if>
       <if test="inspector != null">
         AND inspector=#{inspector,jdbcType=VARCHAR}
@@ -133,11 +133,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     DELETE FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.StoreInspection">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     UPDATE store_inspection
     <set>
       <if test="storeId != null">
@@ -149,8 +149,8 @@
       <if test="score != null">
         score = #{score,jdbcType=INTEGER},
       </if>
-      <if test="fileName != null">
-        file_name = #{fileName,jdbcType=VARCHAR},
+      <if test="filePath != null">
+        file_path = #{filePath,jdbcType=VARCHAR},
       </if>
       <if test="inspector != null">
         inspector = #{inspector,jdbcType=VARCHAR},

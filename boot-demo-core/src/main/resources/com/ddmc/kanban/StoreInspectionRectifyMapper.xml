@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.StoreInspectionRectifyDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.StoreInspectionRectify">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="inspection_id" jdbcType="INTEGER" property="inspectionId" />
     <result column="rectify_name" jdbcType="VARCHAR" property="rectifyName" />
@@ -12,11 +12,11 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     id, inspection_id, rectify_name, rectify_person, rectify_date, create_time, update_time
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.StoreInspectionRectify">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     INSERT INTO store_inspection_rectify (
       inspection_id, rectify_name, rectify_person, rectify_date, create_time, update_time, 
       rectify_content
@@ -27,7 +27,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     INSERT INTO store_inspection_rectify (
       inspection_id, rectify_name, rectify_person, rectify_date, create_time, update_time, 
       rectify_content
@@ -41,12 +41,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection_rectify WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection_rectify WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.StoreInspectionRectify" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection_rectify
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection_rectify
     <where>
       <if test="inspectionId != null">
         AND inspection_id = #{inspectionId,jdbcType=INTEGER}
@@ -73,8 +73,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.StoreInspectionRectify" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection_rectify
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection_rectify
     <where>
       <if test="inspectionId != null">
         AND inspection_id = #{inspectionId,jdbcType=INTEGER}
@@ -100,11 +100,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
-    SELECT <include refid="Base_Column_List"/> FROM store_inspection_rectify
+    <!--@mbg.generated 2019-04-03 13:17:16-->
+    SELECT <include refid="Base_Column_List" /> FROM store_inspection_rectify
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.StoreInspectionRectify" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     SELECT count(1) FROM store_inspection_rectify
     <where>
       <if test="id != null">
@@ -134,11 +134,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     DELETE FROM store_inspection_rectify WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.StoreInspectionRectify">
-    <!--@mbg.generated 2019-04-02 19:33:35-->
+    <!--@mbg.generated 2019-04-03 13:17:16-->
     UPDATE store_inspection_rectify
     <set>
       <if test="inspectionId != null">
