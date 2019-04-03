@@ -17,10 +17,10 @@ import java.util.List;
  * @author wude
  * @create 2018-05-11 13:08
  */
-public class ResultMapWithoutBLOBsElementCustomGenerator extends ResultMapWithoutBLOBsElementGenerator {
+public class ResultMapWithBLOBsElementCustomGenerator extends ResultMapWithoutBLOBsElementGenerator {
     private boolean isSimple;
 
-    public ResultMapWithoutBLOBsElementCustomGenerator(boolean isSimple) {
+    public ResultMapWithBLOBsElementCustomGenerator(boolean isSimple) {
         super(isSimple);
         this.isSimple = isSimple;
     }

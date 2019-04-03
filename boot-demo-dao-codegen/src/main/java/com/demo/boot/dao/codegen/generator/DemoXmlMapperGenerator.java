@@ -6,7 +6,6 @@ import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElementGenerator;
-import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.BaseColumnListElementGenerator;
 
 import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
@@ -30,7 +29,8 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
 
         context.getCommentGenerator().addRootComment(answer);
 
-        addResultMapWithoutBLOBsElementToXml(answer);
+        addResultMapWithBLOBsElementToXml(answer);
+        addResultMapWithBLOBsElement(answer);
         /*addResultMapWithBLOBsElement(answer);
         addExampleWhereClauseElement(answer);
         addMyBatis3UpdateByExampleWhereClauseElement(answer);
@@ -41,7 +41,7 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         addSelectByPrimaryKeyElement(answer);
         addDeleteByPrimaryKeyElement(answer);
         addDeleteByExampleElement(answer);*/
-        // addBaseColumnList sql
+        // addBaseColumnList sql：Base_Column_List带BLOBs列, 如text等
         addBaseColumnListElementWithBLOBsElement(answer);
         // addInsertElement(answer);
         addInsertElementToXml(answer);
@@ -74,8 +74,8 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         return answer;
     }
 
-    private void addResultMapWithoutBLOBsElementToXml(XmlElement answer) {
-        AbstractXmlElementGenerator elementGenerator = new ResultMapWithoutBLOBsElementCustomGenerator(false);
+    private void addResultMapWithBLOBsElementToXml(XmlElement answer) {
+        AbstractXmlElementGenerator elementGenerator = new ResultMapWithBLOBsElementCustomGenerator(false);
         initializeAndExecuteGenerator(elementGenerator, answer);
     }
 
