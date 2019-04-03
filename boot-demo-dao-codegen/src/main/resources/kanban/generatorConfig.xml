@@ -173,11 +173,11 @@
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
-        <!--<table tableName="tool_disinfection"-->
-        <!--enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <table tableName="tool_disinfection"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
         <!--<table tableName="tool_disinfection_item"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
@@ -232,14 +232,14 @@
         <!--enableUpdateByExample="false"/>-->
 
 
-        <table tableName="car_avg_temperature"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
-            <!--<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />-->
-        </table>
+        <!--<table tableName="car_avg_temperature"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false">-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="JDBC" identity="true"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />&ndash;&gt;-->
+        <!--</table>-->
 
     </context>
 </generatorConfiguration>
