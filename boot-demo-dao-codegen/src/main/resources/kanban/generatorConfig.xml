@@ -155,19 +155,19 @@
         <!--enableUpdateByExample="false"/>-->
 
 
-        <table tableName="store_inspection"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
-            <!--<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />-->
-        </table>
-        <!--<table tableName="store_inspection_rectify"-->
+        <!--<table tableName="store_inspection"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <!--enableUpdateByExample="false">-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="JDBC" identity="true"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />&ndash;&gt;-->
+        <!--</table>-->
+        <table tableName="store_inspection_rectify"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
         <!--<table tableName="recycle_area_inspection"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
@@ -178,11 +178,11 @@
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
-        <table tableName="tool_disinfection_item"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="tool_disinfection_item"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
         <!--<table tableName="pest_inspection"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
