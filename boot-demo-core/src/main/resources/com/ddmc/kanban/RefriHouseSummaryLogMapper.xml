@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.RefriHouseSummaryLogDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.RefriHouseSummaryLog">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
+    <!--@mbg.generated 2019-04-03 10:15:16-->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="out_house_id" jdbcType="VARCHAR" property="outHouseId" />
+    <result column="out_gate_id" jdbcType="VARCHAR" property="outGateId" />
     <result column="terminal_id" jdbcType="VARCHAR" property="terminalId" />
     <result column="except_start_time" jdbcType="BIGINT" property="exceptStartTime" />
     <result column="current_collect_time" jdbcType="BIGINT" property="currentCollectTime" />
@@ -12,44 +12,44 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
-    id, out_house_id, terminal_id, except_start_time, current_collect_time, create_time, 
+    <!--@mbg.generated 2019-04-03 10:15:16-->
+    id, out_gate_id, terminal_id, except_start_time, current_collect_time, create_time, 
     update_time
   </sql>
   <insert id="insert" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
+    <!--@mbg.generated 2019-04-03 10:15:16-->
     INSERT INTO refri_house_summary_log (
-      out_house_id, terminal_id, except_start_time, current_collect_time, create_time, 
+      out_gate_id, terminal_id, except_start_time, current_collect_time, create_time, 
       update_time
     ) VALUES (  
-      #{outHouseId,jdbcType=VARCHAR}, #{terminalId,jdbcType=VARCHAR}, #{exceptStartTime,jdbcType=BIGINT}, 
+      #{outGateId,jdbcType=VARCHAR}, #{terminalId,jdbcType=VARCHAR}, #{exceptStartTime,jdbcType=BIGINT}, 
       #{currentCollectTime,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
+    <!--@mbg.generated 2019-04-03 10:15:16-->
     INSERT INTO refri_house_summary_log (
-      out_house_id, terminal_id, except_start_time, current_collect_time, create_time, 
+      out_gate_id, terminal_id, except_start_time, current_collect_time, create_time, 
       update_time
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
       (
-        #{item.outHouseId,jdbcType=VARCHAR}, #{item.terminalId,jdbcType=VARCHAR}, #{item.exceptStartTime,jdbcType=BIGINT}, 
+        #{item.outGateId,jdbcType=VARCHAR}, #{item.terminalId,jdbcType=VARCHAR}, #{item.exceptStartTime,jdbcType=BIGINT}, 
         #{item.currentCollectTime,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, 
         #{item.updateTime,jdbcType=TIMESTAMP}
       )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
-    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-03 10:15:16-->
+    SELECT <include refid="Base_Column_List" /> FROM refri_house_summary_log WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
-    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log
+    <!--@mbg.generated 2019-04-03 10:15:16-->
+    SELECT <include refid="Base_Column_List" /> FROM refri_house_summary_log
     <where>
-      <if test="outHouseId != null">
-        AND out_house_id = #{outHouseId,jdbcType=VARCHAR}
+      <if test="outGateId != null">
+        AND out_gate_id = #{outGateId,jdbcType=VARCHAR}
       </if>
       <if test="terminalId != null">
         AND terminal_id = #{terminalId,jdbcType=VARCHAR}
@@ -70,11 +70,11 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
-    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log
+    <!--@mbg.generated 2019-04-03 10:15:16-->
+    SELECT <include refid="Base_Column_List" /> FROM refri_house_summary_log
     <where>
-      <if test="outHouseId != null">
-        AND out_house_id = #{outHouseId,jdbcType=VARCHAR}
+      <if test="outGateId != null">
+        AND out_gate_id = #{outGateId,jdbcType=VARCHAR}
       </if>
       <if test="terminalId != null">
         AND terminal_id = #{terminalId,jdbcType=VARCHAR}
@@ -94,18 +94,18 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
-    SELECT <include refid="Base_Column_List"/> FROM refri_house_summary_log
+    <!--@mbg.generated 2019-04-03 10:15:16-->
+    SELECT <include refid="Base_Column_List" /> FROM refri_house_summary_log
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
+    <!--@mbg.generated 2019-04-03 10:15:16-->
     SELECT count(1) FROM refri_house_summary_log
     <where>
       <if test="id != null">
         AND id=#{id,jdbcType=INTEGER}
       </if>
-      <if test="outHouseId != null">
-        AND out_house_id=#{outHouseId,jdbcType=VARCHAR}
+      <if test="outGateId != null">
+        AND out_gate_id=#{outGateId,jdbcType=VARCHAR}
       </if>
       <if test="terminalId != null">
         AND terminal_id=#{terminalId,jdbcType=VARCHAR}
@@ -125,15 +125,15 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
+    <!--@mbg.generated 2019-04-03 10:15:16-->
     DELETE FROM refri_house_summary_log WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.RefriHouseSummaryLog">
-    <!--@mbg.generated 2019-04-02 14:17:38-->
+    <!--@mbg.generated 2019-04-03 10:15:16-->
     UPDATE refri_house_summary_log
     <set>
-      <if test="outHouseId != null">
-        out_house_id = #{outHouseId,jdbcType=VARCHAR},
+      <if test="outGateId != null">
+        out_gate_id = #{outGateId,jdbcType=VARCHAR},
       </if>
       <if test="terminalId != null">
         terminal_id = #{terminalId,jdbcType=VARCHAR},

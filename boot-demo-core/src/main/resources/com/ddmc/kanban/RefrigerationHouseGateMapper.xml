@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ddmc.kanban.dao.RefrigerationHouseDeviceDao">
-  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.RefrigerationHouseDevice">
+<mapper namespace="com.ddmc.kanban.dao.RefrigerationHouseGateDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.RefrigerationHouseGate">
     <!--@mbg.generated 2019-04-03 10:15:16-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="out_gate_id" jdbcType="VARCHAR" property="outGateId" />
-    <result column="terminal_id" jdbcType="VARCHAR" property="terminalId" />
-    <result column="terminal_name" jdbcType="VARCHAR" property="terminalName" />
+    <result column="out_gate_name" jdbcType="VARCHAR" property="outGateName" />
+    <result column="station_id" jdbcType="VARCHAR" property="stationId" />
     <result column="status" jdbcType="BIT" property="status" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    id, out_gate_id, terminal_id, terminal_name, status, create_time, update_time
+    id, out_gate_id, out_gate_name, station_id, status, create_time, update_time
   </sql>
-  <insert id="insert" parameterType="com.ddmc.kanban.model.RefrigerationHouseDevice">
+  <insert id="insert" parameterType="com.ddmc.kanban.model.RefrigerationHouseGate">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    INSERT INTO refrigeration_house_device (
-      out_gate_id, terminal_id, terminal_name, status, create_time, update_time
+    INSERT INTO refrigeration_house_gate (
+      out_gate_id, out_gate_name, station_id, status, create_time, update_time
     ) VALUES (  
-      #{outGateId,jdbcType=VARCHAR}, #{terminalId,jdbcType=VARCHAR}, #{terminalName,jdbcType=VARCHAR}, 
+      #{outGateId,jdbcType=VARCHAR}, #{outGateName,jdbcType=VARCHAR}, #{stationId,jdbcType=VARCHAR}, 
       #{status,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    INSERT INTO refrigeration_house_device (
-      out_gate_id, terminal_id, terminal_name, status, create_time, update_time
+    INSERT INTO refrigeration_house_gate (
+      out_gate_id, out_gate_name, station_id, status, create_time, update_time
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
       (
-        #{item.outGateId,jdbcType=VARCHAR}, #{item.terminalId,jdbcType=VARCHAR}, #{item.terminalName,jdbcType=VARCHAR}, 
+        #{item.outGateId,jdbcType=VARCHAR}, #{item.outGateName,jdbcType=VARCHAR}, #{item.stationId,jdbcType=VARCHAR}, 
         #{item.status,jdbcType=BIT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
       )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    SELECT <include refid="Base_Column_List" /> FROM refrigeration_house_device WHERE id = #{id,jdbcType=INTEGER}
+    SELECT <include refid="Base_Column_List"/> FROM refrigeration_house_gate WHERE id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectOne" parameterType="com.ddmc.kanban.model.RefrigerationHouseDevice" resultMap="BaseResultMap">
+  <select id="selectOne" parameterType="com.ddmc.kanban.model.RefrigerationHouseGate" resultMap="BaseResultMap">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    SELECT <include refid="Base_Column_List" /> FROM refrigeration_house_device
+    SELECT <include refid="Base_Column_List"/> FROM refrigeration_house_gate
     <where>
       <if test="outGateId != null">
         AND out_gate_id = #{outGateId,jdbcType=VARCHAR}
       </if>
-      <if test="terminalId != null">
-        AND terminal_id = #{terminalId,jdbcType=VARCHAR}
+      <if test="outGateName != null">
+        AND out_gate_name = #{outGateName,jdbcType=VARCHAR}
       </if>
-      <if test="terminalName != null">
-        AND terminal_name = #{terminalName,jdbcType=VARCHAR}
+      <if test="stationId != null">
+        AND station_id = #{stationId,jdbcType=VARCHAR}
       </if>
       <if test="status != null">
         AND status = #{status,jdbcType=BIT}
@@ -65,18 +65,18 @@
       LIMIT 1
     </where>
   </select>
-  <select id="selectList" parameterType="com.ddmc.kanban.model.RefrigerationHouseDevice" resultMap="BaseResultMap">
+  <select id="selectList" parameterType="com.ddmc.kanban.model.RefrigerationHouseGate" resultMap="BaseResultMap">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    SELECT <include refid="Base_Column_List" /> FROM refrigeration_house_device
+    SELECT <include refid="Base_Column_List"/> FROM refrigeration_house_gate
     <where>
       <if test="outGateId != null">
         AND out_gate_id = #{outGateId,jdbcType=VARCHAR}
       </if>
-      <if test="terminalId != null">
-        AND terminal_id = #{terminalId,jdbcType=VARCHAR}
+      <if test="outGateName != null">
+        AND out_gate_name = #{outGateName,jdbcType=VARCHAR}
       </if>
-      <if test="terminalName != null">
-        AND terminal_name = #{terminalName,jdbcType=VARCHAR}
+      <if test="stationId != null">
+        AND station_id = #{stationId,jdbcType=VARCHAR}
       </if>
       <if test="status != null">
         AND status = #{status,jdbcType=BIT}
@@ -91,11 +91,11 @@
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    SELECT <include refid="Base_Column_List" /> FROM refrigeration_house_device
+    SELECT <include refid="Base_Column_List"/> FROM refrigeration_house_gate
   </select>
-  <select id="count" parameterType="com.ddmc.kanban.model.RefrigerationHouseDevice" resultType="java.lang.Long">
+  <select id="count" parameterType="com.ddmc.kanban.model.RefrigerationHouseGate" resultType="java.lang.Long">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    SELECT count(1) FROM refrigeration_house_device
+    SELECT count(1) FROM refrigeration_house_gate
     <where>
       <if test="id != null">
         AND id=#{id,jdbcType=INTEGER}
@@ -103,11 +103,11 @@
       <if test="outGateId != null">
         AND out_gate_id=#{outGateId,jdbcType=VARCHAR}
       </if>
-      <if test="terminalId != null">
-        AND terminal_id=#{terminalId,jdbcType=VARCHAR}
+      <if test="outGateName != null">
+        AND out_gate_name=#{outGateName,jdbcType=VARCHAR}
       </if>
-      <if test="terminalName != null">
-        AND terminal_name=#{terminalName,jdbcType=VARCHAR}
+      <if test="stationId != null">
+        AND station_id=#{stationId,jdbcType=VARCHAR}
       </if>
       <if test="status != null">
         AND status=#{status,jdbcType=BIT}
@@ -122,20 +122,20 @@
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    DELETE FROM refrigeration_house_device WHERE id = #{id,jdbcType=INTEGER}
+    DELETE FROM refrigeration_house_gate WHERE id = #{id,jdbcType=INTEGER}
   </delete>
-  <update id="update" parameterType="com.ddmc.kanban.model.RefrigerationHouseDevice">
+  <update id="update" parameterType="com.ddmc.kanban.model.RefrigerationHouseGate">
     <!--@mbg.generated 2019-04-03 10:15:16-->
-    UPDATE refrigeration_house_device
+    UPDATE refrigeration_house_gate
     <set>
       <if test="outGateId != null">
         out_gate_id = #{outGateId,jdbcType=VARCHAR},
       </if>
-      <if test="terminalId != null">
-        terminal_id = #{terminalId,jdbcType=VARCHAR},
+      <if test="outGateName != null">
+        out_gate_name = #{outGateName,jdbcType=VARCHAR},
       </if>
-      <if test="terminalName != null">
-        terminal_name = #{terminalName,jdbcType=VARCHAR},
+      <if test="stationId != null">
+        station_id = #{stationId,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=BIT},
