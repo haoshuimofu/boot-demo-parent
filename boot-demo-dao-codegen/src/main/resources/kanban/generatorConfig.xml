@@ -230,5 +230,16 @@
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
+
+
+        <table tableName="car_avg_temperature"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />-->
+        </table>
+
     </context>
 </generatorConfiguration>
