@@ -155,11 +155,11 @@
         <!--enableUpdateByExample="false"/>-->
 
 
-        <!--<table tableName="store_inspection"-->
-        <!--enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <table tableName="store_inspection"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"/>
         <!--<table tableName="store_inspection_rectify"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
@@ -175,11 +175,11 @@
         <!--enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
-        <table tableName="tool_disinfection_item"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <!--<table tableName="tool_disinfection_item"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
         <!--<table tableName="pest_inspection"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
