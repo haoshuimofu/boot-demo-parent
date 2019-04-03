@@ -159,7 +159,9 @@
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+               enableUpdateByExample="false">
+            <generatedKey column="id" sqlStatement="MYSQL" identity="true"/>
+        </table>
         <!--<table tableName="store_inspection_rectify"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->

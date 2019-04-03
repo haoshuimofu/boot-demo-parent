@@ -28,6 +28,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         if (introspectedColumn.isAutoIncrement()) {
             introspectedColumn.setGeneratedAlways(true);
         }
+//        super.tableConfiguration.setGeneratedKey();
         super.addColumn(introspectedColumn);
     }
 
