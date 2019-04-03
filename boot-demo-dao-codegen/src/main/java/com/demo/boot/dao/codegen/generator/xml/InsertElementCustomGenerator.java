@@ -42,16 +42,23 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
         answer.addAttribute(new Attribute("parameterType", parameterType.getFullyQualifiedName()));
         // @mbg.generated
         this.context.getCommentGenerator().addComment(answer);
-        GeneratedKey gk = this.introspectedTable.getGeneratedKey();
-        if (gk != null) {
-            IntrospectedColumn introspectedColumn = this.introspectedTable.getColumn(gk.getColumn());
-            if (introspectedColumn != null) {
-                if (gk.isJdbcStandard()) {
-                    answer.addAttribute(new Attribute("useGeneratedKeys", "true"));
-                    answer.addAttribute(new Attribute("keyProperty", introspectedColumn.getJavaProperty()));
-                    answer.addAttribute(new Attribute("keyColumn", introspectedColumn.getActualColumnName()));
-                } else {
-                    answer.addElement(this.getSelectKey(introspectedColumn, gk));
+        // Mysql：主键只有一自增长列默认useGeneratedKeys设置，以便insert之后返回id
+        if (introspectedTable.getPrimaryKeyColumns().size() == 1 && introspectedTable.getPrimaryKeyColumns().get(0).isGeneratedAlways()) {
+            answer.addAttribute(new Attribute("useGeneratedKeys", "true"));
+            answer.addAttribute(new Attribute("keyProperty", introspectedTable.getPrimaryKeyColumns().get(0).getJavaProperty()));
+            answer.addAttribute(new Attribute("keyColumn", introspectedTable.getPrimaryKeyColumns().get(0).getActualColumnName()));
+        } else {
+            GeneratedKey gk = this.introspectedTable.getGeneratedKey();
+            if (gk != null) {
+                IntrospectedColumn introspectedColumn = this.introspectedTable.getColumn(gk.getColumn());
+                if (introspectedColumn != null) {
+                    if (gk.isJdbcStandard()) {
+                        answer.addAttribute(new Attribute("useGeneratedKeys", "true"));
+                        answer.addAttribute(new Attribute("keyProperty", introspectedColumn.getJavaProperty()));
+                        answer.addAttribute(new Attribute("keyColumn", introspectedColumn.getActualColumnName()));
+                    } else {
+                        answer.addElement(this.getSelectKey(introspectedColumn, gk));
+                    }
                 }
             }
         }
