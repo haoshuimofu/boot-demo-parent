@@ -42,7 +42,7 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         addDeleteByPrimaryKeyElement(answer);
         addDeleteByExampleElement(answer);*/
         // addBaseColumnList sql
-        addBaseColumnListElementToXml(answer);
+        addBaseColumnListElementWithBLOBsElement(answer);
         // addInsertElement(answer);
         addInsertElementToXml(answer);
         // 添加insertList方法
@@ -79,9 +79,9 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         initializeAndExecuteGenerator(elementGenerator, answer);
     }
 
-    private void addBaseColumnListElementToXml(XmlElement answer) {
+    private void addBaseColumnListElementWithBLOBsElement(XmlElement answer) {
         if (introspectedTable.getAllColumns().size() > 0) {
-            AbstractXmlElementGenerator elementGenerator = new BaseColumnListElementGenerator();
+            AbstractXmlElementGenerator elementGenerator = new BaseColumnListWithBLOBsElementGenerator();
             initializeAndExecuteGenerator(elementGenerator, answer);
         }
     }
