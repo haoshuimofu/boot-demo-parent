@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.kanban.StoreInspectionDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.StoreInspection">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
+    <!--@mbg.generated 2019-04-03 16:21:39-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
     <result column="date" jdbcType="INTEGER" property="date" />
@@ -14,11 +14,11 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
+    <!--@mbg.generated 2019-04-03 16:21:39-->
     id, store_id, date, score, status, file_path, inspector, create_itme, update_time
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.kanban.model.StoreInspection" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
+    <!--@mbg.generated 2019-04-03 16:21:39-->
     INSERT INTO store_inspection (
       store_id, date, score, status, file_path, inspector, create_itme, update_time
     ) VALUES (  
@@ -28,7 +28,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
+    <!--@mbg.generated 2019-04-03 16:21:39-->
     INSERT INTO store_inspection (
       store_id, date, score, status, file_path, inspector, create_itme, update_time
     ) VALUES 
@@ -41,12 +41,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
-    SELECT <include refid="Base_Column_List" /> FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-03 16:21:39-->
+    SELECT <include refid="Base_Column_List"/> FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.StoreInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
-    SELECT <include refid="Base_Column_List" /> FROM store_inspection
+    <!--@mbg.generated 2019-04-03 16:21:39-->
+    SELECT <include refid="Base_Column_List"/> FROM store_inspection
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -76,8 +76,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.StoreInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
-    SELECT <include refid="Base_Column_List" /> FROM store_inspection
+    <!--@mbg.generated 2019-04-03 16:21:39-->
+    SELECT <include refid="Base_Column_List"/> FROM store_inspection
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -106,11 +106,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
-    SELECT <include refid="Base_Column_List" /> FROM store_inspection
+    <!--@mbg.generated 2019-04-03 16:21:39-->
+    SELECT <include refid="Base_Column_List"/> FROM store_inspection
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.StoreInspection" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
+    <!--@mbg.generated 2019-04-03 16:21:39-->
     SELECT count(1) FROM store_inspection
     <where>
       <if test="id != null">
@@ -143,11 +143,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
+    <!--@mbg.generated 2019-04-03 16:21:39-->
     DELETE FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.StoreInspection">
-    <!--@mbg.generated 2019-04-03 16:01:53-->
+    <!--@mbg.generated 2019-04-03 16:21:39-->
     UPDATE store_inspection
     <set>
       <if test="storeId != null">

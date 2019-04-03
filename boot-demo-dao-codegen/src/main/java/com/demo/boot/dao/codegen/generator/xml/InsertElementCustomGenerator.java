@@ -42,7 +42,7 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
         answer.addAttribute(new Attribute("parameterType", parameterType.getFullyQualifiedName()));
         // @mbg.generated
         this.context.getCommentGenerator().addComment(answer);
-        // Mysql：主键只有一自增长列默认useGeneratedKeys设置，以便insert之后返回id
+        // Mysql：主键只有一自增长列默认追加useGeneratedKeys设置，以便insert之后返回id
         if (introspectedTable.getPrimaryKeyColumns().size() == 1 && introspectedTable.getPrimaryKeyColumns().get(0).isGeneratedAlways()) {
             answer.addAttribute(new Attribute("useGeneratedKeys", "true"));
             answer.addAttribute(new Attribute("keyProperty", introspectedTable.getPrimaryKeyColumns().get(0).getJavaProperty()));

@@ -160,7 +160,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false">
-            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
             <!--<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />-->
         </table>
         <!--<table tableName="store_inspection_rectify"-->
