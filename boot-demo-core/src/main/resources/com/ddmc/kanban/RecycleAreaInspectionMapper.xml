@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.kanban.RecycleAreaInspectionDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.RecycleAreaInspection">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
+    <!--@mbg.generated 2019-04-04 11:42:07-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
     <result column="date" jdbcType="INTEGER" property="date" />
@@ -10,47 +10,50 @@
     <result column="recycle_area_img" jdbcType="VARCHAR" property="recycleAreaImg" />
     <result column="scrap_area_img" jdbcType="VARCHAR" property="scrapAreaImg" />
     <result column="handle_area_img" jdbcType="VARCHAR" property="handleAreaImg" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
+    <!--@mbg.generated 2019-04-04 11:42:07-->
     id, store_id, date, inspector, recycle_area_img, scrap_area_img, handle_area_img, 
-    create_time, update_time
+    status, finish_time, create_time, update_time
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.kanban.model.RecycleAreaInspection" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
+    <!--@mbg.generated 2019-04-04 11:42:07-->
     INSERT INTO recycle_area_inspection (
-      store_id, date, inspector, recycle_area_img, scrap_area_img, handle_area_img, create_time, 
-      update_time
+      store_id, date, inspector, recycle_area_img, scrap_area_img, handle_area_img, status, 
+      finish_time, create_time, update_time
     ) VALUES (  
       #{storeId,jdbcType=INTEGER}, #{date,jdbcType=INTEGER}, #{inspector,jdbcType=VARCHAR}, 
       #{recycleAreaImg,jdbcType=VARCHAR}, #{scrapAreaImg,jdbcType=VARCHAR}, #{handleAreaImg,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      #{status,jdbcType=INTEGER}, #{finishTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
+    <!--@mbg.generated 2019-04-04 11:42:07-->
     INSERT INTO recycle_area_inspection (
-      store_id, date, inspector, recycle_area_img, scrap_area_img, handle_area_img, create_time, 
-      update_time
+      store_id, date, inspector, recycle_area_img, scrap_area_img, handle_area_img, status, 
+      finish_time, create_time, update_time
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
       (
         #{item.storeId,jdbcType=INTEGER}, #{item.date,jdbcType=INTEGER}, #{item.inspector,jdbcType=VARCHAR}, 
         #{item.recycleAreaImg,jdbcType=VARCHAR}, #{item.scrapAreaImg,jdbcType=VARCHAR}, 
-        #{item.handleAreaImg,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
-        #{item.updateTime,jdbcType=TIMESTAMP}
+        #{item.handleAreaImg,jdbcType=VARCHAR}, #{item.status,jdbcType=INTEGER}, #{item.finishTime,jdbcType=TIMESTAMP}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
       )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
-    SELECT <include refid="Base_Column_List"/> FROM recycle_area_inspection WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-04 11:42:07-->
+    SELECT <include refid="Base_Column_List" /> FROM recycle_area_inspection WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.RecycleAreaInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
-    SELECT <include refid="Base_Column_List"/> FROM recycle_area_inspection
+    <!--@mbg.generated 2019-04-04 11:42:07-->
+    SELECT <include refid="Base_Column_List" /> FROM recycle_area_inspection
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -69,6 +72,12 @@
       </if>
       <if test="handleAreaImg != null">
         AND handle_area_img = #{handleAreaImg,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="finishTime != null">
+        AND finish_time = #{finishTime,jdbcType=TIMESTAMP}
       </if>
       <if test="createTime != null">
         AND create_time = #{createTime,jdbcType=TIMESTAMP}
@@ -80,8 +89,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.RecycleAreaInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
-    SELECT <include refid="Base_Column_List"/> FROM recycle_area_inspection
+    <!--@mbg.generated 2019-04-04 11:42:07-->
+    SELECT <include refid="Base_Column_List" /> FROM recycle_area_inspection
     <where>
       <if test="storeId != null">
         AND store_id = #{storeId,jdbcType=INTEGER}
@@ -101,6 +110,12 @@
       <if test="handleAreaImg != null">
         AND handle_area_img = #{handleAreaImg,jdbcType=VARCHAR}
       </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="finishTime != null">
+        AND finish_time = #{finishTime,jdbcType=TIMESTAMP}
+      </if>
       <if test="createTime != null">
         AND create_time = #{createTime,jdbcType=TIMESTAMP}
       </if>
@@ -110,11 +125,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
-    SELECT <include refid="Base_Column_List"/> FROM recycle_area_inspection
+    <!--@mbg.generated 2019-04-04 11:42:07-->
+    SELECT <include refid="Base_Column_List" /> FROM recycle_area_inspection
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.RecycleAreaInspection" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
+    <!--@mbg.generated 2019-04-04 11:42:07-->
     SELECT count(1) FROM recycle_area_inspection
     <where>
       <if test="id != null">
@@ -138,6 +153,12 @@
       <if test="handleAreaImg != null">
         AND handle_area_img=#{handleAreaImg,jdbcType=VARCHAR}
       </if>
+      <if test="status != null">
+        AND status=#{status,jdbcType=INTEGER}
+      </if>
+      <if test="finishTime != null">
+        AND finish_time=#{finishTime,jdbcType=TIMESTAMP}
+      </if>
       <if test="createTime != null">
         AND create_time=#{createTime,jdbcType=TIMESTAMP}
       </if>
@@ -147,11 +168,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
+    <!--@mbg.generated 2019-04-04 11:42:07-->
     DELETE FROM recycle_area_inspection WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.RecycleAreaInspection">
-    <!--@mbg.generated 2019-04-04 11:26:39-->
+    <!--@mbg.generated 2019-04-04 11:42:07-->
     UPDATE recycle_area_inspection
     <set>
       <if test="storeId != null">
@@ -171,6 +192,12 @@
       </if>
       <if test="handleAreaImg != null">
         handle_area_img = #{handleAreaImg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="finishTime != null">
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
