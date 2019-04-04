@@ -168,11 +168,11 @@
                <!--enableDeleteByExample="false"-->
                <!--enableSelectByExample="false"-->
                <!--enableUpdateByExample="false"/>-->
-        <!--<table tableName="recycle_area_inspection"-->
-        <!--enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <table tableName="recycle_area_inspection"
+        enableCountByExample="false"
+        enableDeleteByExample="false"
+        enableSelectByExample="false"
+        enableUpdateByExample="false"/>
 
         <!--<table tableName="tool_disinfection"-->
         <!--enableCountByExample="false"-->
@@ -186,11 +186,11 @@
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
 
-        <table tableName="pest_inspection"
-        enableCountByExample="false"
-        enableDeleteByExample="false"
-        enableSelectByExample="false"
-        enableUpdateByExample="false"/>
+        <!--<table tableName="pest_inspection"-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
         <!--<table tableName="pest_inspection_mouse"-->
         <!--enableCountByExample="false"-->
         <!--enableDeleteByExample="false"-->
