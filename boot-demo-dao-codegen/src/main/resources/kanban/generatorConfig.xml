@@ -187,21 +187,21 @@
         <!--enableSelectByExample="false"-->
         <!--enableUpdateByExample="false"/>-->
 
-        <!--<table tableName="pest_inspection"-->
-        <!--enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <table tableName="pest_inspection"
+        enableCountByExample="false"
+        enableDeleteByExample="false"
+        enableSelectByExample="false"
+        enableUpdateByExample="false"/>
         <table tableName="pest_inspection_mouse"
         enableCountByExample="false"
         enableDeleteByExample="false"
         enableSelectByExample="false"
         enableUpdateByExample="false"/>
-        <!--<table tableName="pest_inspection_mouse_dict"-->
-        <!--enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
+        <table tableName="pest_inspection_mouse_dict"
+        enableCountByExample="false"
+        enableDeleteByExample="false"
+        enableSelectByExample="false"
+        enableUpdateByExample="false"/>
 
         <!--<table tableName="car_history_data"-->
                <!--enableCountByExample="false"-->
