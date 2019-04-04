@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.kanban.dao.kanban.PestInspectionMouseDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.PestInspectionMouse">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pest_inspection_id" jdbcType="INTEGER" property="pestInspectionId" />
+    <result column="board_name" jdbcType="VARCHAR" property="boardName" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    id, pest_inspection_id, board_name, status, create_time, update_time
+  </sql>
+  <insert id="insert" parameterType="com.ddmc.kanban.model.PestInspectionMouse">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    INSERT INTO pest_inspection_mouse (
+      id, pest_inspection_id, board_name, status, create_time, update_time
+    ) VALUES (  
+      #{id,jdbcType=INTEGER}, #{pestInspectionId,jdbcType=INTEGER}, #{boardName,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    INSERT INTO pest_inspection_mouse (
+      id, pest_inspection_id, board_name, status, create_time, update_time
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.id,jdbcType=INTEGER}, #{item.pestInspectionId,jdbcType=INTEGER}, #{item.boardName,jdbcType=VARCHAR}, 
+        #{item.status,jdbcType=BIT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection_mouse WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.kanban.model.PestInspectionMouse" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection_mouse
+    <where>
+      <if test="pestInspectionId != null">
+        AND pest_inspection_id = #{pestInspectionId,jdbcType=INTEGER}
+      </if>
+      <if test="boardName != null">
+        AND board_name = #{boardName,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.kanban.model.PestInspectionMouse" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection_mouse
+    <where>
+      <if test="pestInspectionId != null">
+        AND pest_inspection_id = #{pestInspectionId,jdbcType=INTEGER}
+      </if>
+      <if test="boardName != null">
+        AND board_name = #{boardName,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    SELECT <include refid="Base_Column_List"/> FROM pest_inspection_mouse
+  </select>
+  <select id="count" parameterType="com.ddmc.kanban.model.PestInspectionMouse" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    SELECT count(1) FROM pest_inspection_mouse
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="pestInspectionId != null">
+        AND pest_inspection_id=#{pestInspectionId,jdbcType=INTEGER}
+      </if>
+      <if test="boardName != null">
+        AND board_name=#{boardName,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status=#{status,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    DELETE FROM pest_inspection_mouse WHERE id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.ddmc.kanban.model.PestInspectionMouse">
+    <!--@mbg.generated 2019-04-04 10:52:01-->
+    UPDATE pest_inspection_mouse
+    <set>
+      <if test="pestInspectionId != null">
+        pest_inspection_id = #{pestInspectionId,jdbcType=INTEGER},
+      </if>
+      <if test="boardName != null">
+        board_name = #{boardName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
