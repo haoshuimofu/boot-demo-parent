@@ -10,9 +10,9 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.BaseColumnListE
 import java.util.Iterator;
 
 /**
- * sdf
+ * Base_Column_List包含BLOBColumns
  *
- * @Author ddmc
+ * @Author wude
  * @Create 2019-04-03 19:46
  */
 public class BaseColumnListWithBLOBsElementGenerator extends BaseColumnListElementGenerator {
@@ -21,16 +21,14 @@ public class BaseColumnListWithBLOBsElementGenerator extends BaseColumnListEleme
         super();
     }
 
-    /**
-     * 重载方法，使Base_Column_List包括BLOBs
-     * @param parentElement
-     */
     @Override
     public void addElements(XmlElement parentElement) {
         XmlElement answer = new XmlElement("sql");
         answer.addAttribute(new Attribute("id", this.introspectedTable.getBaseColumnListId()));
         this.context.getCommentGenerator().addComment(answer);
         StringBuilder sb = new StringBuilder();
+        // NonBLOBCloumns -> AllColumns
+        // Iterator iter = this.introspectedTable.getNonBLOBColumns().iterator();
         Iterator iter = this.introspectedTable.getAllColumns().iterator();
 
         while(iter.hasNext()) {

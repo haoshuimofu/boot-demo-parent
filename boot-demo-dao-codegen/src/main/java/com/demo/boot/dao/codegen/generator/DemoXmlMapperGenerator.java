@@ -54,7 +54,7 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
     }
 
     private void addResultMapWithBLOBsElementToXml(XmlElement answer) {
-        AbstractXmlElementGenerator elementGenerator = new ResultMapWithBLOBsElementCustomGenerator(false);
+        AbstractXmlElementGenerator elementGenerator = new ResultMapWithBLOBsElementCustomGenerator(true);
         initializeAndExecuteGenerator(elementGenerator, answer);
     }
 
