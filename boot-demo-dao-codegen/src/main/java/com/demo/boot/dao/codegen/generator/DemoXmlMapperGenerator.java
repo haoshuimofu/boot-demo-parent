@@ -6,6 +6,7 @@ import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.AbstractXmlElementGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.ResultMapWithoutBLOBsElementGenerator;
 
 import static org.mybatis.generator.internal.util.messages.Messages.getString;
 
@@ -54,7 +55,7 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
     }
 
     private void addResultMapWithBLOBsElementToXml(XmlElement answer) {
-        AbstractXmlElementGenerator elementGenerator = new ResultMapWithBLOBsElementCustomGenerator(true);
+        AbstractXmlElementGenerator elementGenerator = new ResultMapWithoutBLOBsElementGenerator(true);
         initializeAndExecuteGenerator(elementGenerator, answer);
     }
 
