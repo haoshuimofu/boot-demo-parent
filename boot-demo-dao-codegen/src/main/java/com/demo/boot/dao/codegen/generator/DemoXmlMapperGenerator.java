@@ -30,7 +30,8 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
 
         context.getCommentGenerator().addRootComment(answer);
 
-        addResultMapWithBLOBsElementToXml(answer);
+        // BaseResultMap包含所有列
+        addResultMapWithAllColumns(answer);
         // addBaseColumnList sql：Base_Column_List带BLOBs列, 如text等
         addBaseColumnListElementWithBLOBsElement(answer);
         // addInsertElement(answer);
@@ -54,7 +55,9 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         return answer;
     }
 
-    private void addResultMapWithBLOBsElementToXml(XmlElement answer) {
+    private void addResultMapWithAllColumns(XmlElement answer) {
+        // 插件源码BaseResultMap不包括BLOBColumns，然后有个带BLOBColumns的继承自它。
+        // 其实ResultMapWithoutBLOBsElementGenerator构造函数isSimple=true时BaseResultMap就包含所有列了
         AbstractXmlElementGenerator elementGenerator = new ResultMapWithoutBLOBsElementGenerator(true);
         initializeAndExecuteGenerator(elementGenerator, answer);
     }
