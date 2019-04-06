@@ -30,32 +30,12 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         context.getCommentGenerator().addRootComment(answer);
 
         addResultMapWithBLOBsElementToXml(answer);
-//        addResultMapWithBLOBsElement(answer);
-        /*addResultMapWithBLOBsElement(answer);
-        addExampleWhereClauseElement(answer);
-        addMyBatis3UpdateByExampleWhereClauseElement(answer);
-        addBaseColumnListElement(answer);
-        addBlobColumnListElement(answer);
-        addSelectByExampleWithBLOBsElement(answer);
-        addSelectByExampleWithoutBLOBsElement(answer);
-        addSelectByPrimaryKeyElement(answer);
-        addDeleteByPrimaryKeyElement(answer);
-        addDeleteByExampleElement(answer);*/
         // addBaseColumnList sql：Base_Column_List带BLOBs列, 如text等
         addBaseColumnListElementWithBLOBsElement(answer);
         // addInsertElement(answer);
         addInsertElementToXml(answer);
         // 添加insertList方法
         addInsertList(answer);
-        /*addInsertSelectiveElement(answer);
-        addCountByExampleElement(answer);
-        addUpdateByExampleSelectiveElement(answer);
-        addUpdateByExampleWithBLOBsElement(answer);
-        addUpdateByExampleWithoutBLOBsElement(answer);
-        addUpdateByPrimaryKeySelectiveElement(answer);
-        addUpdateByPrimaryKeyWithBLOBsElement(answer);
-        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);*/
-
         // 添加selectById方法
         addSelectByIdElement(answer);
         // 添加selectOne方法
@@ -70,7 +50,6 @@ public class DemoXmlMapperGenerator extends XMLMapperGenerator {
         addDeleteById(answer);
         // 添加update方法
         addUpdate(answer);
-
         return answer;
     }
 

@@ -28,7 +28,6 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         if (introspectedColumn.isAutoIncrement()) {
             introspectedColumn.setGeneratedAlways(true);
         }
-//        super.tableConfiguration.setGeneratedKey();
         super.addColumn(introspectedColumn);
     }
 
@@ -46,7 +45,8 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
             this.javaModelGenerators.add(javaGenerator);
         }
 
-        // 如果表只有复合主键, 除了生成主键类意外, 还要生成空的Model类
+        // rules的初始化在父类父类中，貌似不太好修改，所以直接就在这里修改逻辑判断
+        // 生生基础记录类，即使表只有符合主键列，也要生产的空类基础主键对象
         // if (this.getRules().generateBaseRecordClass()) {
         if (true) {
             AbstractJavaGenerator javaGenerator = new BaseRecordGenerator();
@@ -76,7 +76,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         } else {
             xmlMapperGenerator = javaClientGenerator.getMatchedXMLGenerator();
         }*/
-        // 自定义实现XmlMapperGenerator
+        // 自定义XmlMapperGenerator
         xmlMapperGenerator = new DemoXmlMapperGenerator();
         initializeAbstractGenerator(xmlMapperGenerator, warnings, progressCallback);
     }
