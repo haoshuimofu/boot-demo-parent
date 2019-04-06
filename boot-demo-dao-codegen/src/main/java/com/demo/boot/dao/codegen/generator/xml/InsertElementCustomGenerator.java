@@ -74,14 +74,15 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
 
         List<IntrospectedColumn> columns = ListUtilities.removeIdentityAndGeneratedAlwaysColumns(this.introspectedTable.getAllColumns());
         for (int i = 0; i < columns.size(); i++) {
-            insertClause.append(MyBatis3FormattingUtilities.getEscapedColumnName(columns.get(i)));
+            IntrospectedColumn column = columns.get(i);
+            insertClause.append(column.getActualColumnName());
             if (i != columns.size() - 1) {
                 insertClause.append(", ");
             }
             if (insertClause.length() > 80) {
                 answer.addElement(new TextElement(insertClause.toString()));
                 insertClause.setLength(0);
-                if (i != 0) {
+                if (i != columns.size() - 1) {
                     OutputUtilities.xmlIndent(insertClause, 1);
                 }
             }
