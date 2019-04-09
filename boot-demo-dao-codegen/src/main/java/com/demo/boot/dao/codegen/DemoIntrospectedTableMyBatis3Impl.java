@@ -10,6 +10,7 @@ import org.mybatis.generator.codegen.mybatis3.model.BaseRecordGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.PrimaryKeyGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.RecordWithBLOBsGenerator;
+import org.mybatis.generator.internal.rules.Rules;
 import org.mybatis.generator.internal.util.StringUtility;
 
 import java.util.List;
@@ -30,6 +31,14 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         }
         super.addColumn(introspectedColumn);
     }
+
+    @Override
+    public void setRules(Rules rules) {
+        rules.generateExampleClass();
+        super.setRules(rules);
+    }
+
+
 
     @Override
     protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {

@@ -67,15 +67,8 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="t_users" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="t_roles" domainObjectName="Role" enableCountByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="t_user_role" domainObjectName="UserRole" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <table tableName="t_users" domainObjectName="User"/>
+        <table tableName="t_roles" domainObjectName="Role"/>
+        <table tableName="t_user_role" domainObjectName="UserRole"/>
     </context>
 </generatorConfiguration>
