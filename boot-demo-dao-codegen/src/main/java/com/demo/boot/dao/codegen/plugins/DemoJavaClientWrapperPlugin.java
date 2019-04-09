@@ -81,6 +81,7 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
         // 清空Dao源文件Method和Annotation
         interfaze.getAnnotations().clear();
         interfaze.getMethods().clear();
+        interfaze.getImportedTypes().clear();
 
         // 生成注释
         CommentGenerator commentGenerator = introspectedTable.getContext().getCommentGenerator();
