@@ -61,13 +61,10 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
 
     @Override
     public boolean modelPrimaryKeyClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        File modelFile = new File(modelTargetProject + "/" +
-                modelTargetPackage.replaceAll("\\.", "\\/") + "/" + introspectedTable.getPrimaryKeyType() + ".java");
-        System.out.println(modelFile.getAbsolutePath() + " --------> " + modelFile.exists());
-        if (modelFile.exists()) {
-            return false;
-        }
-        return false;
+        File modelKeyJavaFile = new File(modelTargetProject + "/" +
+                introspectedTable.getPrimaryKeyType().replaceAll("\\.", "\\/") + ".java");
+        System.out.println(modelKeyJavaFile.getAbsolutePath() + " ---> [" + introspectedTable.getBaseRecordType() + "]主键类已存在!");
+        return super.modelPrimaryKeyClassGenerated(topLevelClass, introspectedTable);
     }
 
     @Override
@@ -75,8 +72,9 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
 
         File javaClientFile = new File(javaClientTargetProject + "/" +
                 javaClientTargetPackage.replaceAll("\\.", "\\/") + "/" + interfaze.getType().getShortName() + ".java");
-        // 如果Dao对应的.java源文件已经存在则跳过，因为可能Dao里面已经有一些自定义接口了，当然接口的sqlMap在ModelExtMapper.xml文件里
+        // 如果Dao对应的.java源文件已经存在则跳过，因为Dao里面可能已经有一些自定义接口了
         if (javaClientFile.exists()) {
+            System.out.println(javaClientFile.getAbsolutePath() + " ---> [" + introspectedTable.getBaseRecordType() + "]Dao接口类已存在!");
             return false;
         }
 
@@ -103,11 +101,9 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
         importType(interfaze, modelJavaType);
         parentInterface.addTypeArgument(modelJavaType);
         FullyQualifiedJavaType idJavaType = null;
-        if (introspectedTable.getPrimaryKeyColumns().size() > 1) {
+        if (introspectedTable.getRules().generatePrimaryKeyClass()) {
             idJavaType = new FullyQualifiedJavaType(introspectedTable.getPrimaryKeyType());
             importType(interfaze, idJavaType);
-        } else {
-            idJavaType = introspectedTable.getPrimaryKeyColumns().get(0).getFullyQualifiedJavaType();
         }
         interfaze.addImportedType(parentInterface);
         parentInterface.addTypeArgument(idJavaType);
