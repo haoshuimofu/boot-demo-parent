@@ -86,21 +86,13 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
      */
     @Override
     protected void calculateXmlMapperGenerator(AbstractJavaClientGenerator javaClientGenerator, List<String> warnings, ProgressCallback progressCallback) {
-        /*if (javaClientGenerator == null) {
-            if (context.getSqlMapGeneratorConfiguration() != null) {
-                xmlMapperGenerator = new XMLMapperGenerator();
-            }
-        } else {
-            xmlMapperGenerator = javaClientGenerator.getMatchedXMLGenerator();
-        }*/
-        // 自定义XmlMapperGenerator
-        xmlMapperGenerator = new DemoXmlMapperGenerator();
+        // 自定义XmlMapperGenerator实现
+        this.xmlMapperGenerator = new DemoXmlMapperGenerator();
         initializeAbstractGenerator(xmlMapperGenerator, warnings, progressCallback);
     }
 
-
     /**
-     * 重写IntrospectedTable.calculateJavaClientAttributes方法, 主要是将XxMapper命名为XxDao
+     * 将ModelMapper接口修改成ModelDao
      */
     @Override
     protected void calculateJavaClientAttributes() {
