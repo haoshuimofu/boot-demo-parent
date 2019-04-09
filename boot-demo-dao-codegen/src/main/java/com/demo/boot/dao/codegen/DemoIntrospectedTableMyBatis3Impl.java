@@ -63,7 +63,8 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
             this.javaModelGenerators.add(javaGenerator);
         }
 
-        if (this.getRules().generateRecordWithBLOBsClass()) {
+        // if (this.getRules().generateRecordWithBLOBsClass()) {
+        if (false) {
             AbstractJavaGenerator javaGenerator = new RecordWithBLOBsGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
             this.javaModelGenerators.add(javaGenerator);
