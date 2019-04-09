@@ -39,10 +39,10 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
     }
 
 
-
     @Override
     protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
-        if (this.getRules().generateExampleClass()) {
+        // if (this.getRules().generateExampleClass()) {
+        if (false) {
             AbstractJavaGenerator javaGenerator = new ExampleGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
             this.javaModelGenerators.add(javaGenerator);
