@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ModelMapperExt.xml生成器插件, 用于生成Dao对应的扩展xml文件
+ * ModelMapperExt.xml：ModelDao中自定义接口的sqlMap实现
  *
  * @author wude
  * @create 2018-04-19 17:10

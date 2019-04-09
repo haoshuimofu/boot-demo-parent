@@ -76,13 +76,7 @@
         <!--<columnOverride column="propertys" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
         <!--<columnOverride column="basketNum" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
         <!--</table>-->
-        <!--<table tableName="store_product_batch" domainObjectName="StoreProductBatch" enableCountByExample="false"-->
-        <!--enableDeleteByExample="false"-->
-        <!--enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false"/>-->
-        <table tableName="general_package" domainObjectName="GeneralPackage" enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+        <table tableName="store_product_batch"/>
+
     </context>
 </generatorConfiguration>
