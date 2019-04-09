@@ -78,7 +78,7 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
             return false;
         }
 
-        // 清空Dao源文件Method和Annotation
+        // 清空Dao源文件import,Annotation和method
         interfaze.getAnnotations().clear();
         interfaze.getMethods().clear();
         interfaze.getImportedTypes().clear();
