@@ -2,50 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.kanban.StoreInspectionDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.StoreInspection">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
     <result column="date" jdbcType="INTEGER" property="date" />
-    <result column="score" jdbcType="INTEGER" property="score" />
-    <result column="status" jdbcType="INTEGER" property="status" />
     <result column="file_path" jdbcType="VARCHAR" property="filePath" />
-    <result column="inspector" jdbcType="VARCHAR" property="inspector" />
+    <result column="upload_user" jdbcType="VARCHAR" property="uploadUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
-    id, store_id, date, score, status, file_path, inspector, create_time, update_time
+    <!--@mbg.generated 2019-04-09 16:50:21-->
+    id, store_id, date, file_path, upload_user, create_time, update_time
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.kanban.model.StoreInspection" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     INSERT INTO store_inspection (
-      store_id, date, score, status, file_path, inspector, create_time, update_time
+      store_id, date, file_path, upload_user, create_time, update_time
     ) VALUES (  
-      #{storeId,jdbcType=INTEGER}, #{date,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{filePath,jdbcType=VARCHAR}, #{inspector,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      #{storeId,jdbcType=INTEGER}, #{date,jdbcType=INTEGER}, #{filePath,jdbcType=VARCHAR}, 
+      #{uploadUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     INSERT INTO store_inspection (
-      store_id, date, score, status, file_path, inspector, create_time, update_time
+      store_id, date, file_path, upload_user, create_time, update_time
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
       (
-        #{item.storeId,jdbcType=INTEGER}, #{item.date,jdbcType=INTEGER}, #{item.score,jdbcType=INTEGER}, 
-        #{item.status,jdbcType=INTEGER}, #{item.filePath,jdbcType=VARCHAR}, #{item.inspector,jdbcType=VARCHAR}, 
-        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+        #{item.storeId,jdbcType=INTEGER}, #{item.date,jdbcType=INTEGER}, #{item.filePath,jdbcType=VARCHAR}, 
+        #{item.uploadUser,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
       )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     SELECT <include refid="Base_Column_List" /> FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.StoreInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     SELECT <include refid="Base_Column_List" /> FROM store_inspection
     <where>
       <if test="storeId != null">
@@ -54,17 +50,11 @@
       <if test="date != null">
         AND date = #{date,jdbcType=INTEGER}
       </if>
-      <if test="score != null">
-        AND score = #{score,jdbcType=INTEGER}
-      </if>
-      <if test="status != null">
-        AND status = #{status,jdbcType=INTEGER}
-      </if>
       <if test="filePath != null">
         AND file_path = #{filePath,jdbcType=VARCHAR}
       </if>
-      <if test="inspector != null">
-        AND inspector = #{inspector,jdbcType=VARCHAR}
+      <if test="uploadUser != null">
+        AND upload_user = #{uploadUser,jdbcType=VARCHAR}
       </if>
       <if test="createTime != null">
         AND create_time = #{createTime,jdbcType=TIMESTAMP}
@@ -76,7 +66,7 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.StoreInspection" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     SELECT <include refid="Base_Column_List" /> FROM store_inspection
     <where>
       <if test="storeId != null">
@@ -85,17 +75,11 @@
       <if test="date != null">
         AND date = #{date,jdbcType=INTEGER}
       </if>
-      <if test="score != null">
-        AND score = #{score,jdbcType=INTEGER}
-      </if>
-      <if test="status != null">
-        AND status = #{status,jdbcType=INTEGER}
-      </if>
       <if test="filePath != null">
         AND file_path = #{filePath,jdbcType=VARCHAR}
       </if>
-      <if test="inspector != null">
-        AND inspector = #{inspector,jdbcType=VARCHAR}
+      <if test="uploadUser != null">
+        AND upload_user = #{uploadUser,jdbcType=VARCHAR}
       </if>
       <if test="createTime != null">
         AND create_time = #{createTime,jdbcType=TIMESTAMP}
@@ -106,11 +90,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     SELECT <include refid="Base_Column_List" /> FROM store_inspection
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.StoreInspection" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     SELECT count(1) FROM store_inspection
     <where>
       <if test="id != null">
@@ -122,17 +106,11 @@
       <if test="date != null">
         AND date=#{date,jdbcType=INTEGER}
       </if>
-      <if test="score != null">
-        AND score=#{score,jdbcType=INTEGER}
-      </if>
-      <if test="status != null">
-        AND status=#{status,jdbcType=INTEGER}
-      </if>
       <if test="filePath != null">
         AND file_path=#{filePath,jdbcType=VARCHAR}
       </if>
-      <if test="inspector != null">
-        AND inspector=#{inspector,jdbcType=VARCHAR}
+      <if test="uploadUser != null">
+        AND upload_user=#{uploadUser,jdbcType=VARCHAR}
       </if>
       <if test="createTime != null">
         AND create_time=#{createTime,jdbcType=TIMESTAMP}
@@ -143,11 +121,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     DELETE FROM store_inspection WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.StoreInspection">
-    <!--@mbg.generated 2019-04-08 13:30:01-->
+    <!--@mbg.generated 2019-04-09 16:50:21-->
     UPDATE store_inspection
     <set>
       <if test="storeId != null">
@@ -156,17 +134,11 @@
       <if test="date != null">
         date = #{date,jdbcType=INTEGER},
       </if>
-      <if test="score != null">
-        score = #{score,jdbcType=INTEGER},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
       <if test="filePath != null">
         file_path = #{filePath,jdbcType=VARCHAR},
       </if>
-      <if test="inspector != null">
-        inspector = #{inspector,jdbcType=VARCHAR},
+      <if test="uploadUser != null">
+        upload_user = #{uploadUser,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
