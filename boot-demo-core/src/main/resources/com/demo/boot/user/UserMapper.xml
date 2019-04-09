@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.boot.user.dao.UserDao">
   <resultMap id="BaseResultMap" type="com.demo.boot.user.model.User">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
@@ -16,11 +16,11 @@
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     id, name, register_time, age, field1, field2, field3, field4, field5, field6, description
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.demo.boot.user.model.User" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     INSERT INTO t_users (
       name, register_time, age, field1, field2, field3, field4, field5, field6, description
     ) VALUES (  
@@ -31,7 +31,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     INSERT INTO t_users (
       name, register_time, age, field1, field2, field3, field4, field5, field6, description
     ) VALUES 
@@ -45,11 +45,11 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     SELECT <include refid="Base_Column_List" /> FROM t_users WHERE id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectOne" parameterType="com.demo.boot.user.model.User" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     SELECT <include refid="Base_Column_List" /> FROM t_users
     <where>
       <if test="name != null">
@@ -86,7 +86,7 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.demo.boot.user.model.User" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     SELECT <include refid="Base_Column_List" /> FROM t_users
     <where>
       <if test="name != null">
@@ -122,11 +122,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     SELECT <include refid="Base_Column_List" /> FROM t_users
   </select>
   <select id="count" parameterType="com.demo.boot.user.model.User" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     SELECT count(1) FROM t_users
     <where>
       <if test="id != null">
@@ -165,11 +165,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     DELETE FROM t_users WHERE id = #{id,jdbcType=BIGINT}
   </delete>
   <update id="update" parameterType="com.demo.boot.user.model.User">
-    <!--@mbg.generated 2019-04-09 13:38:25-->
+    <!--@mbg.generated 2019-04-09 14:24:56-->
     UPDATE t_users
     <set>
       <if test="name != null">

@@ -10,6 +10,7 @@ import org.mybatis.generator.codegen.mybatis3.model.BaseRecordGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.PrimaryKeyGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.RecordWithBLOBsGenerator;
+import org.mybatis.generator.internal.rules.ConditionalModelRules;
 import org.mybatis.generator.internal.rules.Rules;
 import org.mybatis.generator.internal.util.StringUtility;
 
@@ -32,16 +33,26 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         super.addColumn(introspectedColumn);
     }
 
+    /**
+     * 直接设置modelType-conditional
+     * <p>作用类似在generatorConfig.xml中针对具体表设置<table tableName="t_users" domainObjectName="User" modelType="conditional"/></p>
+     * <p>各种ModelType定义区别参考@See {@link org.mybatis.generator.config.ModelType}</p>
+     * <p>{@link com.demo.boot.dao.codegen.DemoIntrospectedTableMyBatis3Impl#calculateJavaModelGenerators(java.util.List, org.mybatis.generator.api.ProgressCallback)}</p>
+     *
+     * @param rules
+     */
     @Override
     public void setRules(Rules rules) {
-        rules.generateExampleClass();
-        super.setRules(rules);
+        ConditionalModelRules realRules = new ConditionalModelRules(this);
+        // 不生成ModelExampleClass，在calculateJavaModelGenerators方法控制
+        // realRules.generateExampleClass();
+        super.setRules(realRules);
     }
-
 
     @Override
     protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
         // if (this.getRules().generateExampleClass()) {
+        // ConditionalModelRules控制不了ModelExampleClass的生成，所以这里控制一下
         if (false) {
             AbstractJavaGenerator javaGenerator = new ExampleGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
@@ -54,17 +65,13 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
             this.javaModelGenerators.add(javaGenerator);
         }
 
-        // rules的初始化在父类父类中，貌似不太好修改，所以直接就在这里修改逻辑判断
-        // 生生基础记录类，即使表只有符合主键列，也要生产的空类基础主键对象
-        // if (this.getRules().generateBaseRecordClass()) {
-        if (true) {
+        if (this.getRules().generateBaseRecordClass()) {
             AbstractJavaGenerator javaGenerator = new BaseRecordGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
             this.javaModelGenerators.add(javaGenerator);
         }
 
-        // if (this.getRules().generateRecordWithBLOBsClass()) {
-        if (false) {
+        if (this.getRules().generateRecordWithBLOBsClass()) {
             AbstractJavaGenerator javaGenerator = new RecordWithBLOBsGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
             this.javaModelGenerators.add(javaGenerator);

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * @Author ddmc
  * @Datetime 2019-03-26 15:09:58
  * @mbg.generated 2019-03-26 15:09:58
-*/
+ */
 @Repository
 public interface UserDao extends BaseDao<User, Integer> {
 }
