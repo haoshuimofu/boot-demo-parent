@@ -24,9 +24,15 @@ import java.util.List;
  */
 public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3Impl {
 
+
+    /**
+     * <p>这里在table添加column的时候设置一下generatedAlways</p>
+     * <p>目的：针对自增长列设置generatedAlways=true，这样自增长列就不会出现在insert语句中了</p>
+     *
+     * @param introspectedColumn
+     */
     @Override
     public void addColumn(IntrospectedColumn introspectedColumn) {
-        // 为了让自增长列不出现在Insert语句中
         if (introspectedColumn.isAutoIncrement()) {
             introspectedColumn.setGeneratedAlways(true);
         }
@@ -133,6 +139,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
             this.setMyBatis3SqlProviderType(sb.toString());
         }
     }
+
 }
 
 
