@@ -66,6 +66,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
+        <javaTypeResolver type="com.demo.boot.dao.codegen.resolver.DemoJavaTypeResolver">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
         <!--!!!! Table Configurations !!!!-->
         <!--<table tableName="product" domainObjectName="Product" enableCountByExample="false" enableDeleteByExample="false"-->
         <!--enableSelectByExample="false"-->
@@ -156,12 +160,12 @@
 
 
         <table tableName="store_inspection"
-        enableCountByExample="false"
-        enableDeleteByExample="false"
-        enableSelectByExample="false"
-        enableUpdateByExample="false">
-        <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
-        <!--<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />-->
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<generatedKey column="ID" sqlStatement="MYSQL" identity="true" />-->
         </table>
         <table tableName="store_inspection_rectify"
                enableCountByExample="false"
@@ -204,10 +208,10 @@
         <!--enableUpdateByExample="false"/>-->
 
         <!--<table tableName="car_history_data"-->
-               <!--enableCountByExample="false"-->
-               <!--enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false"-->
-               <!--enableUpdateByExample="false"/>-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
 
 
         <!--<table tableName="refri_house_avg_temp"-->
@@ -258,10 +262,10 @@
 
 
         <!--<table tableName="tool_disinfection_dict"-->
-               <!--enableCountByExample="false"-->
-               <!--enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false"-->
-               <!--enableUpdateByExample="false"/>-->
+        <!--enableCountByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--enableUpdateByExample="false"/>-->
 
     </context>
 </generatorConfiguration>
