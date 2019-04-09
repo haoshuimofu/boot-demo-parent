@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.kanban.PestInspectionMouseDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.PestInspectionMouse">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="inspection_id" jdbcType="INTEGER" property="inspectionId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -11,11 +11,11 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     id, inspection_id, name, status, create_time, update_time
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.kanban.model.PestInspectionMouse" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     INSERT INTO pest_inspection_mouse (
       inspection_id, name, status, create_time, update_time
     ) VALUES (  
@@ -24,7 +24,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     INSERT INTO pest_inspection_mouse (
       inspection_id, name, status, create_time, update_time
     ) VALUES 
@@ -36,11 +36,11 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     SELECT <include refid="Base_Column_List" /> FROM pest_inspection_mouse WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.PestInspectionMouse" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     SELECT <include refid="Base_Column_List" /> FROM pest_inspection_mouse
     <where>
       <if test="inspectionId != null">
@@ -62,7 +62,7 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.PestInspectionMouse" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     SELECT <include refid="Base_Column_List" /> FROM pest_inspection_mouse
     <where>
       <if test="inspectionId != null">
@@ -83,11 +83,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     SELECT <include refid="Base_Column_List" /> FROM pest_inspection_mouse
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.PestInspectionMouse" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     SELECT count(1) FROM pest_inspection_mouse
     <where>
       <if test="id != null">
@@ -111,11 +111,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     DELETE FROM pest_inspection_mouse WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.PestInspectionMouse">
-    <!--@mbg.generated 2019-04-04 14:06:56-->
+    <!--@mbg.generated 2019-04-09 17:36:26-->
     UPDATE pest_inspection_mouse
     <set>
       <if test="inspectionId != null">
