@@ -105,6 +105,8 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
         if (introspectedTable.getRules().generatePrimaryKeyClass()) {
             idJavaType = new FullyQualifiedJavaType(introspectedTable.getPrimaryKeyType());
             importType(interfaze, idJavaType);
+        } else {
+            idJavaType = introspectedTable.getPrimaryKeyColumns().get(0).getFullyQualifiedJavaType();
         }
         interfaze.addImportedType(parentInterface);
         parentInterface.addTypeArgument(idJavaType);

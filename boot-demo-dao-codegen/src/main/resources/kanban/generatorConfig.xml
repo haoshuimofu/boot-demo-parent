@@ -73,6 +73,7 @@
         <!--!!!! Table Configurations !!!!-->
 
         <!--<table tableName="store_inspection"/>-->
-        <table tableName="pest_inspection_mouse"/>
+        <!--<table tableName="pest_inspection_mouse"/>-->
+        <table tableName="product_monitor"/>
     </context>
 </generatorConfiguration>

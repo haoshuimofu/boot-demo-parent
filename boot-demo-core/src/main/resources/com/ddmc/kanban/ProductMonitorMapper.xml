@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.kanban.dao.kanban.ProductMonitorDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.ProductMonitor">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="sku_sum" jdbcType="INTEGER" property="skuSum" />
+    <result column="total" jdbcType="INTEGER" property="total" />
+    <result column="exe_start_time" jdbcType="TIMESTAMP" property="exeStartTime" />
+    <result column="exe_end_time" jdbcType="TIMESTAMP" property="exeEndTime" />
+    <result column="count_time" jdbcType="INTEGER" property="countTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="is_corrected" jdbcType="INTEGER" property="isCorrected" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    id, type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, 
+    update_time, version, is_corrected
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.kanban.model.ProductMonitor" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    INSERT INTO product_monitor (
+      type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, update_time, 
+      version, is_corrected
+    ) VALUES (  
+      #{type,jdbcType=SMALLINT}, #{skuSum,jdbcType=INTEGER}, #{total,jdbcType=INTEGER}, 
+      #{exeStartTime,jdbcType=TIMESTAMP}, #{exeEndTime,jdbcType=TIMESTAMP}, #{countTime,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, 
+      #{isCorrected,jdbcType=INTEGER}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    INSERT INTO product_monitor (
+      type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, update_time, 
+      version, is_corrected
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.type,jdbcType=SMALLINT}, #{item.skuSum,jdbcType=INTEGER}, #{item.total,jdbcType=INTEGER}, 
+        #{item.exeStartTime,jdbcType=TIMESTAMP}, #{item.exeEndTime,jdbcType=TIMESTAMP}, 
+        #{item.countTime,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, 
+        #{item.version,jdbcType=INTEGER}, #{item.isCorrected,jdbcType=INTEGER}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    SELECT <include refid="Base_Column_List"/> FROM product_monitor WHERE id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.kanban.model.ProductMonitor" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    SELECT <include refid="Base_Column_List"/> FROM product_monitor
+    <where>
+      <if test="type != null">
+        AND type = #{type,jdbcType=SMALLINT}
+      </if>
+      <if test="skuSum != null">
+        AND sku_sum = #{skuSum,jdbcType=INTEGER}
+      </if>
+      <if test="total != null">
+        AND total = #{total,jdbcType=INTEGER}
+      </if>
+      <if test="exeStartTime != null">
+        AND exe_start_time = #{exeStartTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="exeEndTime != null">
+        AND exe_end_time = #{exeEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="countTime != null">
+        AND count_time = #{countTime,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="version != null">
+        AND version = #{version,jdbcType=INTEGER}
+      </if>
+      <if test="isCorrected != null">
+        AND is_corrected = #{isCorrected,jdbcType=INTEGER}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.kanban.model.ProductMonitor" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    SELECT <include refid="Base_Column_List"/> FROM product_monitor
+    <where>
+      <if test="type != null">
+        AND type = #{type,jdbcType=SMALLINT}
+      </if>
+      <if test="skuSum != null">
+        AND sku_sum = #{skuSum,jdbcType=INTEGER}
+      </if>
+      <if test="total != null">
+        AND total = #{total,jdbcType=INTEGER}
+      </if>
+      <if test="exeStartTime != null">
+        AND exe_start_time = #{exeStartTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="exeEndTime != null">
+        AND exe_end_time = #{exeEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="countTime != null">
+        AND count_time = #{countTime,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="version != null">
+        AND version = #{version,jdbcType=INTEGER}
+      </if>
+      <if test="isCorrected != null">
+        AND is_corrected = #{isCorrected,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    SELECT <include refid="Base_Column_List"/> FROM product_monitor
+  </select>
+  <select id="count" parameterType="com.ddmc.kanban.model.ProductMonitor" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    SELECT count(1) FROM product_monitor
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="type != null">
+        AND type=#{type,jdbcType=SMALLINT}
+      </if>
+      <if test="skuSum != null">
+        AND sku_sum=#{skuSum,jdbcType=INTEGER}
+      </if>
+      <if test="total != null">
+        AND total=#{total,jdbcType=INTEGER}
+      </if>
+      <if test="exeStartTime != null">
+        AND exe_start_time=#{exeStartTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="exeEndTime != null">
+        AND exe_end_time=#{exeEndTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="countTime != null">
+        AND count_time=#{countTime,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="version != null">
+        AND version=#{version,jdbcType=INTEGER}
+      </if>
+      <if test="isCorrected != null">
+        AND is_corrected=#{isCorrected,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    DELETE FROM product_monitor WHERE id = #{id,jdbcType=BIGINT}
+  </delete>
+  <update id="update" parameterType="com.ddmc.kanban.model.ProductMonitor">
+    <!--@mbg.generated 2019-04-11 15:52:40-->
+    UPDATE product_monitor
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="skuSum != null">
+        sku_sum = #{skuSum,jdbcType=INTEGER},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=INTEGER},
+      </if>
+      <if test="exeStartTime != null">
+        exe_start_time = #{exeStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exeEndTime != null">
+        exe_end_time = #{exeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countTime != null">
+        count_time = #{countTime,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="isCorrected != null">
+        is_corrected = #{isCorrected,jdbcType=INTEGER},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
