@@ -8,9 +8,7 @@ import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
-import org.springframework.util.ResourceUtils;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,22 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * <p></p>
+ *
  * @Author ddmc
  * @Create 2019-04-12 10:27
  */
 public class DemoMybatisGenerator1 {
 
-    private static final String USER_MODULE_CONFIG = "classpath:user/generatorConfig.xml";
-    private static final String BUSINESS_MODULE_CONFIG = "classpath:business/generatorConfig.xml";
-    private static final String KANBAN_MODULE_CONFIG = "classpath:kanban/generatorConfig.xml";
-    private static final String SCM_MODULE_CONFIG = "classpath:scm/generatorConfig.xml";
+    private static final String USER_MODULE_CONFIG = "user/generatorConfig.xml";
+    private static final String BUSINESS_MODULE_CONFIG = "business/generatorConfig.xml";
+    private static final String KANBAN_MODULE_CONFIG = "kanban/generatorConfig.xml";
+    private static final String SCM_MODULE_CONFIG = "scm/generatorConfig.xml";
 
     public static void main(String[] args) throws FileNotFoundException {
 
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
-        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("user.generatorConfig.xml");
-        File configFile = ResourceUtils.getFile(KANBAN_MODULE_CONFIG);
+        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(KANBAN_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;
         try {
@@ -53,7 +52,6 @@ public class DemoMybatisGenerator1 {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-//            }
             }
         }
     }
