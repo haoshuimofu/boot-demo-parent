@@ -38,7 +38,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
     @Override
     public void addColumn(IntrospectedColumn introspectedColumn) {
         if (introspectedColumn.isAutoIncrement()) {
-//            introspectedColumn.setGeneratedAlways(true);
+            introspectedColumn.setGeneratedAlways(true);
         }
         super.addColumn(introspectedColumn);
     }
