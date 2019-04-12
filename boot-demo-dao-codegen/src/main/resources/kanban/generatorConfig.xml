@@ -74,6 +74,6 @@
 
         <!--<table tableName="store_inspection"/>-->
         <!--<table tableName="pest_inspection_mouse"/>-->
-        <table tableName="product_monitor"/>
+        <table tableName="product_monitor_pid_temp"/>
     </context>
 </generatorConfiguration>
