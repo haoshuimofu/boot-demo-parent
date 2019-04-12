@@ -9,7 +9,6 @@ import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -29,9 +28,9 @@ public class DemoMybatisGenerator1 {
     private static final String KANBAN_MODULE_CONFIG = "kanban/generatorConfig.xml";
     private static final String SCM_MODULE_CONFIG = "scm/generatorConfig.xml";
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
-        List<String> warnings = new ArrayList<String>();
+        List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
         InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(KANBAN_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);

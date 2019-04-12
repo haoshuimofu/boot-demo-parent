@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.kanban.dao.kanban.ProductMonitorDao">
   <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.ProductMonitor">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="SMALLINT" property="type" />
     <result column="sku_sum" jdbcType="INTEGER" property="skuSum" />
@@ -16,12 +16,12 @@
     <result column="is_corrected" jdbcType="INTEGER" property="isCorrected" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     id, type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, 
     update_time, version, is_corrected
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.kanban.model.ProductMonitor" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     INSERT INTO product_monitor (
       type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, update_time, 
       version, is_corrected
@@ -33,7 +33,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     INSERT INTO product_monitor (
       type, sku_sum, total, exe_start_time, exe_end_time, count_time, create_time, update_time, 
       version, is_corrected
@@ -48,11 +48,11 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     SELECT <include refid="Base_Column_List" /> FROM product_monitor WHERE id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectOne" parameterType="com.ddmc.kanban.model.ProductMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     SELECT <include refid="Base_Column_List" /> FROM product_monitor
     <where>
       <if test="type != null">
@@ -89,7 +89,7 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.kanban.model.ProductMonitor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     SELECT <include refid="Base_Column_List" /> FROM product_monitor
     <where>
       <if test="type != null">
@@ -125,11 +125,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     SELECT <include refid="Base_Column_List" /> FROM product_monitor
   </select>
   <select id="count" parameterType="com.ddmc.kanban.model.ProductMonitor" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     SELECT count(1) FROM product_monitor
     <where>
       <if test="id != null">
@@ -168,11 +168,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     DELETE FROM product_monitor WHERE id = #{id,jdbcType=BIGINT}
   </delete>
   <update id="update" parameterType="com.ddmc.kanban.model.ProductMonitor">
-    <!--@mbg.generated 2019-04-12 10:25:31-->
+    <!--@mbg.generated 2019-04-12 10:34:16-->
     UPDATE product_monitor
     <set>
       <if test="type != null">

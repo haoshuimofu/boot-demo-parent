@@ -32,34 +32,22 @@ public class DemoMybatisGenerator {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        List<String> warnings = new ArrayList<String>();
+        List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
-//        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("user.generatorConfig.xml");
         File configFile = ResourceUtils.getFile(KANBAN_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;
         try {
             config = cp.parseConfiguration(configFile);
-//            config = cp.parseConfiguration(inputStream);
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
 
             ProgressCallback progressCallback = new NullProgressCallback();
             // progressCallback = new VerboseProgressCallback(); // 详细处理回调
             myBatisGenerator.generate(progressCallback);
-//            myBatisGenerator.generate(null);
         } catch (IOException | XMLParserException | InvalidConfigurationException | InterruptedException | SQLException e) {
             e.printStackTrace();
-        } finally {
-//            if (inputStream != null) {
-//                try {
-//                    inputStream.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
         }
-
     }
 
 }
