@@ -48,14 +48,13 @@ public class UserDaoConfiguration {
         }
     }
 
-    @Bean
+    @Bean(name = "userSqlSessionTemplate")
     public SqlSessionTemplate userSqlSessionTemplate(@Qualifier("userSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
-        SqlSessionTemplate template = new SqlSessionTemplate(sqlSessionFactory); // 使用上面配置的Factory
-        return template;
+        return new SqlSessionTemplate(sqlSessionFactory);
     }
 
 
-    @Bean
+    @Bean(name = "userTransactionManager")
     public DataSourceTransactionManager transactionManager(@Qualifier("userDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }

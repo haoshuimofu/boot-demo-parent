@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.boot.order.dao.OrderDao">
   <resultMap id="BaseResultMap" type="com.demo.boot.order.model.Order">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <!--@mbg.generated 2019-04-17 15:19:49-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <!--@mbg.generated 2019-04-17 15:19:49-->
     id, order_no, create_time, update_time
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.demo.boot.order.model.Order" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <!--@mbg.generated 2019-04-17 15:19:49-->
     INSERT INTO t_orders (
       order_no, create_time, update_time
     ) VALUES (  
@@ -21,7 +21,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <!--@mbg.generated 2019-04-17 15:19:49-->
     INSERT INTO t_orders (
       order_no, create_time, update_time
     ) VALUES 
@@ -32,12 +32,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
-    SELECT <include refid="Base_Column_List"/> FROM t_orders WHERE id = #{id,jdbcType=BIGINT}
+    <!--@mbg.generated 2019-04-17 15:19:49-->
+    SELECT <include refid="Base_Column_List" /> FROM t_orders WHERE id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectOne" parameterType="com.demo.boot.order.model.Order" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
-    SELECT <include refid="Base_Column_List"/> FROM t_orders
+    <!--@mbg.generated 2019-04-17 15:19:49-->
+    SELECT <include refid="Base_Column_List" /> FROM t_orders
     <where>
       <if test="orderNo != null">
         AND order_no = #{orderNo,jdbcType=VARCHAR}
@@ -52,8 +52,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.demo.boot.order.model.Order" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
-    SELECT <include refid="Base_Column_List"/> FROM t_orders
+    <!--@mbg.generated 2019-04-17 15:19:49-->
+    SELECT <include refid="Base_Column_List" /> FROM t_orders
     <where>
       <if test="orderNo != null">
         AND order_no = #{orderNo,jdbcType=VARCHAR}
@@ -67,11 +67,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
-    SELECT <include refid="Base_Column_List"/> FROM t_orders
+    <!--@mbg.generated 2019-04-17 15:19:49-->
+    SELECT <include refid="Base_Column_List" /> FROM t_orders
   </select>
   <select id="count" parameterType="com.demo.boot.order.model.Order" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <!--@mbg.generated 2019-04-17 15:19:49-->
     SELECT count(1) FROM t_orders
     <where>
       <if test="id != null">
@@ -89,11 +89,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Long">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <!--@mbg.generated 2019-04-17 15:19:49-->
     DELETE FROM t_orders WHERE id = #{id,jdbcType=BIGINT}
   </delete>
   <update id="update" parameterType="com.demo.boot.order.model.Order">
-    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <!--@mbg.generated 2019-04-17 15:19:49-->
     UPDATE t_orders
     <set>
       <if test="orderNo != null">
