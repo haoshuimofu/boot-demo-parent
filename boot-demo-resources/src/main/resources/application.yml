@@ -4,7 +4,7 @@ server:
 # 激活的spring.profiles
 spring:
   profiles:
-    active: datasource, web
+    active: datasource, web, redis
 # Mybatis
 #mybatis:
 #  config-location: classpath:mybatis-config.xml #为什么用classpath*就报错找不到资源文件了?

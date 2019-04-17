@@ -1,5 +1,6 @@
 package com.demo.boot;
 
+import com.demo.boot.redis.RedisClusterConfigurationProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,8 @@ public class BootDemoWebApplication extends SpringBootServletInitializer {
         ApplicationContext ctx = SpringApplication.run(BootDemoWebApplication.class, args);
         // spring.profiles.active
         logger.info("Spring.profile.active: {}", StringUtils.join(ctx.getEnvironment().getActiveProfiles(), ", "));
+        RedisClusterConfigurationProperties redisClusterConfigurationProperties = ctx.getBean(RedisClusterConfigurationProperties.class);
+        System.out.println(redisClusterConfigurationProperties.getClusterNodes());
 
     }
 

@@ -104,7 +104,6 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <scope>test</scope>
                 <version>4.12</version>
             </dependency>
 
@@ -115,6 +114,14 @@
                 <artifactId>guava</artifactId>
                 <version>27.1-jre</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

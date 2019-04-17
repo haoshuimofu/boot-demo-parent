@@ -1,0 +1,4 @@
+spring:
+  redis:
+    clusterNodes: 127.0.0.1:6000,127.0.0.1:7000,127.0.0.1:8000
+    commandTimeout: 5000
