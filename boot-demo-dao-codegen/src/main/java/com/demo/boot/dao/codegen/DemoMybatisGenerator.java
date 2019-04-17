@@ -26,15 +26,14 @@ import java.util.List;
 public class DemoMybatisGenerator {
 
     private static final String USER_MODULE_CONFIG = "classpath:user/generatorConfig.xml";
-    private static final String BUSINESS_MODULE_CONFIG = "classpath:business/generatorConfig.xml";
-    private static final String KANBAN_MODULE_CONFIG = "classpath:kanban/generatorConfig.xml";
-    private static final String SCM_MODULE_CONFIG = "classpath:scm/generatorConfig.xml";
+    private static final String ORDER_MODULE_CONFIG = "classpath:order/generatorConfig.xml";
+
 
     public static void main(String[] args) throws FileNotFoundException {
 
         List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
-        File configFile = ResourceUtils.getFile(USER_MODULE_CONFIG);
+        File configFile = ResourceUtils.getFile(ORDER_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;
         try {

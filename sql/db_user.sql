@@ -1,0 +1,40 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : local
+Source Server Version : 50163
+Source Host           : localhost:3306
+Source Database       : db_user
+
+Target Server Type    : MYSQL
+Target Server Version : 50163
+File Encoding         : 65001
+
+Date: 2019-04-17 14:57:39
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `t_users`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_users`;
+CREATE TABLE `t_users` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '自增长主键',
+  `name` varchar(40) NOT NULL,
+  `age` int(3) NOT NULL DEFAULT '0',
+  `description` text,
+  `register_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `field1` varchar(20) NOT NULL DEFAULT '',
+  `field2` varchar(20) DEFAULT '',
+  `field3` varchar(20) DEFAULT NULL,
+  `field4` varchar(20) DEFAULT NULL,
+  `field5` varchar(20) DEFAULT NULL,
+  `field6` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_users
+-- ----------------------------

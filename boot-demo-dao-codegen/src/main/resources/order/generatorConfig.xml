@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
 
-    <properties resource="kanban/generatorConfig.properties"/>
+    <properties resource="order/generatorConfig.properties"/>
 
     <!-- !!!! Driver Class Path !!!! -->
     <classPathEntry location="${driver.class.path}"/>
@@ -45,7 +45,7 @@
                         connectionURL="${jdbc.url}"
                         userId="${jdbc.username}" password="${jdbc.password}"/>
 
-        <javaTypeResolver type="com.demo.boot.dao.codegen.resolver.DemoJavaTypeResolver">
+        <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
@@ -66,14 +66,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--<javaTypeResolver type="com.demo.boot.dao.codegen.resolver.DemoJavaTypeResolver">-->
-        <!--<property name="forceBigDecimals" value="false"/>-->
-        <!--</javaTypeResolver>-->
-
-        <!--!!!! Table Configurations !!!!-->
-
-        <!--<table tableName="store_inspection"/>-->
-        <!--<table tableName="pest_inspection_mouse"/>-->
-        <table tableName="product_monitor_pid_temp"/>
+        <!-- !!!! Table Configurations !!!! -->
+        <table tableName="t_orders" domainObjectName="Order"/>
     </context>
 </generatorConfiguration>

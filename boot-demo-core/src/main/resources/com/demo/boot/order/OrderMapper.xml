@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.boot.order.dao.OrderDao">
+  <resultMap id="BaseResultMap" type="com.demo.boot.order.model.Order">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    id, order_no, create_time, update_time
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.demo.boot.order.model.Order" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    INSERT INTO t_orders (
+      order_no, create_time, update_time
+    ) VALUES (  
+      #{orderNo,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    INSERT INTO t_orders (
+      order_no, create_time, update_time
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.orderNo,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    SELECT <include refid="Base_Column_List"/> FROM t_orders WHERE id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectOne" parameterType="com.demo.boot.order.model.Order" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    SELECT <include refid="Base_Column_List"/> FROM t_orders
+    <where>
+      <if test="orderNo != null">
+        AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.demo.boot.order.model.Order" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    SELECT <include refid="Base_Column_List"/> FROM t_orders
+    <where>
+      <if test="orderNo != null">
+        AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    SELECT <include refid="Base_Column_List"/> FROM t_orders
+  </select>
+  <select id="count" parameterType="com.demo.boot.order.model.Order" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    SELECT count(1) FROM t_orders
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null">
+        AND order_no=#{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    DELETE FROM t_orders WHERE id = #{id,jdbcType=BIGINT}
+  </delete>
+  <update id="update" parameterType="com.demo.boot.order.model.Order">
+    <!--@mbg.generated 2019-04-17 15:06:50-->
+    UPDATE t_orders
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
