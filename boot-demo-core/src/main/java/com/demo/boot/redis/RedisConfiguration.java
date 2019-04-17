@@ -22,12 +22,12 @@ public class RedisConfiguration {
         return new RedisClusterConfigurationProperties();
     }
 
-    public @Bean
-    RedisConnectionFactory connectionFactory() {
-
-        return new JedisConnectionFactory(
-                new RedisClusterConfiguration(clusterProperties.getNodes()));
-    }
+//    public @Bean
+//    RedisConnectionFactory connectionFactory() {
+//
+//        return new JedisConnectionFactory(
+//                new RedisClusterConfiguration(clusterProperties.getNodes()));
+//    }
 
     @Bean
     public JedisCluster getJedisCluster(RedisClusterConfigurationProperties redisClusterConfigurationProperties) {
