@@ -50,7 +50,8 @@ public class OrderDaoConfiguration {
 
     @Bean(name = "orderSqlSessionTemplate")
     public SqlSessionTemplate businessSqlSessionTemplate(@Qualifier("orderSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
-        return new SqlSessionTemplate(sqlSessionFactory);
+        SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
+        return sqlSessionTemplate;
     }
 
     @Bean("orderTransactionManager")
