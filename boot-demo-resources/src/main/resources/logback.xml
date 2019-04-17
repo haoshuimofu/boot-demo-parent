@@ -35,7 +35,7 @@
         </encoder>
         <!--日志文件最大的大小-->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>10MB</MaxFileSize>
+            <MaxFileSize>100MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
 
@@ -54,17 +54,4 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
-    <!--日志异步到数据库 -->
-    <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->
-    <!--&lt;!&ndash;日志异步到数据库 &ndash;&gt;-->
-    <!--<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
-    <!--&lt;!&ndash;连接池 &ndash;&gt;-->
-    <!--<dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-    <!--<driverClass>com.mysql.jdbc.Driver</driverClass>-->
-    <!--<url>jdbc:mysql://localhost:3306/spring-boot-demo</url>-->
-    <!--<user>root</user>-->
-    <!--<password>root</password>-->
-    <!--</dataSource>-->
-    <!--</connectionSource>-->
-    <!--</appender>-->
 </configuration>
