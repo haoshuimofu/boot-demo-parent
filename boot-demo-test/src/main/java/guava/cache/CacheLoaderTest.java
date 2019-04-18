@@ -6,6 +6,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * com.google.common.cache.CacheLoader$InvalidCacheLoadException: CacheLoader returned null for key 181118_181118.
+ *
  * @Author ddmc
  * @Create 2019-03-05 10:56
  */

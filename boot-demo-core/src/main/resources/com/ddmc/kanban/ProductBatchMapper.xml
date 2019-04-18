@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.kanban.dao.kanban.ProductBatchDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.kanban.model.ProductBatch">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="batch_id" jdbcType="VARCHAR" property="batchId" />
+    <result column="quality_period" jdbcType="INTEGER" property="qualityPeriod" />
+    <result column="sale_period" jdbcType="INTEGER" property="salePeriod" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    id, product_id, product_code, batch_id, quality_period, sale_period, create_time, 
+    update_time
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.kanban.model.ProductBatch" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    INSERT INTO product_batch (
+      product_id, product_code, batch_id, quality_period, sale_period, create_time, update_time
+    ) VALUES (  
+      #{productId,jdbcType=INTEGER}, #{productCode,jdbcType=VARCHAR}, #{batchId,jdbcType=VARCHAR}, 
+      #{qualityPeriod,jdbcType=INTEGER}, #{salePeriod,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    INSERT INTO product_batch (
+      product_id, product_code, batch_id, quality_period, sale_period, create_time, update_time
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.productId,jdbcType=INTEGER}, #{item.productCode,jdbcType=VARCHAR}, #{item.batchId,jdbcType=VARCHAR}, 
+        #{item.qualityPeriod,jdbcType=INTEGER}, #{item.salePeriod,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    SELECT <include refid="Base_Column_List"/> FROM product_batch WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.kanban.model.ProductBatch" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    SELECT <include refid="Base_Column_List"/> FROM product_batch
+    <where>
+      <if test="productId != null">
+        AND product_id = #{productId,jdbcType=INTEGER}
+      </if>
+      <if test="productCode != null">
+        AND product_code = #{productCode,jdbcType=VARCHAR}
+      </if>
+      <if test="batchId != null">
+        AND batch_id = #{batchId,jdbcType=VARCHAR}
+      </if>
+      <if test="qualityPeriod != null">
+        AND quality_period = #{qualityPeriod,jdbcType=INTEGER}
+      </if>
+      <if test="salePeriod != null">
+        AND sale_period = #{salePeriod,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.kanban.model.ProductBatch" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    SELECT <include refid="Base_Column_List"/> FROM product_batch
+    <where>
+      <if test="productId != null">
+        AND product_id = #{productId,jdbcType=INTEGER}
+      </if>
+      <if test="productCode != null">
+        AND product_code = #{productCode,jdbcType=VARCHAR}
+      </if>
+      <if test="batchId != null">
+        AND batch_id = #{batchId,jdbcType=VARCHAR}
+      </if>
+      <if test="qualityPeriod != null">
+        AND quality_period = #{qualityPeriod,jdbcType=INTEGER}
+      </if>
+      <if test="salePeriod != null">
+        AND sale_period = #{salePeriod,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    SELECT <include refid="Base_Column_List"/> FROM product_batch
+  </select>
+  <select id="count" parameterType="com.ddmc.kanban.model.ProductBatch" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    SELECT count(1) FROM product_batch
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="productId != null">
+        AND product_id=#{productId,jdbcType=INTEGER}
+      </if>
+      <if test="productCode != null">
+        AND product_code=#{productCode,jdbcType=VARCHAR}
+      </if>
+      <if test="batchId != null">
+        AND batch_id=#{batchId,jdbcType=VARCHAR}
+      </if>
+      <if test="qualityPeriod != null">
+        AND quality_period=#{qualityPeriod,jdbcType=INTEGER}
+      </if>
+      <if test="salePeriod != null">
+        AND sale_period=#{salePeriod,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    DELETE FROM product_batch WHERE id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.ddmc.kanban.model.ProductBatch">
+    <!--@mbg.generated 2019-04-18 09:33:27-->
+    UPDATE product_batch
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productCode != null">
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        batch_id = #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="qualityPeriod != null">
+        quality_period = #{qualityPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="salePeriod != null">
+        sale_period = #{salePeriod,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
