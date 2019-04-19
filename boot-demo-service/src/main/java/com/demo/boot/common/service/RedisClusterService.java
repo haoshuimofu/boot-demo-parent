@@ -1,7 +1,6 @@
 package com.demo.boot.common.service;
 
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.JedisCluster;
 
 /**
  * @Author ddmc
@@ -9,9 +8,9 @@ import redis.clients.jedis.JedisCluster;
  */
 @Service
 public class RedisClusterService {
-    private final JedisCluster jedisCluster;
-
-    public RedisClusterService(JedisCluster jedisCluster) {
-        this.jedisCluster = jedisCluster;
-    }
+//    private final JedisCluster jedisCluster;
+//
+//    public RedisClusterService(JedisCluster jedisCluster) {
+//        this.jedisCluster = jedisCluster;
+//    }
 }
