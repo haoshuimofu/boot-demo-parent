@@ -7,6 +7,7 @@ package com.demo.boot.redis;
 public class RedisClusterConfigurationProperties {
 
     private String clusterNodes;
+    private String maxRedirects;
     private Integer commandTimeout;
 
     public String getClusterNodes() {
@@ -15,6 +16,14 @@ public class RedisClusterConfigurationProperties {
 
     public void setClusterNodes(String clusterNodes) {
         this.clusterNodes = clusterNodes;
+    }
+
+    public String getMaxRedirects() {
+        return maxRedirects;
+    }
+
+    public void setMaxRedirects(String maxRedirects) {
+        this.maxRedirects = maxRedirects;
     }
 
     public Integer getCommandTimeout() {

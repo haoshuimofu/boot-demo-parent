@@ -1,4 +1,4 @@
 spring:
   redis:
-    clusterNodes: 127.0.0.1:6000,127.0.0.1:6000,127.0.0.1:6000
-    commandTimeout: 5000
+    clusterNodes: 192.168.1.17:6000,192.168.1.17:7000,192.168.1.17:8000
+    maxRedirects: 3

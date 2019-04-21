@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import redis.clients.jedis.JedisCluster;
 
@@ -17,10 +18,13 @@ import redis.clients.jedis.JedisCluster;
 @SpringBootTest(classes = {BootDemoWebApplication.class, RedisClusterController.class})
 public class RedisClusterController {
 
+//    @Autowired
+//    private JedisCluster jedisCluster;
+//    @Autowired
+//    RedisClusterConfigurationProperties redisClusterConfigurationProperties;
+
     @Autowired
-    private JedisCluster jedisCluster;
-    @Autowired
-    RedisClusterConfigurationProperties redisClusterConfigurationProperties;
+    private RedisTemplate redisTemplate;
 
     @Test
     public void testSetGet() {
@@ -33,7 +37,9 @@ public class RedisClusterController {
 //        }
 //        JedisCluster jedisCluster = new JedisCluster(nodes, redisClusterConfigurationProperties.getCommandTimeout());
 //        jedisCluster.set("name", "wude");
-        System.out.println(jedisCluster.get("name"));
+//        System.out.println(jedisCluster.get("name"));
+        redisTemplate.opsForValue().set("name", "wude");
+        System.out.println(redisTemplate.opsForValue().get("name"));
 
 
     }
