@@ -2,3 +2,13 @@ spring:
   redis:
     clusterNodes: 127.0.0.1:6000,127.0.0.1:7000,127.0.0.1:8000
     maxRedirects: 3
+jedis:
+  pool:
+    maxTotal: 1000
+    maxIdle: 100
+    minIdle: 10
+    blockWhenExhausted: true
+    maxWaitMillis: 60000
+    testOnBorrow: true
+    testOnReturn: false
+

@@ -46,18 +46,14 @@ public class RedisClusterAutoConfiguration {
         return redisClusterConfiguration;
     }
 
-    public @Bean
-    RedisConnectionFactory connectionFactory(RedisClusterConfiguration redisClusterConfiguration) {
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxTotal(1000);
-        jedisPoolConfig.setMaxIdle(100);
-        jedisPoolConfig.setMinIdle(10);
-        // the maximum number of "active" objects has been reached
-        jedisPoolConfig.setBlockWhenExhausted(true);
-        jedisPoolConfig.setMaxWaitMillis(6000);
-        jedisPoolConfig.setTestOnBorrow(true);
-        jedisPoolConfig.setTestOnReturn(false);
+    @Bean
+    @ConfigurationProperties(prefix = "jedis.pool")
+    public JedisPoolConfig jedisPoolConfig() {
+        return new JedisPoolConfig();
+    }
 
+    public @Bean
+    RedisConnectionFactory connectionFactory(RedisClusterConfiguration redisClusterConfiguration, JedisPoolConfig jedisPoolConfig) {
         return new JedisConnectionFactory(redisClusterConfiguration, jedisPoolConfig);
     }
 
