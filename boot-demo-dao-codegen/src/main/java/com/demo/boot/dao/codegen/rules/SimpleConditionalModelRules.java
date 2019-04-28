@@ -23,7 +23,7 @@ public class SimpleConditionalModelRules extends BaseRules {
 
     @Override
     public boolean generateExampleClass() {
-        return conditionalModelRules.generateExampleClass();
+        return false;
     }
 
     @Override
