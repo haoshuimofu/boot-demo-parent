@@ -1,21 +1,12 @@
 package com.demo.boot.dao.codegen;
 
 import com.demo.boot.dao.codegen.generator.DemoXmlMapperGenerator;
-import com.demo.boot.dao.codegen.generator.ModelWithBLOBsGenerator;
 import com.demo.boot.dao.codegen.rules.SimpleConditionalModelRules;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.ProgressCallback;
 import org.mybatis.generator.codegen.AbstractJavaClientGenerator;
-import org.mybatis.generator.codegen.AbstractJavaGenerator;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl;
-import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
-import org.mybatis.generator.codegen.mybatis3.model.PrimaryKeyGenerator;
-import org.mybatis.generator.codegen.mybatis3.model.RecordWithBLOBsGenerator;
-import org.mybatis.generator.config.ModelType;
-import org.mybatis.generator.internal.rules.ConditionalModelRules;
-import org.mybatis.generator.internal.rules.FlatModelRules;
-import org.mybatis.generator.internal.rules.HierarchicalModelRules;
 import org.mybatis.generator.internal.rules.Rules;
 import org.mybatis.generator.internal.util.StringUtility;
 
@@ -39,21 +30,9 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
      */
     @Override
     public void initialize() {
-        calculateJavaClientAttributes();
-        calculateModelAttributes();
-        calculateXmlAttributes();
-
-        if (tableConfiguration.getModelType() == ModelType.HIERARCHICAL) {
-            rules = new HierarchicalModelRules(this);
-        } else if (tableConfiguration.getModelType() == ModelType.FLAT) {
-            rules = new FlatModelRules(this);
-        } else if (tableConfiguration.getModelType() == ModelType.CONDITIONAL) {
-            rules = new ConditionalModelRules(this);
-        } else {
-            rules = new SimpleConditionalModelRules(this);
-        }
-
-        context.getPlugins().initialized(this);
+        super.initialize();
+        // 用自定义的Rules
+        rules = new SimpleConditionalModelRules(this);
     }
 
     /**
@@ -81,38 +60,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
     @Override
     public void setRules(Rules rules) {
         SimpleConditionalModelRules realRules = new SimpleConditionalModelRules(this);
-        // 不生成ModelExampleClass，在calculateJavaModelGenerators方法控制
-        // realRules.generateExampleClass();
         super.setRules(realRules);
-    }
-
-    @Override
-    protected void calculateJavaModelGenerators(List<String> warnings, ProgressCallback progressCallback) {
-        // if (this.getRules().generateExampleClass()) {
-        // ConditionalModelRules控制不了ModelExampleClass的生成，所以这里控制一下
-        if (false) {
-            AbstractJavaGenerator javaGenerator = new ExampleGenerator();
-            this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
-            this.javaModelGenerators.add(javaGenerator);
-        }
-
-        if (this.getRules().generatePrimaryKeyClass()) {
-            AbstractJavaGenerator javaGenerator = new PrimaryKeyGenerator();
-            this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
-            this.javaModelGenerators.add(javaGenerator);
-        }
-
-        if (this.getRules().generateBaseRecordClass()) {
-            AbstractJavaGenerator javaGenerator = new ModelWithBLOBsGenerator();
-            this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
-            this.javaModelGenerators.add(javaGenerator);
-        }
-
-        if (this.getRules().generateRecordWithBLOBsClass()) {
-            AbstractJavaGenerator javaGenerator = new RecordWithBLOBsGenerator();
-            this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
-            this.javaModelGenerators.add(javaGenerator);
-        }
     }
 
     /**
@@ -126,11 +74,6 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         // 自定义XmlMapperGenerator实现
         this.xmlMapperGenerator = new DemoXmlMapperGenerator();
         initializeAbstractGenerator(xmlMapperGenerator, warnings, progressCallback);
-    }
-
-    @Override
-    public void calculateGenerators(List<String> warnings, ProgressCallback progressCallback) {
-        super.calculateGenerators(warnings, progressCallback);
     }
 
     /**
