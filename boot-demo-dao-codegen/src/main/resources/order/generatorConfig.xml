@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
 
-    <properties resource="user/generatorConfig.properties"/>
+    <properties resource="order/generatorConfig.properties"/>
 
     <!-- !!!! Driver Class Path !!!! -->
     <classPathEntry location="${driver.class.path}"/>
@@ -67,6 +67,6 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="t_users" domainObjectName="User"/>
+        <table tableName="t_orders" domainObjectName="Order"/>
     </context>
 </generatorConfiguration>

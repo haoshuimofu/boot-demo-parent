@@ -40,13 +40,13 @@
     </appender>
 
     <logger name="org.springframework">
-        <level value="ERROR"/>
+        <level value="INFO"/>
     </logger>
     <logger name="org.mybatis">
         <level value="DEBUG"/>
     </logger>
     <logger name="com.demo.boot">
-        <level value="INFO"/>
+        <level value="DEBUG"/>
     </logger>
 
     <!-- 日志输出级别 -->

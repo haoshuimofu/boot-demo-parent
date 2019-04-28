@@ -1,0 +1,14 @@
+spring:
+  redis:
+    clusterNodes: 127.0.0.1:6000,127.0.0.1:7000,127.0.0.1:8000,27.0.0.1:6001,27.0.0.1:6002,27.0.0.1:6003,27.0.0.1:7001,27.0.0.1:7002,27.0.0.1:7003,27.0.0.1:8001,27.0.0.1:8002,27.0.0.1:8003
+    maxRedirects: 3
+jedis:
+  pool:
+    maxTotal: 1000
+    maxIdle: 100
+    minIdle: 10
+    blockWhenExhausted: true
+    maxWaitMillis: 60000
+    testOnBorrow: true
+    testOnReturn: false
+

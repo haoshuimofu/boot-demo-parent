@@ -1,43 +1,9 @@
-demo:
-  datasource:
-    #    driverClass: com.mysql.jdbc.Driver
-    #    jdbcUrl: jdbc:mysql://localhost:3306/spring-boot
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring-boot-demo
-    username: root
-    password: root
-    initial-size: 5
-    maxActive: 20 #最大连接数
-    minIdle: 5
-    maxWait: 60000 #获取连接时最大等待时间, 单位毫秒
-    #有两个含义：
-    # 1) Destroy线程会检测连接的间隔时间
-    # 2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    #用来检测连接是否有效的sql, 要求是一个查询语句; 如果validationQuery为null, testOnBorrow, testOnReturn, testWhileIdle都不会起作用
-    validationQuery: SELECT user();
-    #建议配置为true，不影响性能，并且保证安全性。 申请连接的时候检测，如果空闲时间大于 timeBetweenEvictionRunsMillis， 执行validationQuery检测连接是否有效。
-    testWhileIdle: true
-    testOnBorrow: false #申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
-    testOnReturn: false #归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
-    poolPreparedStatements: true
-    maxPoolPreparedStatementPerConnectionSize: 20
-    #属性类型是字符串，通过别名的方式配置扩展插件，
-    # 常用的插件有：
-    # 监控统计用的filter:stat
-    # 日志用的filter:log4j
-    # 防御sql注入的filter:wall
-    filters: wall,slf4j
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
-
 user:
   datasource:
     #    driverClass: com.mysql.jdbc.Driver
     #    jdbcUrl: jdbc:mysql://localhost:3306/spring-boot
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot-demo-user
+    url: jdbc:mysql://localhost:3306/db_user
     username: root
     password: root
     initial-size: 5
@@ -66,45 +32,12 @@ user:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
 
-business:
+order:
   datasource:
     #    driverClass: com.mysql.jdbc.Driver
     #    jdbcUrl: jdbc:mysql://localhost:3306/spring-boot
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot-demo-business
-    username: root
-    password: root
-    initial-size: 5
-    maxActive: 20 #最大连接数
-    minIdle: 5
-    maxWait: 60000 #获取连接时最大等待时间, 单位毫秒
-    #有两个含义：
-    # 1) Destroy线程会检测连接的间隔时间
-    # 2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    #用来检测连接是否有效的sql, 要求是一个查询语句; 如果validationQuery为null, testOnBorrow, testOnReturn, testWhileIdle都不会起作用
-    validationQuery: SELECT user();
-    #建议配置为true，不影响性能，并且保证安全性。 申请连接的时候检测，如果空闲时间大于 timeBetweenEvictionRunsMillis， 执行validationQuery检测连接是否有效。
-    testWhileIdle: true
-    testOnBorrow: false #申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
-    testOnReturn: false #归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
-    poolPreparedStatements: true
-    maxPoolPreparedStatementPerConnectionSize: 20
-    #属性类型是字符串，通过别名的方式配置扩展插件，
-    # 常用的插件有：
-    # 监控统计用的filter:stat
-    # 日志用的filter:log4j
-    # 防御sql注入的filter:wall
-    filters: wall,slf4j
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
-kanban:
-  datasource:
-    #    driverClass: com.mysql.jdbc.Driver
-    #    jdbcUrl: jdbc:mysql://localhost:3306/spring-boot
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/kanban
+    url: jdbc:mysql://localhost:3306/db_order
     username: root
     password: root
     initial-size: 5

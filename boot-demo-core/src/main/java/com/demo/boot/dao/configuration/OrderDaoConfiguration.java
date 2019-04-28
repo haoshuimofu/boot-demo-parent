@@ -21,26 +21,26 @@ import javax.sql.DataSource;
  * @create 2018-09-30 13:05
  */
 @Configuration
-@MapperScan(basePackages = {"com.demo.boot.user.dao"}, sqlSessionTemplateRef = "userSqlSessionTemplate")
-public class UserDaoConfiguration {
+@MapperScan(basePackages = {"com.demo.boot.order.dao"}, sqlSessionTemplateRef = "orderSqlSessionTemplate")
+public class OrderDaoConfiguration {
 
 
-    @Bean(name = "userDataSource")
-//    @Primary //必须加此注解，不然报错，下一个类则不需要添加
-    @ConfigurationProperties(prefix = "user.datasource") // prefix值必须是application.properteis中对应属性的前缀
+    @Bean(name = "orderDataSource")
+    //@Primary //必须加此注解，不然报错，下一个类则不需要添加
+    @ConfigurationProperties(prefix = "order.datasource") // prefix值必须是application.properteis中对应属性的前缀
     public DataSource userDataSource() {
-        // return DataSourceBuilder.create().build();
+//        return DataSourceBuilder.create().build();
         return new DruidDataSource();
     }
 
-    @Bean(name = "userSqlSessionFactory")
-    public SqlSessionFactory userSqlSessionFactory(@Qualifier("userDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "orderSqlSessionFactory")
+    public SqlSessionFactory userSqlSessionFactory(@Qualifier("orderDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
-            bean.setMapperLocations(resolver.getResources("classpath*:com/demo/boot/user/*.xml"));
+            bean.setMapperLocations(resolver.getResources("classpath*:com/demo/boot/order/*.xml"));
             return bean.getObject();
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,15 +48,16 @@ public class UserDaoConfiguration {
         }
     }
 
-    @Bean(name = "userSqlSessionTemplate")
-    public SqlSessionTemplate userSqlSessionTemplate(@Qualifier("userSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    @Bean(name = "orderSqlSessionTemplate")
+    public SqlSessionTemplate businessSqlSessionTemplate(@Qualifier("orderSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
-
-    @Bean(name = "userTransactionManager")
-    public DataSourceTransactionManager transactionManager(@Qualifier("userDataSource") DataSource dataSource) {
+    @Bean("orderTransactionManager")
+//    @Primary
+    public DataSourceTransactionManager transactionManager(@Qualifier("orderDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
+
 
 }

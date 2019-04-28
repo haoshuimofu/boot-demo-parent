@@ -4,7 +4,7 @@ server:
 # 激活的spring.profiles
 spring:
   profiles:
-    active: datasource, web
+    active: datasource, web, redis
 # Mybatis
 #mybatis:
 #  config-location: classpath:mybatis-config.xml #为什么用classpath*就报错找不到资源文件了?
@@ -14,7 +14,6 @@ spring:
 debug: false #默认情况下，spring boot从控制台打印出来的日志级别只有ERROR, WARN 还有INFO
 logging:
   config: classpath:logback.xml
-
 
 
 
