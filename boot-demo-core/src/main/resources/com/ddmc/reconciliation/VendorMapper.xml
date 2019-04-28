@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.reconciliation.dao.scm.VendorDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.scm.Vendor">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <id column="vendor_id" jdbcType="INTEGER" property="vendorId" />
+    <result column="vendor_name" jdbcType="VARCHAR" property="vendorName" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="replenish_rate" jdbcType="DECIMAL" property="replenishRate" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="is_account_active" jdbcType="TINYINT" property="isAccountActive" />
+    <result column="tax_account" jdbcType="VARCHAR" property="taxAccount" />
+    <result column="account_rate" jdbcType="DECIMAL" property="accountRate" />
+    <result column="vendor_type" jdbcType="TINYINT" property="vendorType" />
+    <result column="contact_user" jdbcType="VARCHAR" property="contactUser" />
+    <result column="audit_status" jdbcType="TINYINT" property="auditStatus" />
+    <result column="audit_update_time" jdbcType="TIMESTAMP" property="auditUpdateTime" />
+    <result column="audit_update_user" jdbcType="VARCHAR" property="auditUpdateUser" />
+    <result column="audit_remark" jdbcType="VARCHAR" property="auditRemark" />
+    <result column="account_period_type" jdbcType="TINYINT" property="accountPeriodType" />
+    <result column="is_replenishment" jdbcType="TINYINT" property="isReplenishment" />
+    <result column="min_order_amount" jdbcType="DECIMAL" property="minOrderAmount" />
+    <result column="is_store_purchase" jdbcType="TINYINT" property="isStorePurchase" />
+    <result column="delivery_day" jdbcType="SMALLINT" property="deliveryDay" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="is_quality" jdbcType="TINYINT" property="isQuality" />
+    <result column="delivery_password" jdbcType="VARCHAR" property="deliveryPassword" />
+    <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="is_self_purchase" jdbcType="TINYINT" property="isSelfPurchase" />
+    <result column="arrival_deadline" jdbcType="VARCHAR" property="arrivalDeadline" />
+    <result column="need_vms" jdbcType="BIT" property="needVms" />
+    <result column="supply_product_type" jdbcType="VARCHAR" property="supplyProductType" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+    <result column="images" jdbcType="LONGVARCHAR" property="images" />
+    <result column="rest_time" jdbcType="LONGVARCHAR" property="restTime" />
+    <result column="intro_images" jdbcType="LONGVARCHAR" property="introImages" />
+    <result column="introduce" jdbcType="LONGVARCHAR" property="introduce" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    vendor_id, vendor_name, address, phone, create_time, update_time, status, replenish_rate, 
+    type, update_user, bank_name, bank_account, account_name, is_account_active, tax_account, 
+    account_rate, vendor_type, contact_user, audit_status, audit_update_time, audit_update_user, 
+    audit_remark, account_period_type, is_replenishment, min_order_amount, is_store_purchase, 
+    delivery_day, username, password, is_quality, delivery_password, city_id, short_name, 
+    is_self_purchase, arrival_deadline, need_vms, supply_product_type, remark, images, 
+    rest_time, intro_images, introduce
+  </sql>
+  <insert id="insert" keyColumn="vendor_id" keyProperty="vendorId" parameterType="com.ddmc.reconciliation.model.scm.Vendor" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    INSERT INTO vendor (
+      vendor_name, address, phone, create_time, update_time, status, replenish_rate, 
+      type, update_user, bank_name, bank_account, account_name, is_account_active, tax_account, 
+      account_rate, vendor_type, contact_user, audit_status, audit_update_time, audit_update_user, 
+      audit_remark, account_period_type, is_replenishment, min_order_amount, is_store_purchase, 
+      delivery_day, username, password, is_quality, delivery_password, city_id, short_name, 
+      is_self_purchase, arrival_deadline, need_vms, supply_product_type, remark, images, 
+      rest_time, intro_images, introduce
+    ) VALUES (  
+      #{vendorName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
+      #{replenishRate,jdbcType=DECIMAL}, #{type,jdbcType=TINYINT}, #{updateUser,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, 
+      #{isAccountActive,jdbcType=TINYINT}, #{taxAccount,jdbcType=VARCHAR}, #{accountRate,jdbcType=DECIMAL}, 
+      #{vendorType,jdbcType=TINYINT}, #{contactUser,jdbcType=VARCHAR}, #{auditStatus,jdbcType=TINYINT}, 
+      #{auditUpdateTime,jdbcType=TIMESTAMP}, #{auditUpdateUser,jdbcType=VARCHAR}, #{auditRemark,jdbcType=VARCHAR}, 
+      #{accountPeriodType,jdbcType=TINYINT}, #{isReplenishment,jdbcType=TINYINT}, #{minOrderAmount,jdbcType=DECIMAL}, 
+      #{isStorePurchase,jdbcType=TINYINT}, #{deliveryDay,jdbcType=SMALLINT}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{isQuality,jdbcType=TINYINT}, #{deliveryPassword,jdbcType=VARCHAR}, 
+      #{cityId,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{isSelfPurchase,jdbcType=TINYINT}, 
+      #{arrivalDeadline,jdbcType=VARCHAR}, #{needVms,jdbcType=BIT}, #{supplyProductType,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=LONGVARCHAR}, #{images,jdbcType=LONGVARCHAR}, #{restTime,jdbcType=LONGVARCHAR}, 
+      #{introImages,jdbcType=LONGVARCHAR}, #{introduce,jdbcType=LONGVARCHAR}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    INSERT INTO vendor (
+      vendor_name, address, phone, create_time, update_time, status, replenish_rate, 
+      type, update_user, bank_name, bank_account, account_name, is_account_active, tax_account, 
+      account_rate, vendor_type, contact_user, audit_status, audit_update_time, audit_update_user, 
+      audit_remark, account_period_type, is_replenishment, min_order_amount, is_store_purchase, 
+      delivery_day, username, password, is_quality, delivery_password, city_id, short_name, 
+      is_self_purchase, arrival_deadline, need_vms, supply_product_type, remark, images, 
+      rest_time, intro_images, introduce
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.vendorName,jdbcType=VARCHAR}, #{item.address,jdbcType=VARCHAR}, #{item.phone,jdbcType=VARCHAR}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.status,jdbcType=TINYINT}, 
+        #{item.replenishRate,jdbcType=DECIMAL}, #{item.type,jdbcType=TINYINT}, #{item.updateUser,jdbcType=VARCHAR}, 
+        #{item.bankName,jdbcType=VARCHAR}, #{item.bankAccount,jdbcType=VARCHAR}, #{item.accountName,jdbcType=VARCHAR}, 
+        #{item.isAccountActive,jdbcType=TINYINT}, #{item.taxAccount,jdbcType=VARCHAR}, 
+        #{item.accountRate,jdbcType=DECIMAL}, #{item.vendorType,jdbcType=TINYINT}, #{item.contactUser,jdbcType=VARCHAR}, 
+        #{item.auditStatus,jdbcType=TINYINT}, #{item.auditUpdateTime,jdbcType=TIMESTAMP}, 
+        #{item.auditUpdateUser,jdbcType=VARCHAR}, #{item.auditRemark,jdbcType=VARCHAR}, 
+        #{item.accountPeriodType,jdbcType=TINYINT}, #{item.isReplenishment,jdbcType=TINYINT}, 
+        #{item.minOrderAmount,jdbcType=DECIMAL}, #{item.isStorePurchase,jdbcType=TINYINT}, 
+        #{item.deliveryDay,jdbcType=SMALLINT}, #{item.username,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, 
+        #{item.isQuality,jdbcType=TINYINT}, #{item.deliveryPassword,jdbcType=VARCHAR}, 
+        #{item.cityId,jdbcType=VARCHAR}, #{item.shortName,jdbcType=VARCHAR}, #{item.isSelfPurchase,jdbcType=TINYINT}, 
+        #{item.arrivalDeadline,jdbcType=VARCHAR}, #{item.needVms,jdbcType=BIT}, #{item.supplyProductType,jdbcType=VARCHAR}, 
+        #{item.remark,jdbcType=LONGVARCHAR}, #{item.images,jdbcType=LONGVARCHAR}, #{item.restTime,jdbcType=LONGVARCHAR}, 
+        #{item.introImages,jdbcType=LONGVARCHAR}, #{item.introduce,jdbcType=LONGVARCHAR}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor WHERE vendor_id = #{vendorId,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.reconciliation.model.scm.Vendor" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor
+    <where>
+      <if test="vendorName != null">
+        AND vendor_name = #{vendorName,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+      <if test="replenishRate != null">
+        AND replenish_rate = #{replenishRate,jdbcType=DECIMAL}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=TINYINT}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccount != null">
+        AND bank_account = #{bankAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="accountName != null">
+        AND account_name = #{accountName,jdbcType=VARCHAR}
+      </if>
+      <if test="isAccountActive != null">
+        AND is_account_active = #{isAccountActive,jdbcType=TINYINT}
+      </if>
+      <if test="taxAccount != null">
+        AND tax_account = #{taxAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="accountRate != null">
+        AND account_rate = #{accountRate,jdbcType=DECIMAL}
+      </if>
+      <if test="vendorType != null">
+        AND vendor_type = #{vendorType,jdbcType=TINYINT}
+      </if>
+      <if test="contactUser != null">
+        AND contact_user = #{contactUser,jdbcType=VARCHAR}
+      </if>
+      <if test="auditStatus != null">
+        AND audit_status = #{auditStatus,jdbcType=TINYINT}
+      </if>
+      <if test="auditUpdateTime != null">
+        AND audit_update_time = #{auditUpdateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="auditUpdateUser != null">
+        AND audit_update_user = #{auditUpdateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="auditRemark != null">
+        AND audit_remark = #{auditRemark,jdbcType=VARCHAR}
+      </if>
+      <if test="accountPeriodType != null">
+        AND account_period_type = #{accountPeriodType,jdbcType=TINYINT}
+      </if>
+      <if test="isReplenishment != null">
+        AND is_replenishment = #{isReplenishment,jdbcType=TINYINT}
+      </if>
+      <if test="minOrderAmount != null">
+        AND min_order_amount = #{minOrderAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="isStorePurchase != null">
+        AND is_store_purchase = #{isStorePurchase,jdbcType=TINYINT}
+      </if>
+      <if test="deliveryDay != null">
+        AND delivery_day = #{deliveryDay,jdbcType=SMALLINT}
+      </if>
+      <if test="username != null">
+        AND username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        AND password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="isQuality != null">
+        AND is_quality = #{isQuality,jdbcType=TINYINT}
+      </if>
+      <if test="deliveryPassword != null">
+        AND delivery_password = #{deliveryPassword,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="shortName != null">
+        AND short_name = #{shortName,jdbcType=VARCHAR}
+      </if>
+      <if test="isSelfPurchase != null">
+        AND is_self_purchase = #{isSelfPurchase,jdbcType=TINYINT}
+      </if>
+      <if test="arrivalDeadline != null">
+        AND arrival_deadline = #{arrivalDeadline,jdbcType=VARCHAR}
+      </if>
+      <if test="needVms != null">
+        AND need_vms = #{needVms,jdbcType=BIT}
+      </if>
+      <if test="supplyProductType != null">
+        AND supply_product_type = #{supplyProductType,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="images != null">
+        AND images = #{images,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="restTime != null">
+        AND rest_time = #{restTime,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="introImages != null">
+        AND intro_images = #{introImages,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="introduce != null">
+        AND introduce = #{introduce,jdbcType=LONGVARCHAR}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.reconciliation.model.scm.Vendor" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor
+    <where>
+      <if test="vendorName != null">
+        AND vendor_name = #{vendorName,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+      <if test="replenishRate != null">
+        AND replenish_rate = #{replenishRate,jdbcType=DECIMAL}
+      </if>
+      <if test="type != null">
+        AND type = #{type,jdbcType=TINYINT}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="bankName != null">
+        AND bank_name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccount != null">
+        AND bank_account = #{bankAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="accountName != null">
+        AND account_name = #{accountName,jdbcType=VARCHAR}
+      </if>
+      <if test="isAccountActive != null">
+        AND is_account_active = #{isAccountActive,jdbcType=TINYINT}
+      </if>
+      <if test="taxAccount != null">
+        AND tax_account = #{taxAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="accountRate != null">
+        AND account_rate = #{accountRate,jdbcType=DECIMAL}
+      </if>
+      <if test="vendorType != null">
+        AND vendor_type = #{vendorType,jdbcType=TINYINT}
+      </if>
+      <if test="contactUser != null">
+        AND contact_user = #{contactUser,jdbcType=VARCHAR}
+      </if>
+      <if test="auditStatus != null">
+        AND audit_status = #{auditStatus,jdbcType=TINYINT}
+      </if>
+      <if test="auditUpdateTime != null">
+        AND audit_update_time = #{auditUpdateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="auditUpdateUser != null">
+        AND audit_update_user = #{auditUpdateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="auditRemark != null">
+        AND audit_remark = #{auditRemark,jdbcType=VARCHAR}
+      </if>
+      <if test="accountPeriodType != null">
+        AND account_period_type = #{accountPeriodType,jdbcType=TINYINT}
+      </if>
+      <if test="isReplenishment != null">
+        AND is_replenishment = #{isReplenishment,jdbcType=TINYINT}
+      </if>
+      <if test="minOrderAmount != null">
+        AND min_order_amount = #{minOrderAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="isStorePurchase != null">
+        AND is_store_purchase = #{isStorePurchase,jdbcType=TINYINT}
+      </if>
+      <if test="deliveryDay != null">
+        AND delivery_day = #{deliveryDay,jdbcType=SMALLINT}
+      </if>
+      <if test="username != null">
+        AND username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        AND password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="isQuality != null">
+        AND is_quality = #{isQuality,jdbcType=TINYINT}
+      </if>
+      <if test="deliveryPassword != null">
+        AND delivery_password = #{deliveryPassword,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id = #{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="shortName != null">
+        AND short_name = #{shortName,jdbcType=VARCHAR}
+      </if>
+      <if test="isSelfPurchase != null">
+        AND is_self_purchase = #{isSelfPurchase,jdbcType=TINYINT}
+      </if>
+      <if test="arrivalDeadline != null">
+        AND arrival_deadline = #{arrivalDeadline,jdbcType=VARCHAR}
+      </if>
+      <if test="needVms != null">
+        AND need_vms = #{needVms,jdbcType=BIT}
+      </if>
+      <if test="supplyProductType != null">
+        AND supply_product_type = #{supplyProductType,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="images != null">
+        AND images = #{images,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="restTime != null">
+        AND rest_time = #{restTime,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="introImages != null">
+        AND intro_images = #{introImages,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="introduce != null">
+        AND introduce = #{introduce,jdbcType=LONGVARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor
+  </select>
+  <select id="count" parameterType="com.ddmc.reconciliation.model.scm.Vendor" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT count(1) FROM vendor
+    <where>
+      <if test="vendorId != null">
+        AND vendor_id=#{vendorId,jdbcType=INTEGER}
+      </if>
+      <if test="vendorName != null">
+        AND vendor_name=#{vendorName,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        AND address=#{address,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND phone=#{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null">
+        AND status=#{status,jdbcType=TINYINT}
+      </if>
+      <if test="replenishRate != null">
+        AND replenish_rate=#{replenishRate,jdbcType=DECIMAL}
+      </if>
+      <if test="type != null">
+        AND type=#{type,jdbcType=TINYINT}
+      </if>
+      <if test="updateUser != null">
+        AND update_user=#{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="bankName != null">
+        AND bank_name=#{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccount != null">
+        AND bank_account=#{bankAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="accountName != null">
+        AND account_name=#{accountName,jdbcType=VARCHAR}
+      </if>
+      <if test="isAccountActive != null">
+        AND is_account_active=#{isAccountActive,jdbcType=TINYINT}
+      </if>
+      <if test="taxAccount != null">
+        AND tax_account=#{taxAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="accountRate != null">
+        AND account_rate=#{accountRate,jdbcType=DECIMAL}
+      </if>
+      <if test="vendorType != null">
+        AND vendor_type=#{vendorType,jdbcType=TINYINT}
+      </if>
+      <if test="contactUser != null">
+        AND contact_user=#{contactUser,jdbcType=VARCHAR}
+      </if>
+      <if test="auditStatus != null">
+        AND audit_status=#{auditStatus,jdbcType=TINYINT}
+      </if>
+      <if test="auditUpdateTime != null">
+        AND audit_update_time=#{auditUpdateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="auditUpdateUser != null">
+        AND audit_update_user=#{auditUpdateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="auditRemark != null">
+        AND audit_remark=#{auditRemark,jdbcType=VARCHAR}
+      </if>
+      <if test="accountPeriodType != null">
+        AND account_period_type=#{accountPeriodType,jdbcType=TINYINT}
+      </if>
+      <if test="isReplenishment != null">
+        AND is_replenishment=#{isReplenishment,jdbcType=TINYINT}
+      </if>
+      <if test="minOrderAmount != null">
+        AND min_order_amount=#{minOrderAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="isStorePurchase != null">
+        AND is_store_purchase=#{isStorePurchase,jdbcType=TINYINT}
+      </if>
+      <if test="deliveryDay != null">
+        AND delivery_day=#{deliveryDay,jdbcType=SMALLINT}
+      </if>
+      <if test="username != null">
+        AND username=#{username,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        AND password=#{password,jdbcType=VARCHAR}
+      </if>
+      <if test="isQuality != null">
+        AND is_quality=#{isQuality,jdbcType=TINYINT}
+      </if>
+      <if test="deliveryPassword != null">
+        AND delivery_password=#{deliveryPassword,jdbcType=VARCHAR}
+      </if>
+      <if test="cityId != null">
+        AND city_id=#{cityId,jdbcType=VARCHAR}
+      </if>
+      <if test="shortName != null">
+        AND short_name=#{shortName,jdbcType=VARCHAR}
+      </if>
+      <if test="isSelfPurchase != null">
+        AND is_self_purchase=#{isSelfPurchase,jdbcType=TINYINT}
+      </if>
+      <if test="arrivalDeadline != null">
+        AND arrival_deadline=#{arrivalDeadline,jdbcType=VARCHAR}
+      </if>
+      <if test="needVms != null">
+        AND need_vms=#{needVms,jdbcType=BIT}
+      </if>
+      <if test="supplyProductType != null">
+        AND supply_product_type=#{supplyProductType,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark=#{remark,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="images != null">
+        AND images=#{images,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="restTime != null">
+        AND rest_time=#{restTime,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="introImages != null">
+        AND intro_images=#{introImages,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="introduce != null">
+        AND introduce=#{introduce,jdbcType=LONGVARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    DELETE FROM vendor WHERE vendor_id = #{vendorId,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.ddmc.reconciliation.model.scm.Vendor">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    UPDATE vendor
+    <set>
+      <if test="vendorName != null">
+        vendor_name = #{vendorName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="replenishRate != null">
+        replenish_rate = #{replenishRate,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null">
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="isAccountActive != null">
+        is_account_active = #{isAccountActive,jdbcType=TINYINT},
+      </if>
+      <if test="taxAccount != null">
+        tax_account = #{taxAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="accountRate != null">
+        account_rate = #{accountRate,jdbcType=DECIMAL},
+      </if>
+      <if test="vendorType != null">
+        vendor_type = #{vendorType,jdbcType=TINYINT},
+      </if>
+      <if test="contactUser != null">
+        contact_user = #{contactUser,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        audit_status = #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="auditUpdateTime != null">
+        audit_update_time = #{auditUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditUpdateUser != null">
+        audit_update_user = #{auditUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="auditRemark != null">
+        audit_remark = #{auditRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="accountPeriodType != null">
+        account_period_type = #{accountPeriodType,jdbcType=TINYINT},
+      </if>
+      <if test="isReplenishment != null">
+        is_replenishment = #{isReplenishment,jdbcType=TINYINT},
+      </if>
+      <if test="minOrderAmount != null">
+        min_order_amount = #{minOrderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="isStorePurchase != null">
+        is_store_purchase = #{isStorePurchase,jdbcType=TINYINT},
+      </if>
+      <if test="deliveryDay != null">
+        delivery_day = #{deliveryDay,jdbcType=SMALLINT},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="isQuality != null">
+        is_quality = #{isQuality,jdbcType=TINYINT},
+      </if>
+      <if test="deliveryPassword != null">
+        delivery_password = #{deliveryPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="isSelfPurchase != null">
+        is_self_purchase = #{isSelfPurchase,jdbcType=TINYINT},
+      </if>
+      <if test="arrivalDeadline != null">
+        arrival_deadline = #{arrivalDeadline,jdbcType=VARCHAR},
+      </if>
+      <if test="needVms != null">
+        need_vms = #{needVms,jdbcType=BIT},
+      </if>
+      <if test="supplyProductType != null">
+        supply_product_type = #{supplyProductType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="restTime != null">
+        rest_time = #{restTime,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introImages != null">
+        intro_images = #{introImages,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    WHERE vendor_id = #{vendorId,jdbcType=INTEGER}
+  </update>
+</mapper>

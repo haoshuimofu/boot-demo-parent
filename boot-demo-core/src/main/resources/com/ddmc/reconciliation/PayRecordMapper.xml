@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.reconciliation.dao.scm.PayRecordDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.scm.PayRecord">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="vendor_id" jdbcType="INTEGER" property="vendorId" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime" />
+    <result column="use_to" jdbcType="VARCHAR" property="useTo" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="plan_total_amount" jdbcType="DECIMAL" property="planTotalAmount" />
+    <result column="real_total_amount" jdbcType="DECIMAL" property="realTotalAmount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="finance_update_user" jdbcType="VARCHAR" property="financeUpdateUser" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="submit_user" jdbcType="VARCHAR" property="submitUser" />
+    <result column="last_pay_day" jdbcType="VARCHAR" property="lastPayDay" />
+    <result column="approver" jdbcType="VARCHAR" property="approver" />
+    <result column="invoice_option" jdbcType="TINYINT" property="invoiceOption" />
+    <result column="earliest_pay_day" jdbcType="VARCHAR" property="earliestPayDay" />
+    <result column="pay_type" jdbcType="TINYINT" property="payType" />
+    <result column="settlement_amount" jdbcType="DECIMAL" property="settlementAmount" />
+    <result column="prepay_amount" jdbcType="DECIMAL" property="prepayAmount" />
+    <result column="pay_bank_id" jdbcType="INTEGER" property="payBankId" />
+    <result column="details" jdbcType="LONGVARCHAR" property="details" />
+    <result column="vendor_info" jdbcType="LONGVARCHAR" property="vendorInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    id, vendor_id, finish_time, submit_time, use_to, remark, plan_total_amount, real_total_amount, 
+    create_time, update_time, create_user, update_user, finance_update_user, status, 
+    submit_user, last_pay_day, approver, invoice_option, earliest_pay_day, pay_type, 
+    settlement_amount, prepay_amount, pay_bank_id, details, vendor_info
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    INSERT INTO pay_record (
+      vendor_id, finish_time, submit_time, use_to, remark, plan_total_amount, real_total_amount, 
+      create_time, update_time, create_user, update_user, finance_update_user, status, 
+      submit_user, last_pay_day, approver, invoice_option, earliest_pay_day, pay_type, 
+      settlement_amount, prepay_amount, pay_bank_id, details, vendor_info
+    ) VALUES (  
+      #{vendorId,jdbcType=INTEGER}, #{finishTime,jdbcType=TIMESTAMP}, #{submitTime,jdbcType=TIMESTAMP}, 
+      #{useTo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{planTotalAmount,jdbcType=DECIMAL}, 
+      #{realTotalAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, #{financeUpdateUser,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{submitUser,jdbcType=VARCHAR}, #{lastPayDay,jdbcType=VARCHAR}, 
+      #{approver,jdbcType=VARCHAR}, #{invoiceOption,jdbcType=TINYINT}, #{earliestPayDay,jdbcType=VARCHAR}, 
+      #{payType,jdbcType=TINYINT}, #{settlementAmount,jdbcType=DECIMAL}, #{prepayAmount,jdbcType=DECIMAL}, 
+      #{payBankId,jdbcType=INTEGER}, #{details,jdbcType=LONGVARCHAR}, #{vendorInfo,jdbcType=LONGVARCHAR}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    INSERT INTO pay_record (
+      vendor_id, finish_time, submit_time, use_to, remark, plan_total_amount, real_total_amount, 
+      create_time, update_time, create_user, update_user, finance_update_user, status, 
+      submit_user, last_pay_day, approver, invoice_option, earliest_pay_day, pay_type, 
+      settlement_amount, prepay_amount, pay_bank_id, details, vendor_info
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.vendorId,jdbcType=INTEGER}, #{item.finishTime,jdbcType=TIMESTAMP}, #{item.submitTime,jdbcType=TIMESTAMP}, 
+        #{item.useTo,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.planTotalAmount,jdbcType=DECIMAL}, 
+        #{item.realTotalAmount,jdbcType=DECIMAL}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.createUser,jdbcType=VARCHAR}, #{item.updateUser,jdbcType=VARCHAR}, 
+        #{item.financeUpdateUser,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, #{item.submitUser,jdbcType=VARCHAR}, 
+        #{item.lastPayDay,jdbcType=VARCHAR}, #{item.approver,jdbcType=VARCHAR}, #{item.invoiceOption,jdbcType=TINYINT}, 
+        #{item.earliestPayDay,jdbcType=VARCHAR}, #{item.payType,jdbcType=TINYINT}, #{item.settlementAmount,jdbcType=DECIMAL}, 
+        #{item.prepayAmount,jdbcType=DECIMAL}, #{item.payBankId,jdbcType=INTEGER}, #{item.details,jdbcType=LONGVARCHAR}, 
+        #{item.vendorInfo,jdbcType=LONGVARCHAR}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM pay_record WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM pay_record
+    <where>
+      <if test="vendorId != null">
+        AND vendor_id = #{vendorId,jdbcType=INTEGER}
+      </if>
+      <if test="finishTime != null">
+        AND finish_time = #{finishTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="submitTime != null">
+        AND submit_time = #{submitTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="useTo != null">
+        AND use_to = #{useTo,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="planTotalAmount != null">
+        AND plan_total_amount = #{planTotalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="realTotalAmount != null">
+        AND real_total_amount = #{realTotalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createUser != null">
+        AND create_user = #{createUser,jdbcType=VARCHAR}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="financeUpdateUser != null">
+        AND finance_update_user = #{financeUpdateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+      <if test="submitUser != null">
+        AND submit_user = #{submitUser,jdbcType=VARCHAR}
+      </if>
+      <if test="lastPayDay != null">
+        AND last_pay_day = #{lastPayDay,jdbcType=VARCHAR}
+      </if>
+      <if test="approver != null">
+        AND approver = #{approver,jdbcType=VARCHAR}
+      </if>
+      <if test="invoiceOption != null">
+        AND invoice_option = #{invoiceOption,jdbcType=TINYINT}
+      </if>
+      <if test="earliestPayDay != null">
+        AND earliest_pay_day = #{earliestPayDay,jdbcType=VARCHAR}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=TINYINT}
+      </if>
+      <if test="settlementAmount != null">
+        AND settlement_amount = #{settlementAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="prepayAmount != null">
+        AND prepay_amount = #{prepayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="payBankId != null">
+        AND pay_bank_id = #{payBankId,jdbcType=INTEGER}
+      </if>
+      <if test="details != null">
+        AND details = #{details,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="vendorInfo != null">
+        AND vendor_info = #{vendorInfo,jdbcType=LONGVARCHAR}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM pay_record
+    <where>
+      <if test="vendorId != null">
+        AND vendor_id = #{vendorId,jdbcType=INTEGER}
+      </if>
+      <if test="finishTime != null">
+        AND finish_time = #{finishTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="submitTime != null">
+        AND submit_time = #{submitTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="useTo != null">
+        AND use_to = #{useTo,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="planTotalAmount != null">
+        AND plan_total_amount = #{planTotalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="realTotalAmount != null">
+        AND real_total_amount = #{realTotalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createUser != null">
+        AND create_user = #{createUser,jdbcType=VARCHAR}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="financeUpdateUser != null">
+        AND finance_update_user = #{financeUpdateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+      <if test="submitUser != null">
+        AND submit_user = #{submitUser,jdbcType=VARCHAR}
+      </if>
+      <if test="lastPayDay != null">
+        AND last_pay_day = #{lastPayDay,jdbcType=VARCHAR}
+      </if>
+      <if test="approver != null">
+        AND approver = #{approver,jdbcType=VARCHAR}
+      </if>
+      <if test="invoiceOption != null">
+        AND invoice_option = #{invoiceOption,jdbcType=TINYINT}
+      </if>
+      <if test="earliestPayDay != null">
+        AND earliest_pay_day = #{earliestPayDay,jdbcType=VARCHAR}
+      </if>
+      <if test="payType != null">
+        AND pay_type = #{payType,jdbcType=TINYINT}
+      </if>
+      <if test="settlementAmount != null">
+        AND settlement_amount = #{settlementAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="prepayAmount != null">
+        AND prepay_amount = #{prepayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="payBankId != null">
+        AND pay_bank_id = #{payBankId,jdbcType=INTEGER}
+      </if>
+      <if test="details != null">
+        AND details = #{details,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="vendorInfo != null">
+        AND vendor_info = #{vendorInfo,jdbcType=LONGVARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM pay_record
+  </select>
+  <select id="count" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT count(1) FROM pay_record
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="vendorId != null">
+        AND vendor_id=#{vendorId,jdbcType=INTEGER}
+      </if>
+      <if test="finishTime != null">
+        AND finish_time=#{finishTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="submitTime != null">
+        AND submit_time=#{submitTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="useTo != null">
+        AND use_to=#{useTo,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null">
+        AND remark=#{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="planTotalAmount != null">
+        AND plan_total_amount=#{planTotalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="realTotalAmount != null">
+        AND real_total_amount=#{realTotalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createUser != null">
+        AND create_user=#{createUser,jdbcType=VARCHAR}
+      </if>
+      <if test="updateUser != null">
+        AND update_user=#{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="financeUpdateUser != null">
+        AND finance_update_user=#{financeUpdateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status=#{status,jdbcType=TINYINT}
+      </if>
+      <if test="submitUser != null">
+        AND submit_user=#{submitUser,jdbcType=VARCHAR}
+      </if>
+      <if test="lastPayDay != null">
+        AND last_pay_day=#{lastPayDay,jdbcType=VARCHAR}
+      </if>
+      <if test="approver != null">
+        AND approver=#{approver,jdbcType=VARCHAR}
+      </if>
+      <if test="invoiceOption != null">
+        AND invoice_option=#{invoiceOption,jdbcType=TINYINT}
+      </if>
+      <if test="earliestPayDay != null">
+        AND earliest_pay_day=#{earliestPayDay,jdbcType=VARCHAR}
+      </if>
+      <if test="payType != null">
+        AND pay_type=#{payType,jdbcType=TINYINT}
+      </if>
+      <if test="settlementAmount != null">
+        AND settlement_amount=#{settlementAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="prepayAmount != null">
+        AND prepay_amount=#{prepayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="payBankId != null">
+        AND pay_bank_id=#{payBankId,jdbcType=INTEGER}
+      </if>
+      <if test="details != null">
+        AND details=#{details,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="vendorInfo != null">
+        AND vendor_info=#{vendorInfo,jdbcType=LONGVARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    DELETE FROM pay_record WHERE id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.ddmc.reconciliation.model.scm.PayRecord">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    UPDATE pay_record
+    <set>
+      <if test="vendorId != null">
+        vendor_id = #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="finishTime != null">
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitTime != null">
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useTo != null">
+        use_to = #{useTo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="planTotalAmount != null">
+        plan_total_amount = #{planTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="realTotalAmount != null">
+        real_total_amount = #{realTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="financeUpdateUser != null">
+        finance_update_user = #{financeUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="submitUser != null">
+        submit_user = #{submitUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPayDay != null">
+        last_pay_day = #{lastPayDay,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceOption != null">
+        invoice_option = #{invoiceOption,jdbcType=TINYINT},
+      </if>
+      <if test="earliestPayDay != null">
+        earliest_pay_day = #{earliestPayDay,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=TINYINT},
+      </if>
+      <if test="settlementAmount != null">
+        settlement_amount = #{settlementAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="prepayAmount != null">
+        prepay_amount = #{prepayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payBankId != null">
+        pay_bank_id = #{payBankId,jdbcType=INTEGER},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="vendorInfo != null">
+        vendor_info = #{vendorInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

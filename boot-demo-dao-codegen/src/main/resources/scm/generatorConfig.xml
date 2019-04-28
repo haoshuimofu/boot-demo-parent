@@ -76,7 +76,11 @@
         <!--<columnOverride column="propertys" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
         <!--<columnOverride column="basketNum" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
         <!--</table>-->
-        <table tableName="store_product_batch"/>
+        <table tableName="vendor"/>
+        <table tableName="vendor_responsible_group_relation"/>
+        <table tableName="purchase"/>
+        <table tableName="return_purchase"/>
+        <table tableName="pay_record"/>
 
     </context>
 </generatorConfiguration>

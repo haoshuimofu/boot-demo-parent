@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddmc.reconciliation.dao.scm.VendorResponsibleGroupRelationDao">
+  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="vendor_id" jdbcType="INTEGER" property="vendorId" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    id, group_id, group_name, vendor_id, update_user, is_deleted, create_time, update_time
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    INSERT INTO vendor_responsible_group_relation (
+      group_id, group_name, vendor_id, update_user, is_deleted, create_time, update_time
+    ) VALUES (  
+      #{groupId,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{vendorId,jdbcType=INTEGER}, 
+      #{updateUser,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    INSERT INTO vendor_responsible_group_relation (
+      group_id, group_name, vendor_id, update_user, is_deleted, create_time, update_time
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.groupId,jdbcType=VARCHAR}, #{item.groupName,jdbcType=VARCHAR}, #{item.vendorId,jdbcType=INTEGER}, 
+        #{item.updateUser,jdbcType=VARCHAR}, #{item.isDeleted,jdbcType=BIT}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation
+    <where>
+      <if test="groupId != null">
+        AND group_id = #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="groupName != null">
+        AND group_name = #{groupName,jdbcType=VARCHAR}
+      </if>
+      <if test="vendorId != null">
+        AND vendor_id = #{vendorId,jdbcType=INTEGER}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="isDeleted != null">
+        AND is_deleted = #{isDeleted,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation
+    <where>
+      <if test="groupId != null">
+        AND group_id = #{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="groupName != null">
+        AND group_name = #{groupName,jdbcType=VARCHAR}
+      </if>
+      <if test="vendorId != null">
+        AND vendor_id = #{vendorId,jdbcType=INTEGER}
+      </if>
+      <if test="updateUser != null">
+        AND update_user = #{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="isDeleted != null">
+        AND is_deleted = #{isDeleted,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation
+  </select>
+  <select id="count" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    SELECT count(1) FROM vendor_responsible_group_relation
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="groupId != null">
+        AND group_id=#{groupId,jdbcType=VARCHAR}
+      </if>
+      <if test="groupName != null">
+        AND group_name=#{groupName,jdbcType=VARCHAR}
+      </if>
+      <if test="vendorId != null">
+        AND vendor_id=#{vendorId,jdbcType=INTEGER}
+      </if>
+      <if test="updateUser != null">
+        AND update_user=#{updateUser,jdbcType=VARCHAR}
+      </if>
+      <if test="isDeleted != null">
+        AND is_deleted=#{isDeleted,jdbcType=BIT}
+      </if>
+      <if test="createTime != null">
+        AND create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null">
+        AND update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    DELETE FROM vendor_responsible_group_relation WHERE id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation">
+    <!--@mbg.generated 2019-04-28 15:16:04-->
+    UPDATE vendor_responsible_group_relation
+    <set>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorId != null">
+        vendor_id = #{vendorId,jdbcType=INTEGER},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
