@@ -8,6 +8,8 @@ import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
@@ -26,14 +28,20 @@ import java.util.Set;
  */
 public class DemoJavaClientWrapperPlugin extends PluginAdapter {
 
-    /**
-     * Dao接口源文件所在Project && Package
-     */
+    private Logger logger = LoggerFactory.getLogger(DemoJavaClientWrapperPlugin.class);
+
+    // Dao接口
     private String javaClientTargetPackage;
     private String javaClientTargetProject;
 
+    // Model类
     private String modelTargetPackage;
     private String modelTargetProject;
+
+    // Xml文件
+    private String sqlMapTargetPackage;
+    private String sqlMapTargetProject;
+
 
     @Override
     public void setProperties(Properties properties) {
@@ -44,18 +52,31 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
         if (javaClientTargetPackage == null) {
             this.javaClientTargetPackage = properties.getProperty("javaClientTargetPackage");
         }
+
         if (modelTargetPackage == null) {
             this.modelTargetPackage = properties.getProperty("modelTargetPackage");
         }
         if (modelTargetProject == null) {
             this.modelTargetProject = properties.getProperty("modelTargetProject");
         }
+
+        if (sqlMapTargetPackage == null) {
+            this.sqlMapTargetPackage = properties.getProperty("sqlMapTargetPackage");
+        }
+        if (sqlMapTargetProject == null) {
+            this.sqlMapTargetProject = properties.getProperty("sqlMapTargetProject");
+        }
     }
 
     @Override
     public boolean validate(List<String> list) {
-        Assert.notNull(javaClientTargetPackage, "javaClientTargetPackage is null!");
-        Assert.notNull(javaClientTargetProject, "javaClientTargetProject is null!");
+        Assert.notNull(javaClientTargetPackage, "javaClientTargetPackage must bu non-null!");
+        Assert.notNull(javaClientTargetProject, "javaClientTargetProject must bu non-null!");
+        Assert.notNull(modelTargetPackage, "modelTargetPackage must bu non-null!");
+        Assert.notNull(modelTargetProject, "modelTargetProject must bu non-null!");
+
+        // Assert.notNull(sqlMapTargetPackage, "sqlMapTargetPackage must bu non-null!");
+        // Assert.notNull(sqlMapTargetProject, "sqlMapTargetProject must bu non-null!");
         return true;
     }
 
@@ -63,25 +84,8 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
     public boolean modelPrimaryKeyClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         File modelKeyJavaFile = new File(modelTargetProject + "/" +
                 introspectedTable.getPrimaryKeyType().replaceAll("\\.", "\\/") + ".java");
-        System.out.println(modelKeyJavaFile.getAbsolutePath() + " ---> [" + introspectedTable.getBaseRecordType() + "]主键类已存在!");
+        logger.info(">>> [{}]: 主键类已存在!!!", modelKeyJavaFile.getAbsolutePath());
         return super.modelPrimaryKeyClassGenerated(topLevelClass, introspectedTable);
-    }
-
-    /**
-     * <p>PluginAdapter很多方法默认值都是true, 不符使用现状，改从实际使用的rules中获取</p>
-     *
-     * @param topLevelClass
-     * @param introspectedTable
-     * @return
-     */
-    @Override
-    public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        return false;
-    }
-
-    @Override
-    public boolean modelExampleClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        return false;
     }
 
     @Override
@@ -91,7 +95,7 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
                 javaClientTargetPackage.replaceAll("\\.", "\\/") + "/" + interfaze.getType().getShortName() + ".java");
         // 如果Dao对应的.java源文件已经存在则跳过，因为Dao里面可能已经有一些自定义接口了
         if (javaClientFile.exists()) {
-            System.out.println(javaClientFile.getAbsolutePath() + " ---> [" + introspectedTable.getBaseRecordType() + "]Dao接口类已存在!");
+            logger.info(">>> [{}]: Dao接口类已存在!!!", interfaze.getType().getFullyQualifiedName());
             return false;
         }
 
