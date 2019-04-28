@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.reconciliation.dao.FinanceBillOrderDetailDao">
   <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.FinanceBillOrderDetail">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
+    <!--@mbg.generated 2019-04-28 14:34:30-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="biz_id" jdbcType="INTEGER" property="bizId" />
@@ -20,22 +20,23 @@
     <result column="jindie_amount" jdbcType="DECIMAL" property="jindieAmount" />
     <result column="balance" jdbcType="DECIMAL" property="balance" />
     <result column="ddmc_amount" jdbcType="DECIMAL" property="ddmcAmount" />
+    <result column="sync" jdbcType="BIGINT" property="sync" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
+    <!--@mbg.generated 2019-04-28 14:34:30-->
     id, status, biz_id, finance_biz_id, finance_biz_type, finance_biz_subtype, finance_biz_status, 
     finance_biz_amount, finance_biz_finish_time, vendor_id, vendor_name, vendor_status, 
-    vendor_resp_groups, op_status, jindie_amount, balance, ddmc_amount, create_time, 
+    vendor_resp_groups, op_status, jindie_amount, balance, ddmc_amount, sync, create_time, 
     update_time
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.reconciliation.model.FinanceBillOrderDetail" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
+    <!--@mbg.generated 2019-04-28 14:34:30-->
     INSERT INTO finance_bill_order_detail (
       status, biz_id, finance_biz_id, finance_biz_type, finance_biz_subtype, finance_biz_status, 
       finance_biz_amount, finance_biz_finish_time, vendor_id, vendor_name, vendor_status, 
-      vendor_resp_groups, op_status, jindie_amount, balance, ddmc_amount, create_time, 
+      vendor_resp_groups, op_status, jindie_amount, balance, ddmc_amount, sync, create_time, 
       update_time
     ) VALUES (  
       #{status,jdbcType=TINYINT}, #{bizId,jdbcType=INTEGER}, #{financeBizId,jdbcType=VARCHAR}, 
@@ -43,16 +44,16 @@
       #{financeBizAmount,jdbcType=DECIMAL}, #{financeBizFinishTime,jdbcType=TIMESTAMP}, 
       #{vendorId,jdbcType=INTEGER}, #{vendorName,jdbcType=VARCHAR}, #{vendorStatus,jdbcType=TINYINT}, 
       #{vendorRespGroups,jdbcType=VARCHAR}, #{opStatus,jdbcType=TINYINT}, #{jindieAmount,jdbcType=DECIMAL}, 
-      #{balance,jdbcType=DECIMAL}, #{ddmcAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}
+      #{balance,jdbcType=DECIMAL}, #{ddmcAmount,jdbcType=DECIMAL}, #{sync,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
+    <!--@mbg.generated 2019-04-28 14:34:30-->
     INSERT INTO finance_bill_order_detail (
       status, biz_id, finance_biz_id, finance_biz_type, finance_biz_subtype, finance_biz_status, 
       finance_biz_amount, finance_biz_finish_time, vendor_id, vendor_name, vendor_status, 
-      vendor_resp_groups, op_status, jindie_amount, balance, ddmc_amount, create_time, 
+      vendor_resp_groups, op_status, jindie_amount, balance, ddmc_amount, sync, create_time, 
       update_time
     ) VALUES 
     <foreach collection="list" index="index" item="item" separator=",">
@@ -63,17 +64,18 @@
         #{item.financeBizFinishTime,jdbcType=TIMESTAMP}, #{item.vendorId,jdbcType=INTEGER}, 
         #{item.vendorName,jdbcType=VARCHAR}, #{item.vendorStatus,jdbcType=TINYINT}, #{item.vendorRespGroups,jdbcType=VARCHAR}, 
         #{item.opStatus,jdbcType=TINYINT}, #{item.jindieAmount,jdbcType=DECIMAL}, #{item.balance,jdbcType=DECIMAL}, 
-        #{item.ddmcAmount,jdbcType=DECIMAL}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}
+        #{item.ddmcAmount,jdbcType=DECIMAL}, #{item.sync,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}
       )
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
-    SELECT <include refid="Base_Column_List"/> FROM finance_bill_order_detail WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-28 14:34:30-->
+    SELECT <include refid="Base_Column_List" /> FROM finance_bill_order_detail WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.ddmc.reconciliation.model.FinanceBillOrderDetail" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
-    SELECT <include refid="Base_Column_List"/> FROM finance_bill_order_detail
+    <!--@mbg.generated 2019-04-28 14:34:30-->
+    SELECT <include refid="Base_Column_List" /> FROM finance_bill_order_detail
     <where>
       <if test="status != null">
         AND status = #{status,jdbcType=TINYINT}
@@ -122,6 +124,9 @@
       </if>
       <if test="ddmcAmount != null">
         AND ddmc_amount = #{ddmcAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="sync != null">
+        AND sync = #{sync,jdbcType=BIGINT}
       </if>
       <if test="createTime != null">
         AND create_time = #{createTime,jdbcType=TIMESTAMP}
@@ -133,8 +138,8 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.ddmc.reconciliation.model.FinanceBillOrderDetail" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
-    SELECT <include refid="Base_Column_List"/> FROM finance_bill_order_detail
+    <!--@mbg.generated 2019-04-28 14:34:30-->
+    SELECT <include refid="Base_Column_List" /> FROM finance_bill_order_detail
     <where>
       <if test="status != null">
         AND status = #{status,jdbcType=TINYINT}
@@ -184,6 +189,9 @@
       <if test="ddmcAmount != null">
         AND ddmc_amount = #{ddmcAmount,jdbcType=DECIMAL}
       </if>
+      <if test="sync != null">
+        AND sync = #{sync,jdbcType=BIGINT}
+      </if>
       <if test="createTime != null">
         AND create_time = #{createTime,jdbcType=TIMESTAMP}
       </if>
@@ -193,11 +201,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
-    SELECT <include refid="Base_Column_List"/> FROM finance_bill_order_detail
+    <!--@mbg.generated 2019-04-28 14:34:30-->
+    SELECT <include refid="Base_Column_List" /> FROM finance_bill_order_detail
   </select>
   <select id="count" parameterType="com.ddmc.reconciliation.model.FinanceBillOrderDetail" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
+    <!--@mbg.generated 2019-04-28 14:34:30-->
     SELECT count(1) FROM finance_bill_order_detail
     <where>
       <if test="id != null">
@@ -251,6 +259,9 @@
       <if test="ddmcAmount != null">
         AND ddmc_amount=#{ddmcAmount,jdbcType=DECIMAL}
       </if>
+      <if test="sync != null">
+        AND sync=#{sync,jdbcType=BIGINT}
+      </if>
       <if test="createTime != null">
         AND create_time=#{createTime,jdbcType=TIMESTAMP}
       </if>
@@ -260,11 +271,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
+    <!--@mbg.generated 2019-04-28 14:34:30-->
     DELETE FROM finance_bill_order_detail WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.ddmc.reconciliation.model.FinanceBillOrderDetail">
-    <!--@mbg.generated 2019-04-26 19:11:15-->
+    <!--@mbg.generated 2019-04-28 14:34:30-->
     UPDATE finance_bill_order_detail
     <set>
       <if test="status != null">
@@ -314,6 +325,9 @@
       </if>
       <if test="ddmcAmount != null">
         ddmc_amount = #{ddmcAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="sync != null">
+        sync = #{sync,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
