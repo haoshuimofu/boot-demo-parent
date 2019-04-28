@@ -76,12 +76,12 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
      */
     @Override
     public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        return introspectedTable.getRules().generateRecordWithBLOBsClass();
+        return false;
     }
 
     @Override
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        return introspectedTable.getRules().generateExampleClass();
+        return false;
     }
 
     @Override

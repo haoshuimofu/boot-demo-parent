@@ -8,7 +8,6 @@ import org.mybatis.generator.api.ProgressCallback;
 import org.mybatis.generator.codegen.AbstractJavaClientGenerator;
 import org.mybatis.generator.codegen.AbstractJavaGenerator;
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl;
-import org.mybatis.generator.codegen.mybatis3.model.BaseRecordGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.PrimaryKeyGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.RecordWithBLOBsGenerator;
@@ -80,7 +79,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
      */
     @Override
     public void setRules(Rules rules) {
-        ConditionalModelRules realRules = new SimpleConditionalModelRules(this);
+        SimpleConditionalModelRules realRules = new SimpleConditionalModelRules(this);
         // 不生成ModelExampleClass，在calculateJavaModelGenerators方法控制
         // realRules.generateExampleClass();
         super.setRules(realRules);
@@ -103,7 +102,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         }
 
         if (this.getRules().generateBaseRecordClass()) {
-            AbstractJavaGenerator javaGenerator = new BaseRecordGenerator();
+            AbstractJavaGenerator javaGenerator = new RecordWithBLOBsGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
             this.javaModelGenerators.add(javaGenerator);
         }
@@ -126,6 +125,11 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         // 自定义XmlMapperGenerator实现
         this.xmlMapperGenerator = new DemoXmlMapperGenerator();
         initializeAbstractGenerator(xmlMapperGenerator, warnings, progressCallback);
+    }
+
+    @Override
+    public void calculateGenerators(List<String> warnings, ProgressCallback progressCallback) {
+        super.calculateGenerators(warnings, progressCallback);
     }
 
     /**
