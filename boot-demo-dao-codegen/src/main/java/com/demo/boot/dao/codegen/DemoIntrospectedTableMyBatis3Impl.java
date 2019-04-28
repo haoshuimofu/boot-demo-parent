@@ -1,6 +1,7 @@
 package com.demo.boot.dao.codegen;
 
 import com.demo.boot.dao.codegen.generator.DemoXmlMapperGenerator;
+import com.demo.boot.dao.codegen.generator.ModelWithBLOBsGenerator;
 import com.demo.boot.dao.codegen.rules.SimpleConditionalModelRules;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -102,7 +103,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         }
 
         if (this.getRules().generateBaseRecordClass()) {
-            AbstractJavaGenerator javaGenerator = new RecordWithBLOBsGenerator();
+            AbstractJavaGenerator javaGenerator = new ModelWithBLOBsGenerator();
             this.initializeAbstractGenerator(javaGenerator, warnings, progressCallback);
             this.javaModelGenerators.add(javaGenerator);
         }
