@@ -1,7 +1,9 @@
 package com.demo.boot.dao.codegen;
 
 import com.demo.boot.dao.codegen.generator.DemoXmlMapperGenerator;
+import com.demo.boot.dao.codegen.rules.SimpleConditionalModelRules;
 import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.ProgressCallback;
 import org.mybatis.generator.codegen.AbstractJavaClientGenerator;
 import org.mybatis.generator.codegen.AbstractJavaGenerator;
@@ -10,7 +12,10 @@ import org.mybatis.generator.codegen.mybatis3.model.BaseRecordGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.PrimaryKeyGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.RecordWithBLOBsGenerator;
+import org.mybatis.generator.config.ModelType;
 import org.mybatis.generator.internal.rules.ConditionalModelRules;
+import org.mybatis.generator.internal.rules.FlatModelRules;
+import org.mybatis.generator.internal.rules.HierarchicalModelRules;
 import org.mybatis.generator.internal.rules.Rules;
 import org.mybatis.generator.internal.util.StringUtility;
 
@@ -28,6 +33,28 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
         super();
     }
 
+    /**
+     * <p>修改IntrospectedTable.initialize, 主要是修改rules</p>
+     * See {@link IntrospectedTable#initialize()}
+     */
+    @Override
+    public void initialize() {
+        calculateJavaClientAttributes();
+        calculateModelAttributes();
+        calculateXmlAttributes();
+
+        if (tableConfiguration.getModelType() == ModelType.HIERARCHICAL) {
+            rules = new HierarchicalModelRules(this);
+        } else if (tableConfiguration.getModelType() == ModelType.FLAT) {
+            rules = new FlatModelRules(this);
+        } else if (tableConfiguration.getModelType() == ModelType.CONDITIONAL) {
+            rules = new ConditionalModelRules(this);
+        } else {
+            rules = new SimpleConditionalModelRules(this);
+        }
+
+        context.getPlugins().initialized(this);
+    }
 
     /**
      * <p>这里在table添加column的时候设置一下generatedAlways</p>
@@ -53,7 +80,7 @@ public class DemoIntrospectedTableMyBatis3Impl extends IntrospectedTableMyBatis3
      */
     @Override
     public void setRules(Rules rules) {
-        ConditionalModelRules realRules = new ConditionalModelRules(this);
+        ConditionalModelRules realRules = new SimpleConditionalModelRules(this);
         // 不生成ModelExampleClass，在calculateJavaModelGenerators方法控制
         // realRules.generateExampleClass();
         super.setRules(realRules);
