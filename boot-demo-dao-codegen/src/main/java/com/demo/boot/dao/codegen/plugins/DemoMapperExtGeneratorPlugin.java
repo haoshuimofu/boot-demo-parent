@@ -9,6 +9,8 @@ import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.internal.DefaultShellCallback;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,12 +24,13 @@ import java.util.List;
  */
 public class DemoMapperExtGeneratorPlugin extends PluginAdapter {
 
-    private ShellCallback shellCallback = null;
+    private Logger logger = LoggerFactory.getLogger(DemoMapperExtGeneratorPlugin.class);
+
+    private final ShellCallback shellCallback;
 
     public DemoMapperExtGeneratorPlugin() {
         shellCallback = new DefaultShellCallback(false);
     }
-
 
     @Override
     public boolean validate(List<String> list) {
@@ -42,10 +45,11 @@ public class DemoMapperExtGeneratorPlugin extends PluginAdapter {
             String targetProject = generatedXmlFile.getTargetProject();
             String targetPackage = generatedXmlFile.getTargetPackage();
             String mapperExtFileName = introspectedTable.getFullyQualifiedTable().getDomainObjectName() + "MapperExt.xml";
-            File mapperExtFile = new File(targetProject + "/" + targetPackage + "/" + mapperExtFileName);
+            File mapperExtFile = new File(targetProject + "/" + targetPackage.replaceAll("\\.", "/") + "/" + mapperExtFileName);
             // 如果XxMapperExt.xml文件已存在, 直接跳过
             if (mapperExtFile.exists()) {
-                return null;
+                logger.info(">>> [{}]文件已存在!!!", mapperExtFile.getAbsolutePath());
+                continue;
             }
 
             XmlElement mapper = new XmlElement("mapper");
