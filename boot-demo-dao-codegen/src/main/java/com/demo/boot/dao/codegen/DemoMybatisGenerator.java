@@ -33,7 +33,7 @@ public class DemoMybatisGenerator {
 
         List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
-        File configFile = ResourceUtils.getFile(ORDER_MODULE_CONFIG);
+        File configFile = ResourceUtils.getFile(USER_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;
         try {

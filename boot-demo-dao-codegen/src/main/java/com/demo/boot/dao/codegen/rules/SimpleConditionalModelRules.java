@@ -1,6 +1,7 @@
 package com.demo.boot.dao.codegen.rules;
 
 import org.mybatis.generator.api.IntrospectedTable;
+import org.mybatis.generator.internal.rules.BaseRules;
 import org.mybatis.generator.internal.rules.ConditionalModelRules;
 
 /**
@@ -9,17 +10,30 @@ import org.mybatis.generator.internal.rules.ConditionalModelRules;
  * @Author wude
  * @Create 2019-04-09 14:04
  */
-public class SimpleConditionalModelRules extends ConditionalModelRules {
+public class SimpleConditionalModelRules extends BaseRules {
+
+    private ConditionalModelRules conditionalModelRules;
 
     public SimpleConditionalModelRules(IntrospectedTable introspectedTable) {
         // super.isModelOnly = false; final不能修改
         super(introspectedTable);
+        conditionalModelRules = new ConditionalModelRules(introspectedTable);
     }
 
 
     @Override
     public boolean generateExampleClass() {
-        return super.generateExampleClass();
+        return conditionalModelRules.generateExampleClass();
+    }
+
+    @Override
+    public boolean generatePrimaryKeyClass() {
+        return conditionalModelRules.generatePrimaryKeyClass();
+    }
+
+    @Override
+    public boolean generateBaseRecordClass() {
+        return conditionalModelRules.generateBaseRecordClass();
     }
 
     /**

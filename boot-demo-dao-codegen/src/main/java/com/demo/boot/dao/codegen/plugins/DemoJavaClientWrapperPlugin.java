@@ -67,6 +67,23 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
         return super.modelPrimaryKeyClassGenerated(topLevelClass, introspectedTable);
     }
 
+    /**
+     * <p>PluginAdapter很多方法默认值都是true, 不符使用现状，改从实际使用的rules中获取</p>
+     *
+     * @param topLevelClass
+     * @param introspectedTable
+     * @return
+     */
+    @Override
+    public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        return introspectedTable.getRules().generateRecordWithBLOBsClass();
+    }
+
+    @Override
+    public boolean modelExampleClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        return introspectedTable.getRules().generateExampleClass();
+    }
+
     @Override
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
 
