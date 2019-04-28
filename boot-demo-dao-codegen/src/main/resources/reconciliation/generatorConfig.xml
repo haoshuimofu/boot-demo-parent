@@ -67,10 +67,10 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="finance_bill_collect"/>
+        <!--<table tableName="finance_bill_collect"/>-->
         <table tableName="finance_bill_email"/>
-        <table tableName="finance_bill_order_detail"/>
-        <table tableName="finance_bill_vendor_list"/>
+        <!--<table tableName="finance_bill_order_detail"/>-->
+        <!--<table tableName="finance_bill_vendor_list"/>-->
 
     </context>
 </generatorConfiguration>

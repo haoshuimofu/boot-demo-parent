@@ -85,11 +85,6 @@ public class DemoJavaClientWrapperPlugin extends PluginAdapter {
     }
 
     @Override
-    public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        return false;
-    }
-
-    @Override
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
 
         File javaClientFile = new File(javaClientTargetProject + "/" +
