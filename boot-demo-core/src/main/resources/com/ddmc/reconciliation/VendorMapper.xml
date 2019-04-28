@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.reconciliation.dao.scm.VendorDao">
-  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.scm.Vendor">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.scm.model.Vendor">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     <id column="vendor_id" jdbcType="INTEGER" property="vendorId" />
     <result column="vendor_name" jdbcType="VARCHAR" property="vendorName" />
     <result column="address" jdbcType="VARCHAR" property="address" />
@@ -47,7 +47,7 @@
     <result column="introduce" jdbcType="LONGVARCHAR" property="introduce" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     vendor_id, vendor_name, address, phone, create_time, update_time, status, replenish_rate, 
     type, update_user, bank_name, bank_account, account_name, is_account_active, tax_account, 
     account_rate, vendor_type, contact_user, audit_status, audit_update_time, audit_update_user, 
@@ -56,8 +56,8 @@
     is_self_purchase, arrival_deadline, need_vms, supply_product_type, remark, images, 
     rest_time, intro_images, introduce
   </sql>
-  <insert id="insert" keyColumn="vendor_id" keyProperty="vendorId" parameterType="com.ddmc.reconciliation.model.scm.Vendor" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <insert id="insert" keyColumn="vendor_id" keyProperty="vendorId" parameterType="com.ddmc.reconciliation.scm.model.Vendor" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO vendor (
       vendor_name, address, phone, create_time, update_time, status, replenish_rate, 
       type, update_user, bank_name, bank_account, account_name, is_account_active, tax_account, 
@@ -84,7 +84,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO vendor (
       vendor_name, address, phone, create_time, update_time, status, replenish_rate, 
       type, update_user, bank_name, bank_account, account_name, is_account_active, tax_account, 
@@ -116,12 +116,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor WHERE vendor_id = #{vendorId,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor WHERE vendor_id = #{vendorId,jdbcType=INTEGER}
   </select>
-  <select id="selectOne" parameterType="com.ddmc.reconciliation.model.scm.Vendor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor
+  <select id="selectOne" parameterType="com.ddmc.reconciliation.scm.model.Vendor" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor
     <where>
       <if test="vendorName != null">
         AND vendor_name = #{vendorName,jdbcType=VARCHAR}
@@ -249,9 +249,9 @@
       LIMIT 1
     </where>
   </select>
-  <select id="selectList" parameterType="com.ddmc.reconciliation.model.scm.Vendor" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor
+  <select id="selectList" parameterType="com.ddmc.reconciliation.scm.model.Vendor" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor
     <where>
       <if test="vendorName != null">
         AND vendor_name = #{vendorName,jdbcType=VARCHAR}
@@ -379,11 +379,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor
   </select>
-  <select id="count" parameterType="com.ddmc.reconciliation.model.scm.Vendor" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <select id="count" parameterType="com.ddmc.reconciliation.scm.model.Vendor" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     SELECT count(1) FROM vendor
     <where>
       <if test="vendorId != null">
@@ -515,11 +515,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     DELETE FROM vendor WHERE vendor_id = #{vendorId,jdbcType=INTEGER}
   </delete>
-  <update id="update" parameterType="com.ddmc.reconciliation.model.scm.Vendor">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <update id="update" parameterType="com.ddmc.reconciliation.scm.model.Vendor">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     UPDATE vendor
     <set>
       <if test="vendorName != null">

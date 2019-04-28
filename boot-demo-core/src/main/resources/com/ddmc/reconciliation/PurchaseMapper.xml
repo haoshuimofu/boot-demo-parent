@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.reconciliation.dao.scm.PurchaseDao">
-  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.scm.Purchase">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.scm.model.Purchase">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     <id column="purchase_id" jdbcType="INTEGER" property="purchaseId" />
     <result column="vendor_id" jdbcType="INTEGER" property="vendorId" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
@@ -47,7 +47,7 @@
     <result column="adjustment_amount_detail" jdbcType="LONGVARCHAR" property="adjustmentAmountDetail" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     purchase_id, vendor_id, store_id, create_time, delivery_time, purchase_title, status, 
     draft_time, amount_total, real_amount_total, creater, update_time, finance_status, 
     finance_remark, finance_time, finance_operator, plan_id, update_user, is_timeout, 
@@ -57,8 +57,8 @@
     final_settlement_amount, finish_time, products, import_log, images, supplier_sign, 
     additional, adjustment_amount_detail
   </sql>
-  <insert id="insert" keyColumn="purchase_id" keyProperty="purchaseId" parameterType="com.ddmc.reconciliation.model.scm.Purchase" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <insert id="insert" keyColumn="purchase_id" keyProperty="purchaseId" parameterType="com.ddmc.reconciliation.scm.model.Purchase" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO purchase (
       vendor_id, store_id, create_time, delivery_time, purchase_title, status, draft_time, 
       amount_total, real_amount_total, creater, update_time, finance_status, finance_remark, 
@@ -85,7 +85,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO purchase (
       vendor_id, store_id, create_time, delivery_time, purchase_title, status, draft_time, 
       amount_total, real_amount_total, creater, update_time, finance_status, finance_remark, 
@@ -118,12 +118,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM purchase WHERE purchase_id = #{purchaseId,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM purchase WHERE purchase_id = #{purchaseId,jdbcType=INTEGER}
   </select>
-  <select id="selectOne" parameterType="com.ddmc.reconciliation.model.scm.Purchase" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM purchase
+  <select id="selectOne" parameterType="com.ddmc.reconciliation.scm.model.Purchase" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM purchase
     <where>
       <if test="vendorId != null">
         AND vendor_id = #{vendorId,jdbcType=INTEGER}
@@ -251,9 +251,9 @@
       LIMIT 1
     </where>
   </select>
-  <select id="selectList" parameterType="com.ddmc.reconciliation.model.scm.Purchase" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM purchase
+  <select id="selectList" parameterType="com.ddmc.reconciliation.scm.model.Purchase" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM purchase
     <where>
       <if test="vendorId != null">
         AND vendor_id = #{vendorId,jdbcType=INTEGER}
@@ -381,11 +381,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM purchase
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM purchase
   </select>
-  <select id="count" parameterType="com.ddmc.reconciliation.model.scm.Purchase" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <select id="count" parameterType="com.ddmc.reconciliation.scm.model.Purchase" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     SELECT count(1) FROM purchase
     <where>
       <if test="purchaseId != null">
@@ -517,11 +517,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     DELETE FROM purchase WHERE purchase_id = #{purchaseId,jdbcType=INTEGER}
   </delete>
-  <update id="update" parameterType="com.ddmc.reconciliation.model.scm.Purchase">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <update id="update" parameterType="com.ddmc.reconciliation.scm.model.Purchase">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     UPDATE purchase
     <set>
       <if test="vendorId != null">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.reconciliation.dao.scm.VendorResponsibleGroupRelationDao">
-  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.scm.model.VendorResponsibleGroupRelation">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="group_id" jdbcType="VARCHAR" property="groupId" />
     <result column="group_name" jdbcType="VARCHAR" property="groupName" />
@@ -13,11 +13,11 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     id, group_id, group_name, vendor_id, update_user, is_deleted, create_time, update_time
   </sql>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.reconciliation.scm.model.VendorResponsibleGroupRelation" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO vendor_responsible_group_relation (
       group_id, group_name, vendor_id, update_user, is_deleted, create_time, update_time
     ) VALUES (  
@@ -27,7 +27,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO vendor_responsible_group_relation (
       group_id, group_name, vendor_id, update_user, is_deleted, create_time, update_time
     ) VALUES 
@@ -40,12 +40,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor_responsible_group_relation WHERE id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectOne" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation
+  <select id="selectOne" parameterType="com.ddmc.reconciliation.scm.model.VendorResponsibleGroupRelation" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor_responsible_group_relation
     <where>
       <if test="groupId != null">
         AND group_id = #{groupId,jdbcType=VARCHAR}
@@ -71,9 +71,9 @@
       LIMIT 1
     </where>
   </select>
-  <select id="selectList" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation
+  <select id="selectList" parameterType="com.ddmc.reconciliation.scm.model.VendorResponsibleGroupRelation" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor_responsible_group_relation
     <where>
       <if test="groupId != null">
         AND group_id = #{groupId,jdbcType=VARCHAR}
@@ -99,11 +99,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM vendor_responsible_group_relation
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM vendor_responsible_group_relation
   </select>
-  <select id="count" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <select id="count" parameterType="com.ddmc.reconciliation.scm.model.VendorResponsibleGroupRelation" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     SELECT count(1) FROM vendor_responsible_group_relation
     <where>
       <if test="id != null">
@@ -133,11 +133,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     DELETE FROM vendor_responsible_group_relation WHERE id = #{id,jdbcType=INTEGER}
   </delete>
-  <update id="update" parameterType="com.ddmc.reconciliation.model.scm.VendorResponsibleGroupRelation">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <update id="update" parameterType="com.ddmc.reconciliation.scm.model.VendorResponsibleGroupRelation">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     UPDATE vendor_responsible_group_relation
     <set>
       <if test="groupId != null">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ddmc.reconciliation.dao.scm.PayRecordDao">
-  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.model.scm.PayRecord">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <resultMap id="BaseResultMap" type="com.ddmc.reconciliation.scm.model.PayRecord">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="vendor_id" jdbcType="INTEGER" property="vendorId" />
     <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
@@ -30,14 +30,14 @@
     <result column="vendor_info" jdbcType="LONGVARCHAR" property="vendorInfo" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     id, vendor_id, finish_time, submit_time, use_to, remark, plan_total_amount, real_total_amount, 
     create_time, update_time, create_user, update_user, finance_update_user, status, 
     submit_user, last_pay_day, approver, invoice_option, earliest_pay_day, pay_type, 
     settlement_amount, prepay_amount, pay_bank_id, details, vendor_info
   </sql>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ddmc.reconciliation.scm.model.PayRecord" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO pay_record (
       vendor_id, finish_time, submit_time, use_to, remark, plan_total_amount, real_total_amount, 
       create_time, update_time, create_user, update_user, finance_update_user, status, 
@@ -55,7 +55,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     INSERT INTO pay_record (
       vendor_id, finish_time, submit_time, use_to, remark, plan_total_amount, real_total_amount, 
       create_time, update_time, create_user, update_user, finance_update_user, status, 
@@ -77,12 +77,12 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM pay_record WHERE id = #{id,jdbcType=INTEGER}
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM pay_record WHERE id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectOne" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM pay_record
+  <select id="selectOne" parameterType="com.ddmc.reconciliation.scm.model.PayRecord" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM pay_record
     <where>
       <if test="vendorId != null">
         AND vendor_id = #{vendorId,jdbcType=INTEGER}
@@ -159,9 +159,9 @@
       LIMIT 1
     </where>
   </select>
-  <select id="selectList" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM pay_record
+  <select id="selectList" parameterType="com.ddmc.reconciliation.scm.model.PayRecord" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM pay_record
     <where>
       <if test="vendorId != null">
         AND vendor_id = #{vendorId,jdbcType=INTEGER}
@@ -238,11 +238,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
-    SELECT <include refid="Base_Column_List"/> FROM pay_record
+    <!--@mbg.generated 2019-04-28 15:23:11-->
+    SELECT <include refid="Base_Column_List" /> FROM pay_record
   </select>
-  <select id="count" parameterType="com.ddmc.reconciliation.model.scm.PayRecord" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <select id="count" parameterType="com.ddmc.reconciliation.scm.model.PayRecord" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     SELECT count(1) FROM pay_record
     <where>
       <if test="id != null">
@@ -323,11 +323,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     DELETE FROM pay_record WHERE id = #{id,jdbcType=INTEGER}
   </delete>
-  <update id="update" parameterType="com.ddmc.reconciliation.model.scm.PayRecord">
-    <!--@mbg.generated 2019-04-28 15:16:04-->
+  <update id="update" parameterType="com.ddmc.reconciliation.scm.model.PayRecord">
+    <!--@mbg.generated 2019-04-28 15:23:11-->
     UPDATE pay_record
     <set>
       <if test="vendorId != null">
