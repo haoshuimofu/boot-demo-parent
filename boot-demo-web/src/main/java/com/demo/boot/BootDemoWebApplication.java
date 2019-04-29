@@ -1,6 +1,5 @@
 package com.demo.boot;
 
-import com.demo.boot.redis.RedisClusterConfigurationProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,10 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(scanBasePackages = "com.demo.boot")
-@EnableTransactionManagement
+@EnableTransactionManagement // 开启事务管理
+@EnableAspectJAutoProxy // 开启AOP
 public class BootDemoWebApplication extends SpringBootServletInitializer {
 
     private static Logger logger = LoggerFactory.getLogger(BootDemoWebApplication.class);
@@ -21,9 +22,6 @@ public class BootDemoWebApplication extends SpringBootServletInitializer {
         ApplicationContext ctx = SpringApplication.run(BootDemoWebApplication.class, args);
         // spring.profiles.active
         logger.info("Spring.profile.active: {}", StringUtils.join(ctx.getEnvironment().getActiveProfiles(), ", "));
-        RedisClusterConfigurationProperties redisClusterConfigurationProperties = ctx.getBean(RedisClusterConfigurationProperties.class);
-        System.out.println(redisClusterConfigurationProperties.getClusterNodes());
-
     }
 
     /**

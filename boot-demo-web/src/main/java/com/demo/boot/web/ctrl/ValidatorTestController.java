@@ -2,7 +2,6 @@ package com.demo.boot.web.ctrl;
 
 import com.demo.boot.base.JsonResult;
 import com.demo.boot.web.command.ValidatorTestCommand;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
