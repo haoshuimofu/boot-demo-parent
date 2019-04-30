@@ -144,11 +144,11 @@ public class InsertListElementGenerator extends AbstractXmlElementGenerator {
         for (int i = 0; i < columns.size(); ++i) {
             IntrospectedColumn column = columns.get(i);
             if (column.getDefaultValue() == null) {
-                valueTrimElement.addElement(new TextElement(MyBatis3FormattingUtilities.getParameterClause(column) + ","));
+                valueTrimElement.addElement(new TextElement(MyBatis3FormattingUtilities.getParameterClause(columns.get(i)).replace("#{", "#{item.") + ","));
             } else {
                 XmlElement ifElement = new XmlElement("if");
                 ifElement.addAttribute(new Attribute("test", column.getJavaProperty() + " != null"));
-                ifElement.addElement(new TextElement(MyBatis3FormattingUtilities.getParameterClause(column) + ","));
+                ifElement.addElement(new TextElement(MyBatis3FormattingUtilities.getParameterClause(columns.get(i)).replace("#{", "#{item.") + ","));
                 valueTrimElement.addElement(ifElement);
             }
         }
