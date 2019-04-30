@@ -1,5 +1,6 @@
 package com.demo.boot.web.controller;
 
+import com.ddmc.privilege.starter.Privilege;
 import com.demo.boot.user.model.User;
 import com.demo.boot.user.service.UserService;
 import com.demo.starter.log.Log;
@@ -25,6 +26,7 @@ public class UserController {
     }
 
     @Log
+    @Privilege(authTtem = "user.getUser", alias = "获取用户详情")
     @GetMapping(value = "get/{id}")
     public User getUser(@PathVariable Long id) {
         return userService.getById(id);

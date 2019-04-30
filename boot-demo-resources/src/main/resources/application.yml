@@ -18,6 +18,9 @@ logging:
 
 log:
   exclude: core,log
+privilege:
+  collect:
+    enable: true
 
 
 
