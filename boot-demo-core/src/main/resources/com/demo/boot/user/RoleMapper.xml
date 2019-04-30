@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.boot.user.dao.RoleDao">
   <resultMap id="BaseResultMap" type="com.demo.boot.user.model.Role">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
     <result column="field1" jdbcType="VARCHAR" property="field1" />
@@ -17,12 +17,12 @@
     <result column="field10" jdbcType="VARCHAR" property="field10" />
   </resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     id, role_name, field1, field2, field3, field4, field5, field6, field7, field8, field9, 
     field10
   </sql>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.demo.boot.user.model.Role" useGeneratedKeys="true">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     INSERT INTO t_role (
       role_name, field1, field2, field3, field4, field5, field6, field7, field8, field9, 
       field10
@@ -34,7 +34,7 @@
     )
   </insert>
   <insert id="insertList" parameterType="java.util.List">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     INSERT INTO t_role (
       role_name, field1, field2, field3, field4, field5, field6, field7, field8, field9, 
       field10
@@ -49,11 +49,11 @@
     </foreach>
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     SELECT <include refid="Base_Column_List" /> FROM t_role WHERE id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectOne" parameterType="com.demo.boot.user.model.Role" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     SELECT <include refid="Base_Column_List" /> FROM t_role
     <where>
       <if test="roleName != null">
@@ -93,7 +93,7 @@
     </where>
   </select>
   <select id="selectList" parameterType="com.demo.boot.user.model.Role" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     SELECT <include refid="Base_Column_List" /> FROM t_role
     <where>
       <if test="roleName != null">
@@ -132,11 +132,11 @@
     </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     SELECT <include refid="Base_Column_List" /> FROM t_role
   </select>
   <select id="count" parameterType="com.demo.boot.user.model.Role" resultType="java.lang.Long">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     SELECT count(1) FROM t_role
     <where>
       <if test="id != null">
@@ -178,11 +178,11 @@
     </where>
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     DELETE FROM t_role WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <update id="update" parameterType="com.demo.boot.user.model.Role">
-    <!--@mbg.generated 2019-04-30 11:52:17-->
+    <!--@mbg.generated 2019-04-30 13:08:41-->
     UPDATE t_role
     <set>
       <if test="roleName != null">
