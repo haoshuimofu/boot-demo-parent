@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
         user.setAge(30);
         user.setName("User_" + UUID.randomUUID().toString());
         user.setDescription(user.getName());
+        user.setField6("not null");
         userDao.insert(user);
         // 经过测试：多数据源时一定要明确设置事务管理器是哪个，否则事务失效
         // System.out.println(1 / 0);

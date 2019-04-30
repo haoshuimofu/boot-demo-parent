@@ -68,5 +68,6 @@
 
         <!-- !!!! Table Configurations !!!! -->
         <table tableName="t_users" domainObjectName="User"/>
+        <table tableName="t_role" domainObjectName="Role"/>
     </context>
 </generatorConfiguration>
