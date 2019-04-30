@@ -16,6 +16,13 @@ logging:
   config: classpath:logback.xml
 
 
+log:
+  exclude: core,log
+privilege:
+  collect:
+    enable: true
+
+
 
 
 

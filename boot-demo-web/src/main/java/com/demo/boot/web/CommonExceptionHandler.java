@@ -9,11 +9,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Author ddmc
@@ -27,13 +28,14 @@ public class CommonExceptionHandler {
 
     /**
      * 参数异常
+     *
      * @param e
      * @return
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public JsonResult exceptionHandler(HttpServletRequest request, HttpServletResponse response,MethodArgumentNotValidException e) {
+    public JsonResult exceptionHandler(HttpServletRequest request, HttpServletResponse response, MethodArgumentNotValidException e) {
         response.setStatus(500);
         System.out.println(response.getStatus());
         logger.error("参数异常", e);
@@ -50,6 +52,7 @@ public class CommonExceptionHandler {
 
     /**
      * 参数异常
+     *
      * @param e
      * @return
      */

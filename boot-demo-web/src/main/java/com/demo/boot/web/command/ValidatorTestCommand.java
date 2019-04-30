@@ -1,7 +1,6 @@
 package com.demo.boot.web.command;
 
 import com.demo.boot.base.validator.IsMobile;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -25,7 +24,7 @@ public class ValidatorTestCommand {
     @NotNull(message = "不能为空")
     @Min(value = 1, message = "最小值%s")
     private Integer age;
-//    @NotEmpty(message = "不能为空")
+    //    @NotEmpty(message = "不能为空")
     @Size(min = 1, max = 4, message = "list长度错误")
     private List<String> images;
 

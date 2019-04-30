@@ -26,6 +26,8 @@
         <module>boot-demo-service</module>
         <module>boot-demo-web</module>
         <module>boot-demo-test</module>
+        <module>boot-demo-starter</module>
+        <module>boot-demo-starters</module>
     </modules>
 
     <properties>

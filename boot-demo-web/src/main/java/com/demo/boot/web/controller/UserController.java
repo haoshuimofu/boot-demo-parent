@@ -1,7 +1,9 @@
 package com.demo.boot.web.controller;
 
+import com.ddmc.privilege.starter.Privilege;
 import com.demo.boot.user.model.User;
 import com.demo.boot.user.service.UserService;
+import com.demo.starter.log.Log;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,8 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Log
+    @Privilege(authTtem = "user.getUser", alias = "获取用户详情")
     @GetMapping(value = "get/{id}")
     public User getUser(@PathVariable Long id) {
         return userService.getById(id);

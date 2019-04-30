@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.boot.user.dao.RoleDao">
+  <resultMap id="BaseResultMap" type="com.demo.boot.user.model.Role">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+    <result column="field2" jdbcType="VARCHAR" property="field2" />
+    <result column="field3" jdbcType="VARCHAR" property="field3" />
+    <result column="field4" jdbcType="VARCHAR" property="field4" />
+    <result column="field5" jdbcType="VARCHAR" property="field5" />
+    <result column="field6" jdbcType="VARCHAR" property="field6" />
+    <result column="field7" jdbcType="VARCHAR" property="field7" />
+    <result column="field8" jdbcType="VARCHAR" property="field8" />
+    <result column="field9" jdbcType="VARCHAR" property="field9" />
+    <result column="field10" jdbcType="VARCHAR" property="field10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    id, role_name, field1, field2, field3, field4, field5, field6, field7, field8, field9, 
+    field10
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.demo.boot.user.model.Role" useGeneratedKeys="true">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    INSERT INTO t_role (
+      role_name, field1, field2, field3, field4, field5, field6, field7, field8, field9, 
+      field10
+    ) VALUES (  
+      #{roleName,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, 
+      #{field3,jdbcType=VARCHAR}, #{field4,jdbcType=VARCHAR}, #{field5,jdbcType=VARCHAR}, 
+      #{field6,jdbcType=VARCHAR}, #{field7,jdbcType=VARCHAR}, #{field8,jdbcType=VARCHAR}, 
+      #{field9,jdbcType=VARCHAR}, #{field10,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    INSERT INTO t_role (
+      role_name, field1, field2, field3, field4, field5, field6, field7, field8, field9, 
+      field10
+    ) VALUES 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+        #{item.roleName,jdbcType=VARCHAR}, #{item.field1,jdbcType=VARCHAR}, #{item.field2,jdbcType=VARCHAR}, 
+        #{item.field3,jdbcType=VARCHAR}, #{item.field4,jdbcType=VARCHAR}, #{item.field5,jdbcType=VARCHAR}, 
+        #{item.field6,jdbcType=VARCHAR}, #{item.field7,jdbcType=VARCHAR}, #{item.field8,jdbcType=VARCHAR}, 
+        #{item.field9,jdbcType=VARCHAR}, #{item.field10,jdbcType=VARCHAR}
+      )
+    </foreach>
+  </insert>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    SELECT <include refid="Base_Column_List" /> FROM t_role WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOne" parameterType="com.demo.boot.user.model.Role" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    SELECT <include refid="Base_Column_List" /> FROM t_role
+    <where>
+      <if test="roleName != null">
+        AND role_name = #{roleName,jdbcType=VARCHAR}
+      </if>
+      <if test="field1 != null">
+        AND field1 = #{field1,jdbcType=VARCHAR}
+      </if>
+      <if test="field2 != null">
+        AND field2 = #{field2,jdbcType=VARCHAR}
+      </if>
+      <if test="field3 != null">
+        AND field3 = #{field3,jdbcType=VARCHAR}
+      </if>
+      <if test="field4 != null">
+        AND field4 = #{field4,jdbcType=VARCHAR}
+      </if>
+      <if test="field5 != null">
+        AND field5 = #{field5,jdbcType=VARCHAR}
+      </if>
+      <if test="field6 != null">
+        AND field6 = #{field6,jdbcType=VARCHAR}
+      </if>
+      <if test="field7 != null">
+        AND field7 = #{field7,jdbcType=VARCHAR}
+      </if>
+      <if test="field8 != null">
+        AND field8 = #{field8,jdbcType=VARCHAR}
+      </if>
+      <if test="field9 != null">
+        AND field9 = #{field9,jdbcType=VARCHAR}
+      </if>
+      <if test="field10 != null">
+        AND field10 = #{field10,jdbcType=VARCHAR}
+      </if>
+      LIMIT 1
+    </where>
+  </select>
+  <select id="selectList" parameterType="com.demo.boot.user.model.Role" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    SELECT <include refid="Base_Column_List" /> FROM t_role
+    <where>
+      <if test="roleName != null">
+        AND role_name = #{roleName,jdbcType=VARCHAR}
+      </if>
+      <if test="field1 != null">
+        AND field1 = #{field1,jdbcType=VARCHAR}
+      </if>
+      <if test="field2 != null">
+        AND field2 = #{field2,jdbcType=VARCHAR}
+      </if>
+      <if test="field3 != null">
+        AND field3 = #{field3,jdbcType=VARCHAR}
+      </if>
+      <if test="field4 != null">
+        AND field4 = #{field4,jdbcType=VARCHAR}
+      </if>
+      <if test="field5 != null">
+        AND field5 = #{field5,jdbcType=VARCHAR}
+      </if>
+      <if test="field6 != null">
+        AND field6 = #{field6,jdbcType=VARCHAR}
+      </if>
+      <if test="field7 != null">
+        AND field7 = #{field7,jdbcType=VARCHAR}
+      </if>
+      <if test="field8 != null">
+        AND field8 = #{field8,jdbcType=VARCHAR}
+      </if>
+      <if test="field9 != null">
+        AND field9 = #{field9,jdbcType=VARCHAR}
+      </if>
+      <if test="field10 != null">
+        AND field10 = #{field10,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    SELECT <include refid="Base_Column_List" /> FROM t_role
+  </select>
+  <select id="count" parameterType="com.demo.boot.user.model.Role" resultType="java.lang.Long">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    SELECT count(1) FROM t_role
+    <where>
+      <if test="id != null">
+        AND id=#{id,jdbcType=INTEGER}
+      </if>
+      <if test="roleName != null">
+        AND role_name=#{roleName,jdbcType=VARCHAR}
+      </if>
+      <if test="field1 != null">
+        AND field1=#{field1,jdbcType=VARCHAR}
+      </if>
+      <if test="field2 != null">
+        AND field2=#{field2,jdbcType=VARCHAR}
+      </if>
+      <if test="field3 != null">
+        AND field3=#{field3,jdbcType=VARCHAR}
+      </if>
+      <if test="field4 != null">
+        AND field4=#{field4,jdbcType=VARCHAR}
+      </if>
+      <if test="field5 != null">
+        AND field5=#{field5,jdbcType=VARCHAR}
+      </if>
+      <if test="field6 != null">
+        AND field6=#{field6,jdbcType=VARCHAR}
+      </if>
+      <if test="field7 != null">
+        AND field7=#{field7,jdbcType=VARCHAR}
+      </if>
+      <if test="field8 != null">
+        AND field8=#{field8,jdbcType=VARCHAR}
+      </if>
+      <if test="field9 != null">
+        AND field9=#{field9,jdbcType=VARCHAR}
+      </if>
+      <if test="field10 != null">
+        AND field10=#{field10,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    DELETE FROM t_role WHERE id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="update" parameterType="com.demo.boot.user.model.Role">
+    <!--@mbg.generated 2019-04-30 13:08:41-->
+    UPDATE t_role
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        field3 = #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null">
+        field4 = #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null">
+        field5 = #{field5,jdbcType=VARCHAR},
+      </if>
+      <if test="field6 != null">
+        field6 = #{field6,jdbcType=VARCHAR},
+      </if>
+      <if test="field7 != null">
+        field7 = #{field7,jdbcType=VARCHAR},
+      </if>
+      <if test="field8 != null">
+        field8 = #{field8,jdbcType=VARCHAR},
+      </if>
+      <if test="field9 != null">
+        field9 = #{field9,jdbcType=VARCHAR},
+      </if>
+      <if test="field10 != null">
+        field10 = #{field10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

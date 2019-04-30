@@ -29,7 +29,7 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
     }
 
     @Override
-    public void addElements(XmlElement xmlElement) {
+    public void addElements(XmlElement parentElement) {
         XmlElement answer = new XmlElement("insert");
         answer.addAttribute(new Attribute("id", this.introspectedTable.getInsertStatementId()));
         FullyQualifiedJavaType parameterType;
@@ -63,6 +63,16 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
             }
         }
 
+        boolean hasColumnDefulatValue = ListUtilities.removeIdentityAndGeneratedAlwaysColumns(this.introspectedTable.getAllColumns())
+                .stream().anyMatch(column -> column.getDefaultValue() != null);
+        if (!hasColumnDefulatValue) {
+            addElementsWithAllColumns(parentElement, answer);
+        } else {
+            addElementsWithDefaultColumns(parentElement, answer);
+        }
+    }
+
+    public void addElementsWithAllColumns(XmlElement xmlElement, XmlElement answer) {
         StringBuilder insertClause = new StringBuilder();
         insertClause.append("INSERT INTO ")
                 .append(this.introspectedTable.getFullyQualifiedTableNameAtRuntime())
@@ -121,6 +131,61 @@ public class InsertElementCustomGenerator extends InsertElementGenerator {
         valuesClause.setLength(0);
         valuesClause.append(")");
         answer.addElement(new TextElement(valuesClause.toString()));
+
+        if (this.context.getPlugins().sqlMapInsertElementGenerated(answer, this.introspectedTable)) {
+            xmlElement.addElement(answer);
+        }
+    }
+
+    public void addElementsWithDefaultColumns(XmlElement xmlElement, XmlElement answer) {
+
+        StringBuilder insertClause = new StringBuilder();
+        insertClause.append("INSERT INTO ")
+                .append(this.introspectedTable.getFullyQualifiedTableNameAtRuntime());
+        answer.addElement(new TextElement(insertClause.toString()));
+
+        insertClause.setLength(0);
+        OutputUtilities.xmlIndent(insertClause, 1);
+
+        // <trim prefix="(" suffix=")" suffixOverrides=",">
+        XmlElement trimElement = new XmlElement("trim");
+        trimElement.addAttribute(new Attribute("prefix", "("));
+        trimElement.addAttribute(new Attribute("suffix", ")"));
+        trimElement.addAttribute(new Attribute("suffixOverrides", ","));
+
+        List<IntrospectedColumn> columns = ListUtilities.removeIdentityAndGeneratedAlwaysColumns(this.introspectedTable.getAllColumns());
+        for (int i = 0; i < columns.size(); i++) {
+            IntrospectedColumn column = columns.get(i);
+            if (column.getDefaultValue() == null) {
+                trimElement.addElement(new TextElement(column.getActualColumnName() + ","));
+            } else {
+                XmlElement ifElement = new XmlElement("if");
+                ifElement.addAttribute(new Attribute("test", column.getJavaProperty() + " != null"));
+                ifElement.addElement(new TextElement(column.getActualColumnName() + ","));
+                trimElement.addElement(ifElement);
+            }
+        }
+        answer.addElement(trimElement);
+        answer.addElement(new TextElement("VALUES"));
+
+        XmlElement valueTrimElement = new XmlElement("trim");
+        valueTrimElement.addAttribute(new Attribute("prefix", "("));
+        valueTrimElement.addAttribute(new Attribute("suffix", ")"));
+        valueTrimElement.addAttribute(new Attribute("suffixOverrides", ","));
+
+
+        for (int i = 0; i < columns.size(); ++i) {
+            IntrospectedColumn column = columns.get(i);
+            if (column.getDefaultValue() == null) {
+                valueTrimElement.addElement(new TextElement(MyBatis3FormattingUtilities.getParameterClause(column) + ","));
+            } else {
+                XmlElement ifElement = new XmlElement("if");
+                ifElement.addAttribute(new Attribute("test", column.getJavaProperty() + " != null"));
+                ifElement.addElement(new TextElement(MyBatis3FormattingUtilities.getParameterClause(column) + ","));
+                valueTrimElement.addElement(ifElement);
+            }
+        }
+        answer.addElement(valueTrimElement);
 
         if (this.context.getPlugins().sqlMapInsertElementGenerated(answer, this.introspectedTable)) {
             xmlElement.addElement(answer);
