@@ -14,16 +14,16 @@ import org.mybatis.generator.config.GeneratedKey;
 import java.util.List;
 
 /**
- * <p>insert方法sqlMap生成器</p>
+ * <p>insert方法sqlMap生成器，带默认值的列不出现在insert语句中</p>
  *
  * @author wude
  * @create 2018-05-11 10:26
  */
-public class InsertWithDefaultValueElementGenerator extends InsertElementGenerator {
+public class InsertWithoutDefaultValueElementGenerator extends InsertElementGenerator {
 
     private boolean isSample;
 
-    public InsertWithDefaultValueElementGenerator(boolean isSimple) {
+    public InsertWithoutDefaultValueElementGenerator(boolean isSimple) {
         super(isSimple);
         this.isSample = isSimple;
     }
