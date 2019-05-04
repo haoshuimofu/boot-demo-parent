@@ -1,33 +1,36 @@
 package com.ddmc.privilege.starter;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
- * 日志统计耗时AOP自动设置
+ * Privilege自动配置
  *
  * @Author wude
  * @Create 2019-04-29 10:09
  */
-@EnableConfigurationProperties(PrivilegeConfigProperties.class)
+@EnableConfigurationProperties(PrivilegeProperties.class)
 @ConditionalOnBean(RequestMappingHandlerMapping.class)
-public class PrivilegePointcutAdvisorAutoConfiguration {
+public class PrivilegeAutoConfiguration {
 
     @Autowired
-    private PrivilegeConfigProperties privilegeConfigProperties;
+    private PrivilegeProperties privilegeProperties;
     @Autowired
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
+    @Autowired(required = false)
+    private PrivilegeController privilegeController;
 
     @Bean
     public PrivilegeCollector initPrivilegeCollector() {
-        if (privilegeConfigProperties.isEnable()) {
-            return new PrivilegeCollector(requestMappingHandlerMapping);
-        } else {
-            return null;
+        if (privilegeController == null) {
+            return new PrivilegeCollector(privilegeProperties, requestMappingHandlerMapping);
         }
+        return null;
     }
 
 }

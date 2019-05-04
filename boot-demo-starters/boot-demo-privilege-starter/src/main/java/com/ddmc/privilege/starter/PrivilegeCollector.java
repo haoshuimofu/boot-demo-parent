@@ -32,9 +32,12 @@ public class PrivilegeCollector {
 
     private static final String CACHE_KEY = "privilege";
     private LoadingCache<String, List<PrivilegeInfo>> loadingCache = null;
-    private final RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    public PrivilegeCollector(RequestMappingHandlerMapping requestMappingHandlerMapping) {
+    private final RequestMappingHandlerMapping requestMappingHandlerMapping;
+    private final PrivilegeProperties privilegeProperties;
+
+    public PrivilegeCollector(PrivilegeProperties privilegeProperties, RequestMappingHandlerMapping requestMappingHandlerMapping) {
+        this.privilegeProperties = privilegeProperties;
         this.requestMappingHandlerMapping = requestMappingHandlerMapping;
     }
 
@@ -48,13 +51,12 @@ public class PrivilegeCollector {
         };
         loadingCache = CacheBuilder.newBuilder()
                 .concurrencyLevel(1)
-                .expireAfterWrite(5, TimeUnit.MINUTES)
+                .expireAfterWrite(privilegeProperties.getIdle(), TimeUnit.MINUTES)
                 .initialCapacity(1)
                 .maximumSize(1)
                 .recordStats() // // 设置要统计缓存的命中率
                 .removalListener(notification -> logger.info("### Guava缓存[{}]被移除了: {}", notification.getKey(), notification.getCause()))
                 .build(cacheLoader);
-
 
         PrivilegeController privilegeController = null;
         try {

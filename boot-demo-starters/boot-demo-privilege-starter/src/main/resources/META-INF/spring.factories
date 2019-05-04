@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.ddmc.privilege.starter.PrivilegePointcutAdvisorAutoConfiguration
+com.ddmc.privilege.starter.PrivilegeAutoConfiguration

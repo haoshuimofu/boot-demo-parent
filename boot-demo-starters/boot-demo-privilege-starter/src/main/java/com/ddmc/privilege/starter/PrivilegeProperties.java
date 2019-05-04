@@ -10,15 +10,15 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 
 @ConfigurationProperties(prefix = "privilege.collect")
-public class PrivilegeConfigProperties {
+public class PrivilegeProperties {
 
-    private boolean enable;
+    private int idle = 5;
 
-    public boolean isEnable() {
-        return enable;
+    public int getIdle() {
+        return idle;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setIdle(int idle) {
+        this.idle = idle;
     }
 }
