@@ -5,11 +5,15 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +32,6 @@ public class PrivilegeCollector {
 
     private static final String CACHE_KEY = "privilege";
     private LoadingCache<String, List<PrivilegeInfo>> loadingCache = null;
-
     private final RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     public PrivilegeCollector(RequestMappingHandlerMapping requestMappingHandlerMapping) {
@@ -36,7 +39,7 @@ public class PrivilegeCollector {
     }
 
     @PostConstruct
-    public void initCacheLoader() {
+    public void initCacheLoader() throws NoSuchMethodException {
         CacheLoader<String, List<PrivilegeInfo>> cacheLoader = new CacheLoader<String, List<PrivilegeInfo>>() {
             @Override
             public List<PrivilegeInfo> load(String key) {
@@ -51,6 +54,34 @@ public class PrivilegeCollector {
                 .recordStats() // // 设置要统计缓存的命中率
                 .removalListener(notification -> logger.info("### Guava缓存[{}]被移除了: {}", notification.getKey(), notification.getCause()))
                 .build(cacheLoader);
+
+
+        PrivilegeController privilegeController = null;
+        try {
+            privilegeController = BeanUtils.instantiateClass(PrivilegeController.class.getDeclaredConstructor(this.getClass()), this);
+        } catch (NoSuchMethodException e) {
+            logger.error("### 实例化Bean[{}]出错了!", PrivilegeController.class.getName(), e);
+            throw e;
+        }
+
+
+        String basePath = "";
+        RequestMapping requestMapping = PrivilegeController.class.getAnnotation(RequestMapping.class);
+        if (requestMapping != null) {
+            basePath = requestMapping.value()[0];
+        }
+        RequestMappingInfo requestMappingInfo = null;
+        for (Method method : PrivilegeController.class.getMethods()) {
+            requestMapping = method.getAnnotation(RequestMapping.class);
+            if (requestMapping != null) {
+                requestMappingInfo = RequestMappingInfo.paths(basePath + "/" + requestMapping.value()[0]).build();
+                requestMappingHandlerMapping.registerMapping(requestMappingInfo, privilegeController, method);
+            }
+        }
+        long start = System.currentTimeMillis();
+        requestMappingHandlerMapping.afterPropertiesSet();
+        long end = System.currentTimeMillis();
+        logger.info("### 注册PrivilegeController到RequestMappingHandlerMapping后刷新mapping耗时：{}毫秒!", end - start);
     }
 
     /**

@@ -6,9 +6,6 @@ import com.demo.boot.base.JsonResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -17,17 +14,17 @@ import java.util.concurrent.ExecutionException;
  * @Author ddmc
  * @Create 2019-04-30 15:27
  */
-@RestController
-@RequestMapping(value = "privilege")
-public class PrivilegeController {
+//@RestController
+//@RequestMapping(value = "privilege/c")
+public class PrivilegeController1 {
 
-    private Logger logger = LoggerFactory.getLogger(PrivilegeController.class);
+    private Logger logger = LoggerFactory.getLogger(PrivilegeController1.class);
 
     @Autowired
     private PrivilegeCollector privilegeCollector;
 
 
-    @GetMapping("collect")
+//    @GetMapping("collect")
     public JsonResult<List<PrivilegeInfo>> collect() {
         try {
             return JsonResult.success(privilegeCollector.get());
