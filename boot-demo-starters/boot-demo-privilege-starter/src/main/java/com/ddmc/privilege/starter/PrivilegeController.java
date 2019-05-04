@@ -1,4 +1,4 @@
-package com.demo.boot.privilege.starter;
+package com.ddmc.privilege.starter;
 
 import com.demo.boot.base.JsonResult;
 import org.slf4j.Logger;

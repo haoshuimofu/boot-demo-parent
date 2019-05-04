@@ -1,6 +1,6 @@
 package com.demo.boot.web.controller;
 
-import com.demo.boot.privilege.starter.Privilege;
+import com.ddmc.privilege.starter.Privilege;
 import com.demo.boot.user.model.User;
 import com.demo.boot.user.service.UserService;
 import com.demo.starter.log.Log;

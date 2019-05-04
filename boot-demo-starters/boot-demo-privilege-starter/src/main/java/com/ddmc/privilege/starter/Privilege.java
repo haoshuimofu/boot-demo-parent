@@ -1,4 +1,4 @@
-package com.demo.boot.privilege.starter;
+package com.ddmc.privilege.starter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
