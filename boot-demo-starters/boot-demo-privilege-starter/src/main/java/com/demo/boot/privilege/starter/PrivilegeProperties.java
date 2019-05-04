@@ -1,6 +1,7 @@
-package com.ddmc.privilege.starter;
+package com.demo.boot.privilege.starter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.data.annotation.Transient;
 
 /**
  * Log配置
@@ -11,8 +12,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "privilege.collect")
 public class PrivilegeProperties {
-
+    private boolean init;
     private int idle = 5;
+
+    public boolean isInit() {
+        return init;
+    }
+
+    public void setInit(boolean init) {
+        this.init = init;
+    }
 
     public int getIdle() {
         return idle;

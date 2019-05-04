@@ -1,9 +1,9 @@
-package com.ddmc.privilege.starter;
+package com.demo.boot.privilege.starter;
 
 import com.demo.boot.base.JsonResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +14,7 @@ import java.util.concurrent.ExecutionException;
  * @Author ddmc
  * @Create 2019-04-30 15:27
  */
+@ConditionalOnBean(PrivilegeCollector.class)
 @RestController
 @RequestMapping(value = "privilege")
 public class PrivilegeController {

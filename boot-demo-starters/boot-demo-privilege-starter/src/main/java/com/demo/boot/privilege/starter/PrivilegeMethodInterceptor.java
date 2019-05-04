@@ -1,4 +1,4 @@
-package com.ddmc.privilege.starter;
+package com.demo.boot.privilege.starter;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

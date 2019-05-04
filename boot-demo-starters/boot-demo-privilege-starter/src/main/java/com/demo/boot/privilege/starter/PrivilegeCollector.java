@@ -1,4 +1,4 @@
-package com.ddmc.privilege.starter;
+package com.demo.boot.privilege.starter;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
@@ -6,13 +6,14 @@ import com.google.common.cache.LoadingCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.ServiceMode;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @Author wude
  * @Create 2019-04-30 14:40
  */
+@Service
 public class PrivilegeCollector {
 
     private Logger logger = LoggerFactory.getLogger(PrivilegeCollector.class);
@@ -58,32 +60,33 @@ public class PrivilegeCollector {
                 .removalListener(notification -> logger.info("### Guava缓存[{}]被移除了: {}", notification.getKey(), notification.getCause()))
                 .build(cacheLoader);
 
-        PrivilegeController privilegeController = null;
-        try {
-            privilegeController = BeanUtils.instantiateClass(PrivilegeController.class.getDeclaredConstructor(this.getClass()), this);
-        } catch (NoSuchMethodException e) {
-            logger.error("### 实例化Bean[{}]出错了!", PrivilegeController.class.getName(), e);
-            throw e;
-        }
-
-
-        String basePath = "";
-        RequestMapping requestMapping = PrivilegeController.class.getAnnotation(RequestMapping.class);
-        if (requestMapping != null) {
-            basePath = requestMapping.value()[0];
-        }
-        RequestMappingInfo requestMappingInfo = null;
-        for (Method method : PrivilegeController.class.getMethods()) {
-            requestMapping = method.getAnnotation(RequestMapping.class);
-            if (requestMapping != null) {
-                requestMappingInfo = RequestMappingInfo.paths(basePath + "/" + requestMapping.value()[0]).build();
-                requestMappingHandlerMapping.registerMapping(requestMappingInfo, privilegeController, method);
+        if (this.privilegeProperties.isInit()) {
+            PrivilegeController privilegeController = null;
+            try {
+                privilegeController = BeanUtils.instantiateClass(PrivilegeController.class.getDeclaredConstructor(this.getClass()), this);
+            } catch (NoSuchMethodException e) {
+                logger.error("### 实例化Bean[{}]出错了!", PrivilegeController.class.getName(), e);
+                throw e;
             }
+
+            String basePath = "";
+            RequestMapping requestMapping = PrivilegeController.class.getAnnotation(RequestMapping.class);
+            if (requestMapping != null) {
+                basePath = requestMapping.value()[0];
+            }
+            RequestMappingInfo requestMappingInfo = null;
+            for (Method method : PrivilegeController.class.getMethods()) {
+                requestMapping = method.getAnnotation(RequestMapping.class);
+                if (requestMapping != null) {
+                    requestMappingInfo = RequestMappingInfo.paths(basePath + "/" + requestMapping.value()[0]).build();
+                    requestMappingHandlerMapping.registerMapping(requestMappingInfo, privilegeController, method);
+                }
+            }
+            long start = System.currentTimeMillis();
+            requestMappingHandlerMapping.afterPropertiesSet();
+            long end = System.currentTimeMillis();
+            logger.info("### 注册PrivilegeController到RequestMappingHandlerMapping后刷新mapping耗时：{}毫秒!", end - start);
         }
-        long start = System.currentTimeMillis();
-        requestMappingHandlerMapping.afterPropertiesSet();
-        long end = System.currentTimeMillis();
-        logger.info("### 注册PrivilegeController到RequestMappingHandlerMapping后刷新mapping耗时：{}毫秒!", end - start);
     }
 
     /**
