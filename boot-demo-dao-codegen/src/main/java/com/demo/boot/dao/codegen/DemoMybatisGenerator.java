@@ -30,12 +30,13 @@ public class DemoMybatisGenerator {
     private static final String KANBAN_MODULE_CONFIG = "classpath:kanban/generatorConfig.xml";
     private static final String SCM_MODULE_CONFIG = "classpath:scm/generatorConfig.xml";
     private static final String RECONCILIATION_MODULE_CONFIG = "classpath:reconciliation/generatorConfig.xml";
+    private static final String PRIVILEGE_MODULE_CONFIG = "classpath:privilege/generatorConfig.xml";
 
     public static void main(String[] args) throws FileNotFoundException {
 
         List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
-        File configFile = ResourceUtils.getFile(RECONCILIATION_MODULE_CONFIG);
+        File configFile = ResourceUtils.getFile(PRIVILEGE_MODULE_CONFIG);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = null;
         try {
