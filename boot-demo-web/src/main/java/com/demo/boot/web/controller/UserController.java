@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @Log
-    @Privilege(authTtem = "user.getUser", alias = "获取用户详情")
+    @Privilege(authItem = "user.getUser", name = "获取用户详情")
     @GetMapping(value = "get/{id}")
     public User getUser(@PathVariable Long id) {
         return userService.getById(id);
