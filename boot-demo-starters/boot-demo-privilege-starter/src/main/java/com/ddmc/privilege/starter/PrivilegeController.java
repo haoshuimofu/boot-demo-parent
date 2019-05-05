@@ -1,12 +1,9 @@
-package com.demo.boot.web.controller;
+package com.ddmc.privilege.starter;
 
-import com.ddmc.privilege.starter.PrivilegeCollector;
-import com.ddmc.privilege.starter.PrivilegeInfo;
 import com.demo.boot.base.JsonResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,17 +14,21 @@ import java.util.concurrent.ExecutionException;
  * @Author ddmc
  * @Create 2019-04-30 15:27
  */
+@ConditionalOnBean(PrivilegeCollector.class)
 @RestController
 @RequestMapping(value = "privilege")
 public class PrivilegeController {
 
     private Logger logger = LoggerFactory.getLogger(PrivilegeController.class);
 
-    @Autowired
-    private PrivilegeCollector privilegeCollector;
+    private final PrivilegeCollector privilegeCollector;
+
+    public PrivilegeController(PrivilegeCollector privilegeCollector) {
+        this.privilegeCollector = privilegeCollector;
+    }
 
 
-    @GetMapping("collect")
+    @RequestMapping("collect")
     public JsonResult<List<PrivilegeInfo>> collect() {
         try {
             return JsonResult.success(privilegeCollector.get());

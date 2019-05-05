@@ -20,6 +20,7 @@ log:
   exclude: core,log
 privilege:
   collect:
+    init: false
     enable: true
 
 
