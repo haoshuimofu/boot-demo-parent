@@ -15,5 +15,7 @@ public class BuilderTest {
                 .copyTo("抄送给").builder();
         System.out.println(mail.toString());
 
+        System.out.println(BuilderTest.class.getCanonicalName());
+
     }
 }
