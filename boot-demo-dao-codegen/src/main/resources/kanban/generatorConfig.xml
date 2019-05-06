@@ -72,9 +72,7 @@
 
         <!--!!!! Table Configurations !!!!-->
 
-        <!--<table tableName="store_inspection"/>-->
-        <!--<table tableName="pest_inspection_mouse"/>-->
-        <!--<table tableName="product_monitor_pid_temp"/>-->
-        <table tableName="product_batch"/>
+        <table tableName="tool_disinfection"/>
+        <table tableName="tool_disinfection_item"/>
     </context>
 </generatorConfiguration>
