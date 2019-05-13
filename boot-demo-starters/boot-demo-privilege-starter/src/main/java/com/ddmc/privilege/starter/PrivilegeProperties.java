@@ -1,5 +1,7 @@
 package com.ddmc.privilege.starter;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
 /**
  * Log配置
  *
@@ -7,6 +9,7 @@ package com.ddmc.privilege.starter;
  * @Create 2019-04-29 10:08
  */
 
+@ConfigurationProperties(prefix = "ddmc.privilege")
 public class PrivilegeProperties {
     private boolean init;
     private int idle = 5;
