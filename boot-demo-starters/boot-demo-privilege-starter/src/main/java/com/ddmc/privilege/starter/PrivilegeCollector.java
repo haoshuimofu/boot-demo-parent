@@ -104,12 +104,12 @@ public class PrivilegeCollector {
                 PrivilegeInfo privilegeInfo = new PrivilegeInfo();
                 privilegeInfo.setController(handlerMethod.getMethod().getDeclaringClass().getCanonicalName());
                 privilegeInfo.setMethod(handlerMethod.getMethod().getName());
-                if ("".equalsIgnoreCase(privilege.authTtem().trim())) {
+                if ("".equalsIgnoreCase(privilege.authItem().trim())) {
                     privilegeInfo.setAuthItem(privilegeInfo.getController() + "_" + privilegeInfo.getMethod());
                 } else {
-                    privilegeInfo.setAuthItem(privilege.authTtem());
+                    privilegeInfo.setAuthItem(privilege.authItem());
                 }
-                privilegeInfo.setAlias(privilege.alias());
+                privilegeInfo.setAlias(privilege.name());
                 privilegeInfo.setUri(requestMappingInfo.getPatternsCondition().getPatterns());
                 privilegeInfos.add(privilegeInfo);
             }

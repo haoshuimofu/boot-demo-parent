@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>boot-demo-web</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -150,10 +150,28 @@
         <!--clean package后在target目录下war/jar文件的名字, 如果没有就默认按父pom的名字打包war/jar-->
         <finalName>boot-demo-web</finalName>
         <plugins>
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-war-plugin</artifactId>-->
+            <!--<inherited>false</inherited>-->
+            <!--</plugin>-->
+
+            <!--Springboot启动jar，会在target/生成xxx.jar.original和可运行的xxx.jar
+            针对xxx.jar运行 java -jar xxx.jar即可启动项目-->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <inherited>false</inherited>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.4.RELEASE</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <mainClass>com.demo.boot.BootDemoWebApplication</mainClass>
+                        </configuration>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -4,12 +4,11 @@ import org.aopalliance.aop.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.Pointcut;
+import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.AbstractPointcutAdvisor;
-import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 
@@ -35,7 +34,16 @@ public class LogPointcutAdvisorAutoConfiguration extends AbstractPointcutAdvisor
     @PostConstruct
     public void init() {
         logger.info("init LogAutoConfiguration start");
-        this.pointcut = new AnnotationMatchingPointcut(RestController.class, Log.class);
+//        this.pointcut = new AnnotationMatchingPointcut(RestController.class, Log.class);
+        //@Pointcut("execution(* com.test.spring.aop.pointcutexp..JoinPointObjP2.*(..))")
+        //@Pointcut("within(com.test.spring.aop.pointcutexp..*)")
+        //@Pointcut("this(com.test.spring.aop.pointcutexp.Intf)")
+        //@Pointcut("target(com.test.spring.aop.pointcutexp.Intf)")
+        //@Pointcut("@within(org.springframework.transaction.annotation.Transactional)")
+        //@Pointcut("@annotation(org.springframework.transaction.annotation.Transactional)")
+        //@Pointcut("args(String)")
+        this.pointcut = new AspectJExpressionPointcut();
+        ((AspectJExpressionPointcut) this.pointcut).setExpression("execution(* com.demo.boot..*.*(..))");
         this.advice = new LogMethodInterceptor(logConfigProperties.getExcludeArr());
         logger.info("init LogAutoConfiguration end");
     }

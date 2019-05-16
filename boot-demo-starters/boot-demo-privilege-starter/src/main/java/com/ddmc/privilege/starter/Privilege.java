@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Privilege {
     // 认证字符串
-    String authTtem() default "";
+    String authItem() default "";
 
     // 认证字符串别名
-    String alias();
+    String name();
 
 }
