@@ -72,7 +72,7 @@
 
         <!--!!!! Table Configurations !!!!-->
 
-        <table tableName="tool_disinfection"/>
-        <table tableName="tool_disinfection_item"/>
+        <table tableName="district_house"/>
+        <!--<table tableName="tool_disinfection_item"/>-->
     </context>
 </generatorConfiguration>
