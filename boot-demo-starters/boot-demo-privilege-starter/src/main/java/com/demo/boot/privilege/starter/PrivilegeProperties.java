@@ -1,4 +1,4 @@
-package com.ddmc.privilege.starter;
+package com.demo.boot.privilege.starter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

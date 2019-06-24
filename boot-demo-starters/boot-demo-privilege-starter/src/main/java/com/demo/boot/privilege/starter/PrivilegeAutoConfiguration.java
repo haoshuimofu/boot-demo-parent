@@ -1,4 +1,4 @@
-package com.ddmc.privilege.starter;
+package com.demo.boot.privilege.starter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

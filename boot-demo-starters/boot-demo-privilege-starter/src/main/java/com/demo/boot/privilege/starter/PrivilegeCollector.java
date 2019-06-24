@@ -1,4 +1,4 @@
-package com.ddmc.privilege.starter;
+package com.demo.boot.privilege.starter;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

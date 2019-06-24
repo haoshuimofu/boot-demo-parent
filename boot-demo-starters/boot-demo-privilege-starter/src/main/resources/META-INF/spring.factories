@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.ddmc.privilege.starter.PrivilegeAutoConfiguration
+com.demo.boot.privilege.starter.PrivilegeAutoConfiguration
