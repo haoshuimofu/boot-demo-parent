@@ -3,8 +3,17 @@ server:
   port: 9090
 # 激活的spring.profiles
 spring:
+  applicaton:
+    name: boot-demo-parent
   profiles:
     active: datasource, web, redis
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin123
+    virtual-host: /ddmc
+    connection-timeout: 60000
 # Mybatis
 #mybatis:
 #  config-location: classpath:mybatis-config.xml #为什么用classpath*就报错找不到资源文件了?
