@@ -18,7 +18,7 @@ import com.demo.components.rabbitmq.constants.ExchangeType;
         routingKey = "topic.#.a")
 public class TopicMessageABody extends BaseMessageBody {
     @Override
-    public void check() {
+    public void preCheck() {
 
     }
 }
