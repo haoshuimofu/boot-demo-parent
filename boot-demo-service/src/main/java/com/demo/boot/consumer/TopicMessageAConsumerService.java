@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * @Author ddmc
  * @Create 2019-05-29 13:48
  */
-@ConsumerService
+//@ConsumerService
 public class TopicMessageAConsumerService extends BaseConsumerService<TopicMessageABody> {
 
     Logger logger = LoggerFactory.getLogger(TopicMessageAConsumerService.class);
